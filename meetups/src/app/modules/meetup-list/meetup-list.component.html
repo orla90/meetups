@@ -1,0 +1,7 @@
+<section>
+  <ul class="meetup-list">
+    <li *ngFor="let meetup of meetupService.meetups">
+      <app-meetup [meetup]="meetup" />
+    </li>
+  </ul>
+</section>

@@ -9,7 +9,7 @@ export class MeetupService {
     {
       id: 1,
       title: 'meetup 1',
-      date: new Date(),
+      date: '14.08.22 13:00',
       venue: 'room 1',
       shortDescription: 'meetup 1 short description',
       longDescription: 'meetup 1 long description',
@@ -17,11 +17,12 @@ export class MeetupService {
       shouldBeKnown: 'sql',
       agenda: 'project',
       reasonsToCome: 'interesting',
+      subscribers: 100,
     },
     {
       id: 2,
       title: 'meetup 2',
-      date: new Date(),
+      date: '14.08.22 13:00',
       venue: 'room 2',
       shortDescription: 'meetup 2 short description',
       longDescription: 'meetup 2 long description',
@@ -29,11 +30,12 @@ export class MeetupService {
       shouldBeKnown: 'JS',
       agenda: 'project',
       reasonsToCome: 'very interesting',
+      subscribers: 200,
     },
     {
       id: 3,
       title: 'meetup 3',
-      date: new Date(),
+      date: '14.08.22 13:00',
       venue: 'room 3',
       shortDescription: 'meetup 3 short description',
       longDescription: 'meetup 3 long description',
@@ -41,6 +43,7 @@ export class MeetupService {
       shouldBeKnown: 'ts',
       agenda: 'project',
       reasonsToCome: 'very very interesting',
+      subscribers: 300,
     },
   ];
   constructor() {}

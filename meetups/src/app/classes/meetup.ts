@@ -1,7 +1,7 @@
 export class Meetup {
   id?: number;
   title = '';
-  date = new Date();
+  date: Date | string = '';
   venue = '';
   shortDescription = '';
   longDescription = '';
@@ -9,7 +9,8 @@ export class Meetup {
   shouldBeKnown = '';
   agenda = '';
   reasonsToCome = '';
-  
+  subscribers: number = 0;
+
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }
