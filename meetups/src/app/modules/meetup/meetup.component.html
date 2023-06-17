@@ -1,0 +1,77 @@
+<article class="meetup">
+  <header class="meetup__header">
+    <div class="container meetup__header-container">
+      <div class="meetup__header-info">
+        <span class="meetup__title title">Angular vs react</span>
+        <span class="meetup__subscribers">321 подписчик</span>
+      </div>
+      <div class="meetup__header-metadata">
+        <span class="meetup__date title">14.08.22 13:00</span>
+        <span class="meetup__vanue">Переговорная 14</span>
+      </div>
+    </div>
+  </header>
+  <section
+    class="meetup__content meetup__content_short"
+    *ngIf="!longDescription"
+  >
+    <div class="container meetup__content-container">
+      <p class="meetup__description">
+        Расскажу о том, об этом. О том, об этом. О том, об этом. О том, об этом.
+        О том, об этом. О том, об этом. О том, об этом. О том, об этом.
+      </p>
+    </div>
+  </section>
+  <section class="meetup__content meetup__content_long" *ngIf="longDescription">
+    <div class="container meetup__content-container">
+      <p class="meetup__description">
+        А здесь я ещё более подробно напишу об том, отб этом. О том, об этом. О
+        том, об этом. О том, об этом. О том, об этом. О том, об этом. О том, об
+        этом. О том, об этом. А здесь я ещё более подробно напишу об том, отб
+        этом. О том, об этом. О том, об этом. О том, об этом. О том, об этом. О
+        том, об этом. О том, об этом. О том, об этом. А здесь я ещё более
+        подробно напишу об том, отб этом. О том, об этом. О том, об этом. О том,
+        об этом. О том, об этом. О том, об этом. О том, об этом. О том, об этом.
+      </p>
+      <div class="meetup__item">
+        <h3 class="meetup__heading">Целевая аудитория</h3>
+        <p class="meetup__entry">разрабы, аналитики, и проч</p>
+      </div>
+      <div class="meetup__item">
+        <h3 class="meetup__heading">Что надо знать?</h3>
+        <p class="meetup__entry">вот это вот это вот это вот это</p>
+      </div>
+      <div class="meetup__item">
+        <h3 class="meetup__heading">Что будет?</h3>
+        <p class="meetup__entry">
+          вот этому научу вот это расскажу вот этому научу вот этому расскажу
+        </p>
+      </div>
+      <div class="meetup__item">
+        <h3 class="meetup__heading">Почему надо обязательно прийти?</h3>
+        <p class="meetup__entry">У меня красный пояс по C++</p>
+      </div>
+    </div>
+  </section>
+  <footer class="meetup__footer">
+    <div class="container meetup__footer-container">
+      <span class="meetup__author">Александр Козаченко</span>
+      <div class="meetup__btns">
+        <button class="button button_big button_purple">Я пойду!</button>
+        <button
+          class="button button_small button_orange"
+          (click)="changeDescription()"
+        >
+          <span
+            class="button__icon meetup__button-icon"
+            [ngClass]="{
+              'button__icon meetup__button-icon': true,
+              'meetup__button-icon_up': longDescription,
+              'meetup__button-icon_down': !longDescription,
+            }"
+          ></span>
+        </button>
+      </div>
+    </div>
+  </footer>
+</article>

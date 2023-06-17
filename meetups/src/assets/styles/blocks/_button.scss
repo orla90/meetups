@@ -1,0 +1,40 @@
+.button {
+  font-family: $font-family;
+  font-style: normal;
+  font-weight: $font-weight-base;
+  @include font(
+    $size: rem($font-size-base),
+    $height: (
+      $line-height-base / $font-size-base,
+    )
+  );
+  color: $mercury;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-duration-hover $transition-function-hover;
+  border-radius: $btn-radius;
+  height: 50px;
+
+  &__icon {
+    width: rem(29px);
+    height: rem(23px);
+  }
+
+  &_big {
+    width: rem(160px);
+  }
+
+  &_small {
+    width: rem(70px);
+  }
+  
+  &_orange {
+    background-color: $tuscany;
+  }
+  
+  &_purple {
+    background-color: $east-bay;
+  }
+}
