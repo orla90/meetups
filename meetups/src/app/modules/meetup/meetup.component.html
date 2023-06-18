@@ -1,70 +1,77 @@
 <article class="meetup" *ngIf="meetup">
-  <header class="meetup__header">
-    <div class="container meetup__header-container">
-      <div class="meetup__header-info">
-        <span class="meetup__title title">{{ meetup.title }}</span>
-        <span class="meetup__subscribers">{{ meetup.subscribers }} подписчик</span>
+  <div class="meetup__container">
+    <header class="meetup__header">
+      <div class="meetup__header-container">
+        <div class="meetup__header-info">
+          <span class="meetup__title title">{{ meetup.title }}</span>
+          <span class="meetup__subscribers"
+            >{{ meetup.subscribers }} подписчик</span
+          >
+        </div>
+        <div class="meetup__header-metadata">
+          <span class="meetup__date title">{{ meetup.date }}</span>
+          <span class="meetup__vanue">{{ meetup.venue }}</span>
+        </div>
       </div>
-      <div class="meetup__header-metadata">
-        <span class="meetup__date title">{{ meetup.date }}</span>
-        <span class="meetup__vanue">{{ meetup.venue }}</span>
-      </div>
-    </div>
-  </header>
-  <section
-    class="meetup__content meetup__content_short"
-    *ngIf="!longDescription"
-  >
-    <div class="container meetup__content-container">
-      <p class="meetup__description">
-        {{ meetup.shortDescription }}
-      </p>
-    </div>
-  </section>
-  <section class="meetup__content meetup__content_long" *ngIf="longDescription">
-    <div class="container meetup__content-container">
-      <p class="meetup__description">
-        {{ meetup.longDescription }}
-      </p>
-      <div class="meetup__item">
-        <h3 class="meetup__heading">Целевая аудитория</h3>
-        <p class="meetup__entry">{{ meetup.targetAudience }}</p>
-      </div>
-      <div class="meetup__item">
-        <h3 class="meetup__heading">Что надо знать?</h3>
-        <p class="meetup__entry">{{ meetup.shouldBeKnown }}</p>
-      </div>
-      <div class="meetup__item">
-        <h3 class="meetup__heading">Что будет?</h3>
-        <p class="meetup__entry">
-          {{ meetup.agenda }}
+    </header>
+    <section
+      class="meetup__content meetup__content_short"
+      *ngIf="!longDescription"
+    >
+      <div class="meetup__content-container">
+        <p class="meetup__description">
+          {{ meetup.shortDescription }}
         </p>
       </div>
-      <div class="meetup__item">
-        <h3 class="meetup__heading">Почему надо обязательно прийти?</h3>
-        <p class="meetup__entry">{{ meetup.reasonsToCome }}</p>
+    </section>
+    <section
+      class="meetup__content meetup__content_long"
+      *ngIf="longDescription"
+    >
+      <div class="container meetup__content-container">
+        <p class="meetup__description">
+          {{ meetup.longDescription }}
+        </p>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Целевая аудитория</h3>
+          <p class="meetup__entry">{{ meetup.targetAudience }}</p>
+        </div>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Что надо знать?</h3>
+          <p class="meetup__entry">{{ meetup.shouldBeKnown }}</p>
+        </div>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Что будет?</h3>
+          <p class="meetup__entry">
+            {{ meetup.agenda }}
+          </p>
+        </div>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Почему надо обязательно прийти?</h3>
+          <p class="meetup__entry">{{ meetup.reasonsToCome }}</p>
+        </div>
       </div>
-    </div>
-  </section>
-  <footer class="meetup__footer">
-    <div class="container meetup__footer-container">
-      <span class="meetup__author">Александр Козаченко</span>
-      <div class="meetup__btns">
-        <button class="button button_big button_purple">Я пойду!</button>
-        <button
-          class="button button_small button_orange"
-          (click)="changeDescription()"
-        >
-          <span
-            class="button__icon meetup__button-icon"
-            [ngClass]="{
-              'button__icon meetup__button-icon': true,
-              'meetup__button-icon_up': longDescription,
-              'meetup__button-icon_down': !longDescription,
-            }"
-          ></span>
-        </button>
+    </section>
+    <footer class="meetup__footer">
+      <div class="meetup__footer-container">
+        <span class="meetup__author">Александр Козаченко</span>
+        <div class="meetup__btns">
+          <button class="button button_big button_purple">Я пойду!</button>
+          <button
+            class="button button_small button_orange"
+            (click)="changeDescription()"
+          >
+            <span
+              class="button__icon meetup__button-icon"
+              [ngClass]="{
+                'button__icon meetup__button-icon': true,
+                'meetup__button-icon_up': longDescription,
+                'meetup__button-icon_down': !longDescription,
+              }"
+            ></span>
+          </button>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </article>

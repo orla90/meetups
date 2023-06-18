@@ -1,12 +1,21 @@
 @import "../../../assets/styles/global.scss";
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-index-header;
+  width: 100%;
+  background-color: $mine-shaft;
+  border: rem(0.3px) solid $french-gray;
+  box-shadow: rem(0px) rem(4px) rem(4px) rgba(62, 5, 4, 0.25);
+
   &__container {
     display: flex;
     align-items: center;
     gap: rem(81px);
-    padding-top: rem(27px);
-    padding-bottom: rem(24px);
+    padding-top: rem(22px);
+    padding-bottom: rem(22px);
   }
 
   &__navbar {

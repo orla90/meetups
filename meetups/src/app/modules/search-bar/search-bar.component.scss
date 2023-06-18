@@ -1,0 +1,38 @@
+@import "../../../assets/styles/global.scss";
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__input-iconed {
+    position: relative;
+    width: 100%;
+    max-width: rem(1278px);
+    height: rem(73px);
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding-left: rem(13px);
+    padding-right: rem(74px);
+    background: $french-gray;
+    border-radius: $small-radius;
+
+    &::placeholder {
+      color: $tuscany;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    right: 0;
+    top: rem(12px);
+    right: rem(12px);
+    background: url("../../../assets/images/icons/search.svg");
+    background-size: contain;
+    width: rem(50px);
+    height: rem(50px);
+  }
+}

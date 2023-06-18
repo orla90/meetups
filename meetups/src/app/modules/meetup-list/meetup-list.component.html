@@ -1,7 +1,12 @@
-<section>
-  <ul class="meetup-list">
-    <li *ngFor="let meetup of meetupService.meetups">
+<section class="meetups">
+  <div class="meetups__container container">
+    <div class="meetups__search-bar">
+      <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
+    </div>
+  <ul class="meetups-list">
+    <li class="meetups-list__item" *ngFor="let meetup of filteredMeetups">
       <app-meetup [meetup]="meetup" />
     </li>
   </ul>
+</div>
 </section>

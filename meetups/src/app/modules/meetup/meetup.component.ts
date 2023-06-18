@@ -8,7 +8,7 @@ import { Meetup } from 'src/app/classes/meetup';
 })
 export class MeetupComponent {
   @Input() public meetup?: Meetup;
-  
+
   longDescription = false;
 
   changeDescription() {

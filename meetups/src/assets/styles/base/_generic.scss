@@ -19,7 +19,19 @@ html {
 }
 
 body {
-  font-size: rem($font-size-base);
-  font-weight: $font-weight-base;
-  line-height: $line-height-base;
+  @include font(
+    $size: rem($font-size-base),
+    $height: rem($line-height-base),
+  );
+}
+
+input {
+  @include font(
+    $size: rem($font-size-base),
+    $height: rem($line-height-base),
+  );
+}
+
+button {
+  cursor: pointer;
 }

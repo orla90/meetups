@@ -14,7 +14,7 @@
 
     &.active {
       &::after {
-        content: '';
+        content: "";
         width: 100%;
         margin-top: rem(1px);
         border-bottom: rem(10px) solid $tuscany;

@@ -1,7 +1,20 @@
 @import "../../../assets/styles/global.scss";
 
-.meetup-list {
-  display: flex;
-  flex-direction: column;
-  gap: rem(40px);
+.meetups {
+  margin-top: rem($height-header-desktop);
+
+  &__search-bar {
+    padding-top: rem(98px);
+    margin-bottom: rem(72px);
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(40px);
+
+    &__item {
+      list-style: none;
+    }
+  }
 }

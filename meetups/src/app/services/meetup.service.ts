@@ -47,4 +47,10 @@ export class MeetupService {
     },
   ];
   constructor() {}
+
+  findMeetups(searchInput = ''): Meetup[] {
+    return this.meetups.filter((meetup) =>
+      meetup.title.toLocaleLowerCase().includes(searchInput.toLowerCase())
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meetup } from 'src/app/classes/meetup';
 import { MeetupService } from 'src/app/services/meetup.service';
 
 @Component({
@@ -7,5 +8,16 @@ import { MeetupService } from 'src/app/services/meetup.service';
   styleUrls: ['./meetup-list.component.scss'],
 })
 export class MeetupListComponent {
-  constructor(public meetupService: MeetupService) {}
+  searchInput = '';
+  meetups: Meetup[] = [];
+  filteredMeetups: Meetup[] = [];
+
+  constructor(public meetupService: MeetupService) {
+    this.meetups = meetupService.meetups;
+    this.filteredMeetups = meetupService.meetups;
+  }
+
+  searchMeetups(searchInput: string) {
+    this.filteredMeetups = this.meetupService.findMeetups(searchInput);
+  }
 }

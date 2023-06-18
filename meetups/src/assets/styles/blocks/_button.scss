@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   transition: all $transition-duration-hover $transition-function-hover;
-  border-radius: $btn-radius;
+  border-radius: $small-radius;
   height: 50px;
 
   &__icon {

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MeetupListModule } from './modules/meetup-list/meetup-list.module';
 import { HeaderModule } from './modules/header/header.module';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
   providers: [],
@@ -13,6 +13,7 @@ import { HeaderModule } from './modules/header/header.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     MeetupListModule,
     HeaderModule,

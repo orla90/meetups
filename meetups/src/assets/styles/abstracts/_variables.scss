@@ -2,6 +2,7 @@
 * Colors
 */
 $mine-shaft: #2c2c2c;
+$cod-gray: #1e1e1e;
 $french-gray: #b4b4c0;
 $tuscany: #b85526;
 $mercury: #e9e9e9;
@@ -10,7 +11,7 @@ $east-bay: #4c3f78;
 $blue-lagoon: #008697;
 
 $color-text: $french-gray;
-$color-bg: $mine-shaft;
+$color-bg: $cod-gray;
 
 /**
 * Fonts
@@ -41,9 +42,14 @@ $font-family: $font-family-custom, $font-family-default;
 /**
 * Layout
 */
-$width-container: 1360px;
-$gap-container: 40px;
+$width-container: 1362px;
+$gap-container-big: 40px;
+$gap-container-small: 18px;
 
+/**
+* Sizes
+*/
+$height-header-desktop: 120px;
 
 /**
 * Transitions and Animations
@@ -54,4 +60,9 @@ $transition-function-hover: ease-out;
 /**
 * Radius
 */
-$btn-radius: 5px;
+$small-radius: 5px;
+
+/**
+* Z-indexes
+*/
+$z-index-header: 200;
