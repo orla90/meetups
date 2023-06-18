@@ -28,12 +28,7 @@
   }
 
   &__vanue {
-    @include font(
-      $size: rem($font-size-small),
-      $height: (
-        $line-height-small / $font-size-small,
-      )
-    );
+    @include font($size: rem($font-size-small), $height: $line-height-small);
     color: $mercury;
   }
 
@@ -51,12 +46,7 @@
   }
 
   &__heading {
-    @include font(
-      $size: rem($font-size-medium),
-      $height: (
-        $line-height-medium / $font-size-medium,
-      )
-    );
+    @include font($size: rem($font-size-medium), $height: $line-height-medium);
     color: $mercury;
   }
 

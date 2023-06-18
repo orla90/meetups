@@ -1,0 +1,25 @@
+@import "../../../assets/styles/global.scss";
+
+.navbar {
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: rem(34px);
+  }
+
+  &__link {
+    padding-top: rem(1px);
+    display: flex;
+    flex-direction: column;
+
+    &.active {
+      &::after {
+        content: '';
+        width: 100%;
+        margin-top: rem(1px);
+        border-bottom: rem(10px) solid $tuscany;
+        border-radius: rem(5px);
+      }
+    }
+  }
+}

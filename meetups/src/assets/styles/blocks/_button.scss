@@ -1,12 +1,9 @@
 .button {
   font-family: $font-family;
   font-style: normal;
-  font-weight: $font-weight-base;
   @include font(
     $size: rem($font-size-base),
-    $height: (
-      $line-height-base / $font-size-base,
-    )
+    $height: $line-height-base
   );
   color: $mercury;
   cursor: pointer;

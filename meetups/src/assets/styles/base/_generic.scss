@@ -21,5 +21,5 @@ html {
 body {
   font-size: rem($font-size-base);
   font-weight: $font-weight-base;
-  line-height: ($line-height-base / $font-size-base);
+  line-height: $line-height-base;
 }

@@ -1,0 +1,70 @@
+@import "../../../assets/styles/global.scss";
+
+.header {
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: rem(81px);
+    padding-top: rem(27px);
+    padding-bottom: rem(24px);
+  }
+
+  &__navbar {
+    flex: 1;
+  }
+}
+
+.logo {
+  &-group {
+    display: flex;
+    align-items: center;
+    gap: rem(31px);
+
+    &__title {
+      font-family: "Open Sans Hebrew Condensed";
+      font-style: normal;
+      @include font(
+        $size: rem($font-size-giant),
+        $height: $line-height-giant,
+        $weight: $font-weight-bold
+      );
+      color: $mercury;
+    }
+
+    &__icons {
+      display: flex;
+      flex-direction: column;
+      gap: rem(9px);
+    }
+
+    &__philosophy {
+      background: url(../../../assets/images/icons/philosophy.svg) no-repeat;
+      width: rem(192px);
+      height: rem(30px);
+    }
+
+    &__league {
+      background: url(../../../assets/images/icons/league-logo.svg) no-repeat;
+      width: rem(95.6px);
+      height: rem(30px);
+    }
+  }
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: rem(22px);
+
+  &__settings {
+    background: url(../../../assets/images/icons/settings.svg) no-repeat;
+    width: rem(48px);
+    height: rem(48px);
+  }
+
+  &__login {
+    background: url(../../../assets/images/icons/login.svg) no-repeat;
+    width: rem(48px);
+    height: rem(48px);
+  }
+}

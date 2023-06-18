@@ -20,12 +20,13 @@ $font-size-normal: 16px;
 $font-size-base: 18px;
 $font-size-medium: 20px;
 $font-size-big: 24px;
-$font-size-small: 14px;
+$font-size-giant: 56px;
 
 $line-height-small: 19px;
 $line-height-base-small: 24px;
 $line-height-base: 25px;
 $line-height-medium: 27px;
+$line-height-giant: 76px;
 
 $font-weight-base: 400;
 $font-weight-medium: 500;
@@ -40,8 +41,8 @@ $font-family: $font-family-custom, $font-family-default;
 /**
 * Layout
 */
-$width-container: 1328px;
-$gap-container: 18px;
+$width-container: 1360px;
+$gap-container: 40px;
 
 
 /**
