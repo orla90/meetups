@@ -3,14 +3,14 @@
     <header class="meetup__header">
       <div class="meetup__header-container">
         <div class="meetup__header-info">
-          <span class="meetup__title title">{{ meetup.title }}</span>
+          <span class="meetup__title title">{{ meetup.name }}</span>
           <span class="meetup__subscribers"
-            >{{ meetup.subscribers }} подписчик</span
+            >{{ meetup.users }} подписчик</span
           >
         </div>
         <div class="meetup__header-metadata">
-          <span class="meetup__date title">{{ meetup.date }}</span>
-          <span class="meetup__vanue">{{ meetup.venue }}</span>
+          <span class="meetup__date title">{{ meetup.time }}</span>
+          <span class="meetup__vanue">{{ meetup.location }}</span>
         </div>
       </div>
     </header>
@@ -20,7 +20,7 @@
     >
       <div class="meetup__content-container">
         <p class="meetup__description">
-          {{ meetup.shortDescription }}
+          {{ meetup.description }}
         </p>
       </div>
     </section>
@@ -30,25 +30,25 @@
     >
       <div class="container meetup__content-container">
         <p class="meetup__description">
-          {{ meetup.longDescription }}
+          {{ meetup.description }}
         </p>
         <div class="meetup__item">
           <h3 class="meetup__heading">Целевая аудитория</h3>
-          <p class="meetup__entry">{{ meetup.targetAudience }}</p>
+          <p class="meetup__entry">{{ meetup.target_audience }}</p>
         </div>
         <div class="meetup__item">
           <h3 class="meetup__heading">Что надо знать?</h3>
-          <p class="meetup__entry">{{ meetup.shouldBeKnown }}</p>
+          <p class="meetup__entry">{{ meetup.need_to_know }}</p>
         </div>
         <div class="meetup__item">
           <h3 class="meetup__heading">Что будет?</h3>
           <p class="meetup__entry">
-            {{ meetup.agenda }}
+            {{ meetup.will_happen }}
           </p>
         </div>
         <div class="meetup__item">
           <h3 class="meetup__heading">Почему надо обязательно прийти?</h3>
-          <p class="meetup__entry">{{ meetup.reasonsToCome }}</p>
+          <p class="meetup__entry">{{ meetup.reason_to_come }}</p>
         </div>
       </div>
     </section>
