@@ -64,16 +64,26 @@
   display: flex;
   align-items: center;
   gap: rem(22px);
-
-  &__settings {
-    background: url(../../../assets/images/icons/settings.svg) no-repeat;
+  margin-left: auto;
+  
+  &__item {
     width: rem(48px);
     height: rem(48px);
-  }
-
-  &__logout {
-    background: url(../../../assets/images/icons/login.svg) no-repeat;
-    width: rem(48px);
-    height: rem(48px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: inherit;
+    cursor: pointer;
+    
+    &_settings {
+      background-image: url(../../../assets/images/icons/settings.svg);
+    }
+    
+    &_login {
+      background-image: url(../../../assets/images/icons/avatar.svg);
+    }
+  
+    &_logout {
+      background-image: url(../../../assets/images/icons/logout.svg);
+    }
   }
 }

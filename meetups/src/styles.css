@@ -1,0 +1,158 @@
+/**
+* Abstracts
+*/
+/**
+* Colors
+*/
+/**
+* Fonts
+*/
+/**
+* Layout
+*/
+/**
+* Sizes
+*/
+/**
+* Transitions and Animations
+*/
+/**
+* Radius
+*/
+/**
+* Z-indexes
+*/
+/**
+* Base
+*/
+@import url("https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,700;1,800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: "Open Sans", "Arial", "Helvetica", sans-serif;
+  font-size: 100%;
+  color: #b4b4c0;
+  background-color: #1e1e1e;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: calc($pixels / $context * 1rem);
+}
+
+input {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: calc($pixels / $context * 1rem);
+  color: #b4b4c0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #b4b4c0;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+button {
+  cursor: pointer;
+}
+
+/**
+* Blocks
+*/
+.title {
+  font-family: "Cherry Bomb";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #e9e9e9;
+}
+
+.button {
+  font-family: "Open Sans", "Arial", "Helvetica", sans-serif;
+  font-style: normal;
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  color: #e9e9e9;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.button__icon {
+  width: calc($pixels / $context * 1rem);
+  height: calc($pixels / $context * 1rem);
+}
+
+.button_big {
+  width: calc($pixels / $context * 1rem);
+}
+
+.button_medium {
+  width: calc($pixels / $context * 1rem);
+}
+
+.button_small {
+  width: calc($pixels / $context * 1rem);
+}
+
+.button_orange {
+  background-color: #b85526;
+}
+
+.button_purple {
+  background-color: #4c3f78;
+}
+
+.container {
+  width: 100%;
+  max-width: calc($pixels / $context * 1rem);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: calc($pixels / $context * 1rem);
+  padding-left: calc($pixels / $context * 1rem);
+}
+/*# sourceMappingURL=styles.css.map */

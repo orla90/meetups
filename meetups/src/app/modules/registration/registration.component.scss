@@ -1,0 +1,58 @@
+@import "../../../assets/styles/global.scss";
+
+.registration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: rem(342px);
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: rem(26px);
+
+    &__item {
+      position: relative;
+    }
+
+    &__message {
+      @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
+      position: absolute;
+      bottom: rem(-20px);
+
+      &_error {
+        color: $tuscany;
+      }
+
+      &_success {
+        color: $husk;
+      }
+    }
+
+    &__input {
+      font-family: $font-family;
+      width: 100%;
+      background-color: $mine-shaft;
+      border-radius: $small-radius;
+      height: rem(50px);
+      padding: rem(12px) rem(20px);
+
+      &::placeholder {
+        color: $french-gray;
+      }
+    }
+
+    &__panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: rem(37px);
+    }
+
+    &__link {
+      max-width: rem(120px);
+      color: $blue-lagoon;
+    }
+  }
+}
