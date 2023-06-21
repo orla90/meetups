@@ -10,6 +10,7 @@ import { LoginModule } from './modules/login/login.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { RegistrationModule } from './modules/registration/registration.module';
+import { MeetupFormModule } from './modules/meetup-form/meetup-form.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
@@ -24,7 +25,8 @@ import { RegistrationModule } from './modules/registration/registration.module';
     MeetupListModule,
     HeaderModule,
     LoginModule,
-    RegistrationModule
+    RegistrationModule,
+    MeetupFormModule
   ],
 })
 export class AppModule {}

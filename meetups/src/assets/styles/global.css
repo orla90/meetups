@@ -147,6 +147,11 @@ button {
   background-color: #4c3f78;
 }
 
+.button_light {
+  color: #4c3f78;
+  background-color: #b4b4c0;
+}
+
 .container {
   width: 100%;
   max-width: calc($pixels / $context * 1rem);

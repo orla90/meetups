@@ -161,16 +161,69 @@ button {
   padding-left: calc($pixels / $context * 1rem);
 }
 
-.meetups {
-  margin-top: calc($pixels / $context * 1rem);
+.meetup {
+  background-color: #2c2c2c;
+  border: calc($pixels / $context * 1rem) solid #b4b4c0;
 }
 
-.meetups__search-bar {
+.meetup__container {
+  width: 100%;
+  max-width: calc($pixels / $context * 1rem);
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: calc($pixels / $context * 1rem);
+}
+
+.meetup__header {
   padding-top: calc($pixels / $context * 1rem);
-  margin-bottom: calc($pixels / $context * 1rem);
+  padding-bottom: calc($pixels / $context * 1rem);
 }
 
-.meetups-list {
+.meetup__header-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meetup__header-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: calc($pixels / $context * 1rem);
+}
+
+.meetup__header-metadata {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.meetup__subscribers {
+  color: #b85526;
+}
+
+.meetup__vanue {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19px;
+  color: #e9e9e9;
+}
+
+.meetup__content-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,9 +232,81 @@ button {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: calc($pixels / $context * 1rem);
+  margin-bottom: calc($pixels / $context * 1rem);
 }
 
-.meetups-list__item {
-  list-style: none;
+.meetup__description {
+  max-width: calc($pixels / $context * 1rem);
 }
-/*# sourceMappingURL=meetup-list.component.css.map */
+
+.meetup__heading {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  color: #e9e9e9;
+}
+
+.meetup__entry {
+  margin-left: calc($pixels / $context * 1rem);
+  max-width: calc($pixels / $context * 1rem);
+}
+
+.meetup__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: calc($pixels / $context * 1rem);
+}
+
+.meetup__button-icon {
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+}
+
+.meetup__button-icon_up {
+  background: url("../../../assets/images/icons/arrow-down.svg");
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.meetup__button-icon_down {
+  background: url("../../../assets/images/icons/arrow-down.svg");
+}
+
+.meetup__footer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meetup__author {
+  padding: calc($pixels / $context * 1rem) 0 calc($pixels / $context * 1rem);
+  color: #e9e9e9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: calc($pixels / $context * 1rem);
+}
+
+.meetup__author::before {
+  content: url("../../../assets/images/icons/avatar.svg");
+  width: calc($pixels / $context * 1rem);
+  height: calc($pixels / $context * 1rem);
+}
+/*# sourceMappingURL=meetup.component.css.map */
