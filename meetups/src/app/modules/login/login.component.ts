@@ -27,7 +27,6 @@ export class LoginComponent {
   ) {
     if (this.authService.user) {
       this.router.navigate(['/meetups']);
-      console.log('this.authService.user', this.authService.user)
     }
     this.loginError = '';
   }

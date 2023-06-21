@@ -4,20 +4,21 @@ import { HttpClient } from '@angular/common/http';
 import { tap, BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { AuthorizedUser } from '../models/authorizedUser';
+import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   baseUrl: string = `${environment.baseUrl}/auth`;
-  private userSubject?: BehaviorSubject<string | null>;
+  private userTokenSubject?: BehaviorSubject<string | null>;
   public currentUserToken?: Observable<string | null>;
 
   constructor(private http: HttpClient, private routes: Router) {
-    this.userSubject = new BehaviorSubject(
+    this.userTokenSubject = new BehaviorSubject(
       JSON.parse(localStorage.getItem('meetups_auth_token')!)
     );
-    this.currentUserToken = this.userSubject.asObservable();
+    this.currentUserToken = this.userTokenSubject.asObservable();
   }
 
   login(email: string | null, password: string | null) {
@@ -30,7 +31,7 @@ export class AuthService {
               'meetups_auth_token',
               JSON.stringify(res.token)
             );
-            this.userSubject!.next(res.token);
+            this.userTokenSubject!.next(res.token);
           }
           return null;
         })

@@ -8,11 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   isAuth?: boolean;
+  isAdmin: boolean = false;
   
   constructor(private authService: AuthService) { }
   
   ngOnInit() {
-    this.authService.currentUserToken!.subscribe((data) => (this.isAuth = !!data));
+    this.authService.currentUserToken!.subscribe((data) => {
+      this.isAuth = !!data;
+      this.isAdmin = this.authService.user!.roles[0].name.toLowerCase() === "admin" ? true : false;
+    });
   }
   
   logout() {
