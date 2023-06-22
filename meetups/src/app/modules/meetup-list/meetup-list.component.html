@@ -3,7 +3,7 @@
     <div class="meetups__search-bar">
       <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
     </div>
-  <ul class="meetups-list">
+  <ul class="meetups-list" *ngIf="filteredMeetups">
     <li class="meetups-list__item" *ngFor="let meetup of filteredMeetups">
       <app-meetup [meetup]="meetup" />
     </li>

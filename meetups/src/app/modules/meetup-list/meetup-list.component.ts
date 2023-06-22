@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Meetup } from 'src/app/classes/meetup';
-import { User } from 'src/app/classes/user';
 import { MeetupService } from 'src/app/services/meetup.service';
 
 @Component({
@@ -14,13 +13,14 @@ export class MeetupListComponent implements OnInit {
   meetups: Meetup[] = [];
   filteredMeetups: Meetup[] = [];
   
-  constructor(public meetupService: MeetupService) {}
+  constructor(public meetupService: MeetupService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.meetupService.getMeetups().subscribe((data) => {
       this.meetups = data;
       this.filteredMeetups = data;
       console.log(this.meetups);
+      this.cdr.detectChanges();
     });
   }
 
