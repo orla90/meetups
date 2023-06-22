@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MeetupListComponent } from './meetup-list.component';
 import { MeetupModule } from "../meetup/meetup.module";
 import { SearchBarModule } from "../search-bar/search-bar.module";
+import { PaginationModule } from '../pagination/pagination.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SearchBarModule } from "../search-bar/search-bar.module";
     imports: [
         CommonModule,
         MeetupModule,
-        SearchBarModule
+        SearchBarModule,
+        PaginationModule
     ]
 })
 export class MeetupListModule { }

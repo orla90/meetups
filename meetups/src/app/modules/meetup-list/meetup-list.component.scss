@@ -7,14 +7,19 @@
     padding-top: rem(98px);
     margin-bottom: rem(72px);
   }
+  
+  &__pagination {
+    margin-bottom: rem(72px);
+  }
 
-  &-list {
+  &__list {
     display: flex;
     flex-direction: column;
     gap: rem(40px);
-
-    &__item {
-      list-style: none;
-    }
+    margin-bottom: rem(72px);
+  }
+  
+  &__item {
+    list-style: none;
   }
 }

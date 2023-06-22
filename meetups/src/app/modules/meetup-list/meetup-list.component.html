@@ -3,10 +3,13 @@
     <div class="meetups__search-bar">
       <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
     </div>
-  <ul class="meetups-list" *ngIf="filteredMeetups">
-    <li class="meetups-list__item" *ngFor="let meetup of filteredMeetups">
+  <ul class="meetups__list" *ngIf="currentPageMeetups">
+    <li class="meetups__item" *ngFor="let meetup of currentPageMeetups">
       <app-meetup [meetup]="meetup" />
     </li>
   </ul>
+  <div class="meetups__pagination">
+    <app-pagination [pagination]="pagination" (onPaginationChange)='onPaginationChange($event)'></app-pagination>
+  </div>
 </div>
 </section>
