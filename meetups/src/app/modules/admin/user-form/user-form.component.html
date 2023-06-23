@@ -9,8 +9,6 @@
         <input
           class="user-form__input"
           type="email"
-          id="email"
-          name="email"
           placeholder="Email"
           formControlName="email"
         />
@@ -25,8 +23,6 @@
         <input
           class="user-form__input"
           type="password"
-          id="password"
-          name="password"
           placeholder="Password"
           formControlName="password"
         />
@@ -41,9 +37,8 @@
         </div>
       </div>
       <div class="user-form__item user-form__item_medium">
-        <select name="role" class="user-form__select" formControlName="role">
-          <option value="user">user</option>
-          <option value="admin">admin</option>
+        <select name="role" class="user-form__select" formControlName="role" ngModel>
+          <option *ngFor="let role of roles" [selected]="role === selectedRole">{{ role }}</option>
         </select>
         <div
           class="user-form__error"

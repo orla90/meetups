@@ -3,7 +3,7 @@
 .users-list {
   &-section {
     margin-top: $height-header-desktop;
-    padding-top: rem(72px);
+    padding: rem(72px) 0;
   }
   
   &__list {

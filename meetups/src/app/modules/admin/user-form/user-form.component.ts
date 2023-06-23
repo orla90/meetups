@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Role } from 'src/app/classes/role';
+import { User } from 'src/app/classes/user';
 
 @Component({
   selector: 'app-user-form',
@@ -8,22 +10,34 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss']
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnInit {
+  @Input() public user: User | null = null;
+  roles = ['user', 'admin'];
+  submitted = false;
+  loading = false;
+  userError?: string;
+  selectedRole:string = '';
   userForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
     role: new FormControl('', [Validators.required]),
   });
-  submitted = false;
-  loading = false;
-  userError?: string;
-  
   
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
   ) {
-    this.userError = '';
+  }
+  
+  ngOnInit() {
+    if (this.user) {
+      this.userForm.setValue({
+        email: this.user.email,
+        password: this.user.password,
+        role: this.user.roles[0].name.toLowerCase(),
+      })
+      this.selectedRole = this.user.roles[0].name.toLowerCase();
+    }
   }
 
   get email() {
