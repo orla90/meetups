@@ -1,0 +1,12 @@
+@import "../../../../assets/styles/global.scss";
+
+.users-list {
+  &-section {
+    margin-top: $height-header-desktop;
+    padding-top: rem(72px);
+  }
+  
+  &__list {
+    list-style: none;
+  }
+}

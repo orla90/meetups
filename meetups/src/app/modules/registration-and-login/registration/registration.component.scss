@@ -1,6 +1,6 @@
-@import "../../../assets/styles/global.scss";
+@import "../../../../assets/styles/global.scss";
 
-.login {
+.registration {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -11,21 +11,25 @@
     display: flex;
     flex-direction: column;
     gap: rem(26px);
-    
+
     &__item {
       position: relative;
     }
-    
-    &__error {
-      @include font(
-        $size: rem($font-size-tiny),
-        $height: $line-height-tiny,
-      );
+
+    &__message {
+      @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
       position: absolute;
       bottom: rem(-20px);
-      color: $tuscany;
+
+      &_error {
+        color: $tuscany;
+      }
+
+      &_success {
+        color: $husk;
+      }
     }
-    
+
     &__input {
       font-family: $font-family;
       width: 100%;
@@ -33,20 +37,20 @@
       border-radius: $small-radius;
       height: rem(50px);
       padding: rem(12px) rem(20px);
-      
+
       &::placeholder {
         color: $french-gray;
         opacity: 0.4;
       }
     }
-    
+
     &__panel {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-top: rem(37px);
     }
-    
+
     &__link {
       max-width: rem(120px);
       color: $blue-lagoon;

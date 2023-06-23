@@ -1,4 +1,4 @@
-@import "../../../assets/styles/global.scss";
+@import "../../../../assets/styles/global.scss";
 
 .meetup {
   background-color: $mine-shaft;
@@ -78,12 +78,12 @@
       transition: $transition-duration-hover $transition-function-hover;
 
       &_up {
-        background: url("../../../assets/images/icons/arrow-down.svg");
+        background: url("../../../../assets/images/icons/arrow-down.svg");
         transform: rotate(180deg);
       }
 
       &_down {
-        background: url("../../../assets/images/icons/arrow-down.svg");
+        background: url("../../../../assets/images/icons/arrow-down.svg");
       }
     }
   }
@@ -104,7 +104,7 @@
     gap: rem(10px);
 
     &::before {
-      content: url("../../../assets/images/icons/avatar.svg");
+      content: url("../../../../assets/images/icons/avatar.svg");
       width: rem(25px);
       height: rem(25px);
     }

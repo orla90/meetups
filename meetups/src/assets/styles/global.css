@@ -127,6 +127,18 @@ button {
   height: calc($pixels / $context * 1rem);
 }
 
+.button_iconed {
+  width: calc($pixels / $context * 1rem);
+  height: calc($pixels / $context * 1rem);
+  border: calc($pixels / $context * 1rem) solid #b85526;
+  border-radius: calc($pixels / $context * 1rem);
+  background-color: inherit;
+  background-size: contain;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .button_big {
   width: calc($pixels / $context * 1rem);
 }

@@ -3,18 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MeetupListModule } from './modules/meetup-list/meetup-list.module';
-import { HeaderModule } from './modules/header/header.module';
+import { MeetupListModule } from './modules/meetups/meetup-list/meetup-list.module';
+import { HeaderModule } from './modules/header/header/header.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginModule } from './modules/login/login.module';
+import { LoginModule } from './modules/registration-and-login/login/login.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { RegistrationModule } from './modules/registration/registration.module';
-import { MeetupFormModule } from './modules/meetup-form/meetup-form.module';
-import { PaginationModule } from './modules/pagination/pagination.module';
+import { RegistrationModule } from './modules/registration-and-login/registration/registration.module';
+import { MeetupFormModule } from './modules/meetups/meetup-form/meetup-form.module';
+import { PaginationModule } from './modules/meetups/pagination/pagination.module';
+import { UsersListModule } from './modules/admin/users-list/users-list.module';
+import { UserFormModule } from './modules/admin/user-form/user-form.module';
 @NgModule({
   declarations: [AppComponent],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
   imports: [
     HttpClientModule,
@@ -28,7 +32,9 @@ import { PaginationModule } from './modules/pagination/pagination.module';
     LoginModule,
     RegistrationModule,
     MeetupFormModule,
-    PaginationModule
+    PaginationModule,
+    UserFormModule,
+    UsersListModule
   ],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-@import "../../../assets/styles/global.scss";
+@import "../../../../assets/styles/global.scss";
 
 .search-form {
   display: flex;
@@ -31,7 +31,7 @@
     right: 0;
     top: rem(12px);
     right: rem(12px);
-    background-image: url("../../../assets/images/icons/searching.svg");
+    background-image: url("../../../../assets/images/icons/searching.svg");
     background-color: inherit;
     background-size: contain;
     width: rem(50px);

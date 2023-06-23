@@ -15,6 +15,16 @@
     width: rem(29px);
     height: rem(23px);
   }
+  
+  &_iconed {
+    width: rem(40px);
+    height: rem(40px);
+    border: rem(1px) solid $tuscany;
+    border-radius: rem(5px);
+    background-color: inherit;
+    background-size: contain;
+    align-self: center;
+  }
 
   &_big {
     width: rem(160px);
