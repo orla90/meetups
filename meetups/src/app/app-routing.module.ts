@@ -5,13 +5,15 @@ import { LoginComponent } from './modules/registration-and-login/login/login.com
 import { RegistrationComponent } from './modules/registration-and-login/registration/registration.component';
 import { MeetupFormComponent } from './modules/meetups/meetup-form/meetup-form.component';
 import { UsersListComponent } from './modules/admin/users-list/users-list.component';
+import { authGuard } from './guards/auth.guard';
+import { adminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: '', component: MeetupListComponent },
+  { path: '', component: MeetupListComponent, canActivate: [authGuard] },
   { path: 'create', component: MeetupFormComponent },
-  { path: 'admin', component: UsersListComponent },
+  { path: 'admin', component: UsersListComponent, canActivate: [adminGuard] },
   { path: '**', redirectTo: '' },
 ];
 

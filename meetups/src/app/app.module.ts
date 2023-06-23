@@ -27,7 +27,6 @@ import { UserFormModule } from './modules/admin/user-form/user-form.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MeetupListModule,
     HeaderModule,
     LoginModule,
     RegistrationModule,
