@@ -18,7 +18,6 @@ export class UsersListComponent implements OnInit {
     this.usersService.getAllUsers().subscribe((data) => {
       this.users = data;
       this.cdr.detectChanges();
-      console.log(this.users);
     });
   }
 }

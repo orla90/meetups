@@ -1,7 +1,7 @@
 <nav class="navbar">
   <ul class="navbar__list">
-    <li><a class="navbar__link title active">Все митапы</a></li>
-    <li><a class="navbar__link title">Мои митапы</a></li>
-    <li *ngIf="isAdmin"><a class="navbar__link title">Пользователи</a></li>
+    <li><a class="navbar__link title" routerLink="/" [routerLinkActive]="'navbar__link_active'" [routerLinkActiveOptions]="{ exact: true }">Все митапы</a></li>
+    <li><a class="navbar__link title" routerLink="/my-meetups" [routerLinkActive]="'navbar__link_active'">Мои митапы</a></li>
+    <li *ngIf="isAdmin"><a class="navbar__link title" routerLink="/admin" [routerLinkActive]="'navbar__link_active'">Пользователи</a></li>
   </ul>
 </nav>

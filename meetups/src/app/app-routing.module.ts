@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: '', component: MeetupListComponent, canActivate: [authGuard] },
+  { path: 'my-meetups', component: MeetupListComponent, canActivate: [authGuard] },
   { path: 'create', component: MeetupFormComponent },
   { path: 'admin', component: UsersListComponent, canActivate: [adminGuard] },
   { path: '**', redirectTo: '' },
