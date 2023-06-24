@@ -18,7 +18,7 @@ export class Pagination {
   }
   
   public setLastPage(): void {
-    this.lastPage = Math.floor(this.totalCount / this.pageSize) || 1;
+    this.lastPage = Math.ceil(this.totalCount / this.pageSize);
   }
   
   public reset(): void {

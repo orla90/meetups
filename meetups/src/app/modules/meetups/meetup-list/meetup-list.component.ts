@@ -29,19 +29,33 @@ export class MeetupListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.user && this.meetupService.getMeetups().subscribe((data) => {
-      this.meetups = data;
-      this.filteredMeetups = data;
-      this.pagination.totalCount = data.length;
-      this.getCurrentPageMeetups();
-      this.cdr.detectChanges();
-    });
+    this.authService.user &&
+      this.meetupService.getMeetups().subscribe((data) => {
+        this.meetups = data;
+        this.filteredMeetups = data;
+        this.setPaginationTotalCount();
+        this.getCurrentPageMeetups();
+        this.cdr.detectChanges();
+      });
+  }
+
+  setPaginationTotalCount() {
+    this.pagination.totalCount = this.filteredMeetups.length;
   }
 
   searchMeetups(searchInput: string) {
-    this.filteredMeetups = this.filteredMeetups.filter((meetup) =>
+    this.filteredMeetups = this.meetups.filter((meetup) =>
       meetup.name.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
+    this.setPaginationTotalCount();
+    this.pagination.currentPage =
+      this.pagination.currentPage > this.pagination.lastPage
+        ? this.pagination.lastPage
+        : this.pagination.currentPage === 0
+        ? 1
+        : this.pagination.currentPage;
+    this.getCurrentPageMeetups();
+    this.cdr.detectChanges();
   }
 
   onPaginationChange(pagination: Pagination): void {
@@ -53,8 +67,8 @@ export class MeetupListComponent implements OnInit {
     const currentPage = this.pagination.currentPage;
     const pageSize = this.pagination.pageSize;
     this.currentPageMeetups = this.filteredMeetups.slice(
-      currentPage * pageSize,
-      currentPage * pageSize + pageSize
+      (currentPage - 1) * pageSize,
+      (currentPage - 1) * pageSize + pageSize
     );
   }
 }
