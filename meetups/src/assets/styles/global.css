@@ -164,6 +164,10 @@ button {
   background-color: #b4b4c0;
 }
 
+.button_hidden {
+  display: none;
+}
+
 .container {
   width: 100%;
   max-width: calc($pixels / $context * 1rem);

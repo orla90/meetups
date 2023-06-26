@@ -50,4 +50,8 @@
     color: $east-bay;
     background-color: $french-gray;
   }
+  
+  &_hidden {
+    display: none;
+  }
 }

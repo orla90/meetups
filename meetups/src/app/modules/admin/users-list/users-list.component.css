@@ -177,64 +177,12 @@ button {
   padding-left: calc($pixels / $context * 1rem);
 }
 
-.search-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.users-list-section {
+  margin-top: 120px;
+  padding: calc($pixels / $context * 1rem) 0;
 }
 
-.search-form__input-iconed {
-  position: relative;
-  width: 100%;
-  max-width: calc($pixels / $context * 1rem);
-  height: calc($pixels / $context * 1rem);
+.users-list__list {
+  list-style: none;
 }
-
-.search-form__input {
-  width: 100%;
-  height: 100%;
-  padding-left: calc($pixels / $context * 1rem);
-  padding-right: calc($pixels / $context * 1rem);
-  background: #b4b4c0;
-  border-radius: 5px;
-  color: #2c2c2c;
-}
-
-.search-form__input::-webkit-input-placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__input:-ms-input-placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__input::-ms-input-placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__input::placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__btn {
-  position: absolute;
-  right: 0;
-  top: calc($pixels / $context * 1rem);
-  right: calc($pixels / $context * 1rem);
-  background-image: url("../../../../assets/images/icons/searching.svg");
-  background-color: inherit;
-  background-size: contain;
-  width: calc($pixels / $context * 1rem);
-  height: calc($pixels / $context * 1rem);
-}
-/*# sourceMappingURL=search-bar.component.css.map */
+/*# sourceMappingURL=users-list.component.css.map */

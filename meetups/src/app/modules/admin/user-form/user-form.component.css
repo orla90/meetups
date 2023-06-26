@@ -177,7 +177,11 @@ button {
   padding-left: calc($pixels / $context * 1rem);
 }
 
-.search-form {
+.user-form {
+  width: 100%;
+  max-width: calc($pixels / $context * 1rem);
+  height: calc($pixels / $context * 1rem);
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,54 +191,127 @@ button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: #2c2c2c;
 }
 
-.search-form__input-iconed {
+.user-form:hover .user-form__select,
+.user-form:hover .user-form__input {
+  border-radius: calc($pixels / $context * 1rem);
+  border: calc($pixels / $context * 1rem) solid #4c3f78;
+}
+
+.user-form:hover .user-form__select {
+  background-image: url("../../../../assets/images/icons/down-one.svg");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+}
+
+.user-form__item {
   position: relative;
-  width: 100%;
-  max-width: calc($pixels / $context * 1rem);
-  height: calc($pixels / $context * 1rem);
+  border: calc($pixels / $context * 1rem) solid #b4b4c0;
+  padding: calc($pixels / $context * 1rem) calc($pixels / $context * 1rem);
 }
 
-.search-form__input {
-  width: 100%;
-  height: 100%;
-  padding-left: calc($pixels / $context * 1rem);
-  padding-right: calc($pixels / $context * 1rem);
-  background: #b4b4c0;
-  border-radius: 5px;
-  color: #2c2c2c;
-}
-
-.search-form__input::-webkit-input-placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__input:-ms-input-placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__input::-ms-input-placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__input::placeholder {
-  color: #b85526;
-  opacity: 0.4;
-}
-
-.search-form__btn {
-  position: absolute;
-  right: 0;
-  top: calc($pixels / $context * 1rem);
-  right: calc($pixels / $context * 1rem);
-  background-image: url("../../../../assets/images/icons/searching.svg");
-  background-color: inherit;
-  background-size: contain;
+.user-form__item_large {
   width: calc($pixels / $context * 1rem);
-  height: calc($pixels / $context * 1rem);
 }
-/*# sourceMappingURL=search-bar.component.css.map */
+
+.user-form__item_big {
+  width: calc($pixels / $context * 1rem);
+}
+
+.user-form__item_medium {
+  width: calc($pixels / $context * 1rem);
+}
+
+.user-form__item_small {
+  width: calc($pixels / $context * 1rem);
+}
+
+.user-form__error {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  position: absolute;
+  bottom: calc($pixels / $context * 1rem);
+  color: #b85526;
+}
+
+.user-form__input, .user-form__select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-family: "Open Sans", "Arial", "Helvetica", sans-serif;
+  font-size: calc($pixels / $context * 1rem);
+  width: 100%;
+  background-color: #2c2c2c;
+  height: calc($pixels / $context * 1rem);
+  color: #b4b4c0;
+  padding: calc($pixels / $context * 1rem);
+}
+
+.user-form__input::-webkit-input-placeholder, .user-form__select::-webkit-input-placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.user-form__input:-ms-input-placeholder, .user-form__select:-ms-input-placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.user-form__input::-ms-input-placeholder, .user-form__select::-ms-input-placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.user-form__input::placeholder, .user-form__select::placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.user-form__input:focus, .user-form__select:focus {
+  outline-style: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-color: transparent;
+  border-radius: calc($pixels / $context * 1rem);
+  border: calc($pixels / $context * 1rem) solid #4c3f78;
+}
+
+.user-form__select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.user-form__panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: calc($pixels / $context * 1rem);
+  padding: calc($pixels / $context * 1rem) calc($pixels / $context * 1rem);
+}
+
+.user-form__btn_close {
+  background-image: url("../../../../assets/images/icons/close.svg");
+}
+
+.user-form__btn_edit {
+  background-image: url("../../../../assets/images/icons/edit.svg");
+}
+/*# sourceMappingURL=user-form.component.css.map */

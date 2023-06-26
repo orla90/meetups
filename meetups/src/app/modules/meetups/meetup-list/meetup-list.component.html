@@ -5,7 +5,7 @@
     </div>
   <ul class="meetups__list" *ngIf="currentPageMeetups">
     <li class="meetups__item" *ngFor="let meetup of currentPageMeetups">
-      <app-meetup [meetup]="meetup" />
+      <app-meetup [meetup]="meetup" (signMeetupEvent)='signMeetupEvent($event)' (signOverMeetupEvent)='signOverMeetup($event)' [userId]="userId"/>
     </li>
   </ul>
   <div class="meetups__pagination">
