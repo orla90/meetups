@@ -1,6 +1,6 @@
 @import "../../../../assets/styles/global.scss";
 
-.user-form {
+.add-user {
   width: 100%;
   max-width: rem(851px);
   height: rem(60px);
@@ -45,13 +45,6 @@
     }
   }
 
-  &__error {
-    @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
-    position: absolute;
-    bottom: rem(-20px);
-    color: $tuscany;
-  }
-
   &__input,
   &__select {
     display: flex;
@@ -94,11 +87,22 @@
     padding: rem(10px) rem(20px);
   }
 
-  &__btn_delete {
+  &__btn_close {
     background-image: url("../../../../assets/images/icons/close.svg");
   }
 
   &__btn_edit {
     background-image: url("../../../../assets/images/icons/edit.svg");
+  }
+
+  &__btn_add {
+    background-image: url("../../../../assets/images/icons/close.svg");
+    transform: rotate(45deg);
+    width: rem(35px);
+    height: rem(35px);
+    background-color: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: center;
   }
 }

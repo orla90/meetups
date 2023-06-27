@@ -128,14 +128,23 @@ button {
 }
 
 .button_iconed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: calc($pixels / $context * 1rem);
   height: calc($pixels / $context * 1rem);
   border: calc($pixels / $context * 1rem) solid #b85526;
   border-radius: calc($pixels / $context * 1rem);
   background-color: inherit;
   background-size: contain;
+  background-repeat: no-repeat;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
       align-self: center;
 }
 
@@ -175,5 +184,22 @@ button {
   margin-left: auto;
   padding-right: calc($pixels / $context * 1rem);
   padding-left: calc($pixels / $context * 1rem);
+}
+
+.message {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  position: absolute;
+  bottom: calc($pixels / $context * 1rem);
+}
+
+.message_error {
+  color: #b85526;
+}
+
+.message_success {
+  color: #ae9e51;
 }
 /*# sourceMappingURL=global.css.map */

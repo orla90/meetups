@@ -18,7 +18,7 @@ import { MeetupService } from 'src/app/services/meetup.service';
 })
 export class MeetupListComponent implements OnInit {
   searchInput: string = '';
-  // signedToMeetup: boolean = false;
+  // createdNewUser: boolean = false;
   meetups: Meetup[] = [];
   filteredMeetups: Meetup[] = [];
   currentPageMeetups: Meetup[] = [];
@@ -36,13 +36,13 @@ export class MeetupListComponent implements OnInit {
 
   ngOnInit() {
     // if (this.router.url === '/')
-    console.log('this.router.url', this.router.url)
-    console.log('user', this.authService.user)
+    // console.log('this.router.url', this.router.url)
+    // console.log('user', this.authService.user)
     
     this.authService.user &&
       this.meetupService.getMeetups().subscribe((data) => {
-        console.log(data);
-        console.log(this.authService.user);
+        // console.log(data);
+        // console.log(this.authService.user);
         this.meetups = data;
         this.filteredMeetups = data;
         this.setPaginationTotalCount();
@@ -56,11 +56,11 @@ export class MeetupListComponent implements OnInit {
         next: () => {
           // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todos';
           // this.router.navigateByUrl(returnUrl);
-        // this.signedToMeetup = true;
-        console.log('success')
+        // this.createdNewUser = true;
+        // console.log('success')
         },
       error: error => {
-        console.log('fail')
+        // console.log('fail')
 
           // this.meetupError = error.error[0] || 'Incorrect username/password';
           // this.loading = false;
@@ -70,17 +70,17 @@ export class MeetupListComponent implements OnInit {
   }
   
   signOverMeetup(idMeetup: number) {
-    console.log('idMeetup', idMeetup)
-    console.log('this.authService.user!.id', this.authService.user!.id)
+    // console.log('idMeetup', idMeetup)
+    // console.log('this.authService.user!.id', this.authService.user!.id)
     this.meetupService.signOverMeetup(idMeetup, this.authService.user!.id).subscribe({
         next: () => {
           // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todos';
           // this.router.navigateByUrl(returnUrl);
         // this.signedToMeetup = true;
-        console.log('success over')
+        // console.log('success over')
         },
       error: error => {
-        console.log('fail')
+        // console.log('fail')
 
           // this.meetupError = error.error[0] || 'Incorrect username/password';
           // this.loading = false;

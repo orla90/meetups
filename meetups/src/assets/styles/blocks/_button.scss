@@ -17,12 +17,16 @@
   }
   
   &_iconed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: rem(40px);
     height: rem(40px);
     border: rem(1px) solid $tuscany;
     border-radius: rem(5px);
     background-color: inherit;
     background-size: contain;
+    background-repeat: no-repeat;
     align-self: center;
   }
 

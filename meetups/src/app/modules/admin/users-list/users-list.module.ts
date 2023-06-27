@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UsersListComponent } from './users-list.component';
 import { UserFormModule } from '../user-form/user-form.module';
 import { RouterModule } from '@angular/router';
+import { AddUserModule } from '../add-user/add-user.module';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     UserFormModule,
+    AddUserModule,
     RouterModule,
   ],
   exports: [

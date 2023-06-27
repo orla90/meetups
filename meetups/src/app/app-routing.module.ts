@@ -7,12 +7,14 @@ import { MeetupFormComponent } from './modules/meetups/meetup-form/meetup-form.c
 import { UsersListComponent } from './modules/admin/users-list/users-list.component';
 import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
+import { UserInfoComponent } from './modules/user-info/user-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: '', component: MeetupListComponent, canActivate: [authGuard] },
   { path: 'my-meetups', component: MeetupListComponent, canActivate: [authGuard] },
+  { path: 'user-info', component: UserInfoComponent, canActivate: [authGuard] },
   { path: 'create', component: MeetupFormComponent },
   { path: 'admin', component: UsersListComponent, canActivate: [adminGuard] },
   { path: '**', redirectTo: '' },

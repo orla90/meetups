@@ -23,13 +23,6 @@ export class MeetupService {
     return this.http.put(`${environment.baseUrl}/meetup`, { idMeetup, idUser });
   }
 
-  // signOverMeetup(idMeetup: number, idUser: number){
-  //   return this.http.delete<string>(`${environment.baseUrl}/meetup`, {
-  //     idMeetup,
-  //     idUser,
-  //   });
-  // }
-
   signOverMeetup(idMeetup: number, idUser: number) {
     return this.http.request('delete', `${environment.baseUrl}/meetup`, {
       body: { idMeetup, idUser },

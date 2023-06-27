@@ -14,6 +14,7 @@ import { MeetupFormModule } from './modules/meetups/meetup-form/meetup-form.modu
 import { PaginationModule } from './modules/meetups/pagination/pagination.module';
 import { UsersListModule } from './modules/admin/users-list/users-list.module';
 import { UserFormModule } from './modules/admin/user-form/user-form.module';
+import { AddUserModule } from './modules/admin/add-user/add-user.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -33,7 +34,8 @@ import { UserFormModule } from './modules/admin/user-form/user-form.module';
     MeetupFormModule,
     PaginationModule,
     UserFormModule,
-    UsersListModule
+    UsersListModule,
+    AddUserModule
   ],
 })
 export class AppModule {}

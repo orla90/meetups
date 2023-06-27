@@ -38,7 +38,9 @@
       </div>
       <div class="user-form__item user-form__item_medium">
         <select name="role" class="user-form__select" formControlName="role">
-          <option *ngFor="let role of roles" [selected]="role === selectedRole">{{ role }}</option>
+          <option *ngFor="let role of roles" [selected]="role === selectedRole">
+            {{ role }}
+          </option>
         </select>
         <div
           class="user-form__error"
@@ -51,8 +53,17 @@
         </div>
       </div>
       <div class="user-form__item user-form__item_small user-form__panel">
-        <button type="button" class="user-form__btn button_iconed user-form__btn_close"></button>
-        <button type="button" class="user-form__btn button_iconed user-form__btn_edit"></button>
+        <button
+          type="button"
+          class="user-form__btn button_iconed user-form__btn_delete"
+          (click)="deleteUser()"
+        ></button>
+        <button
+          type="button"
+          class="user-form__btn button_iconed user-form__btn_edit"
+        >
+          <div class="user-form__btn_add"></div>
+        </button>
       </div>
     </form>
   </div>

@@ -128,14 +128,23 @@ button {
 }
 
 .button_iconed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: calc($pixels / $context * 1rem);
   height: calc($pixels / $context * 1rem);
   border: calc($pixels / $context * 1rem) solid #b85526;
   border-radius: calc($pixels / $context * 1rem);
   background-color: inherit;
   background-size: contain;
+  background-repeat: no-repeat;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
       align-self: center;
 }
 
@@ -177,12 +186,91 @@ button {
   padding-left: calc($pixels / $context * 1rem);
 }
 
-.users-list-section {
-  margin-top: 120px;
-  padding: calc($pixels / $context * 1rem) 0;
+.registration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: calc($pixels / $context * 1rem);
 }
 
-.users-list__list {
-  list-style: none;
+.registration-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: calc($pixels / $context * 1rem);
 }
-/*# sourceMappingURL=users-list.component.css.map */
+
+.registration-form__item {
+  position: relative;
+}
+
+.registration-form__message {
+  font-size: calc($pixels / $context * 1rem);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 15px;
+  position: absolute;
+  bottom: calc($pixels / $context * 1rem);
+}
+
+.registration-form__message_error {
+  color: #b85526;
+}
+
+.registration-form__message_success {
+  color: #ae9e51;
+}
+
+.registration-form__input {
+  font-family: "Open Sans", "Arial", "Helvetica", sans-serif;
+  width: 100%;
+  background-color: #2c2c2c;
+  border-radius: 5px;
+  height: calc($pixels / $context * 1rem);
+  padding: calc($pixels / $context * 1rem) calc($pixels / $context * 1rem);
+}
+
+.registration-form__input::-webkit-input-placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.registration-form__input:-ms-input-placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.registration-form__input::-ms-input-placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.registration-form__input::placeholder {
+  color: #b4b4c0;
+  opacity: 0.4;
+}
+
+.registration-form__panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: calc($pixels / $context * 1rem);
+}
+
+.registration-form__link {
+  max-width: calc($pixels / $context * 1rem);
+  color: #008697;
+}
+/*# sourceMappingURL=registration.component.css.map */

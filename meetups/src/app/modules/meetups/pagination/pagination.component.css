@@ -128,14 +128,23 @@ button {
 }
 
 .button_iconed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: calc($pixels / $context * 1rem);
   height: calc($pixels / $context * 1rem);
   border: calc($pixels / $context * 1rem) solid #b85526;
   border-radius: calc($pixels / $context * 1rem);
   background-color: inherit;
   background-size: contain;
+  background-repeat: no-repeat;
   -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
       align-self: center;
 }
 
@@ -177,31 +186,43 @@ button {
   padding-left: calc($pixels / $context * 1rem);
 }
 
-.navbar__list {
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pagination__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.pagination__item {
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: calc($pixels / $context * 1rem);
 }
 
-.navbar__link {
-  padding-top: calc($pixels / $context * 1rem);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-decoration: none;
+.pagination__btn_arrow {
+  color: #b85526;
 }
 
-.navbar__link_active::after {
-  content: "";
-  width: 100%;
-  margin-top: calc($pixels / $context * 1rem);
-  border-bottom: calc($pixels / $context * 1rem) solid #b85526;
-  border-radius: calc($pixels / $context * 1rem);
+.pagination__btn_arrow:disabled {
+  color: #b85526;
+  opacity: .5;
 }
-/*# sourceMappingURL=navbar.component.css.map */
+
+.pagination__btn_page {
+  background-color: #4c3f78;
+}
+
+.pagination__select {
+  margin-left: calc($pixels / $context * 1rem);
+  max-width: calc($pixels / $context * 1rem);
+}
+/*# sourceMappingURL=pagination.component.css.map */

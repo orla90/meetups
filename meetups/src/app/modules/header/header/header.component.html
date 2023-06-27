@@ -9,7 +9,7 @@
     </div>
     <app-navbar *ngIf="isAuth" [isAdmin]="isAdmin" class="header__navbar" />
     <div class="header__control-group control-group">
-      <button *ngIf="isAuth" class="control-group__item control-group__item_settings"></button>
+      <a *ngIf="isAuth" class="control-group__item control-group__item_settings" routerLink="/user-info"></a>
       <button *ngIf="isAuth" (click)="logout()" class="control-group__item control-group__item_logout"></button>
       <a *ngIf="!isAuth" class="control-group__item control-group__item_login" routerLink="/login"></a>
     </div>

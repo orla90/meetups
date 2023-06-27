@@ -1,0 +1,97 @@
+<section class="add-user-section">
+  <div class="add-user-section__container">
+    <form
+      class="add-user"
+      [formGroup]="addUserForm"
+      (submit)="submitApplication()"
+    >
+      <div class="add-user__item add-user__item_large">
+        <input
+          class="add-user__input"
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          readonly
+          onfocus="this.removeAttribute('readonly')"
+        />
+        <div
+          class="message message_error"
+          *ngIf="submitted && email?.errors?.['required']"
+        >
+          Field "Email" is required.
+        </div>
+        <div
+          *ngIf="submitted && registrationError"
+          class="message message_error"
+        >
+          {{ registrationError }}
+        </div>
+        <div
+          class="message message_error"
+          *ngIf="submitted && email?.errors?.['email']"
+        >
+          Email is incorrect.
+        </div>
+        <div
+          *ngIf="email?.errors?.['emailExists']"
+          class="message message_error"
+        >
+          Email already <strong>exists</strong>
+        </div>
+        <div
+          *ngIf="submitted && registrationSuccess"
+          class="message message_success"
+        >
+          {{ registrationSuccess }}
+        </div>
+      </div>
+      <div class="add-user__item add-user__item_big">
+        <input
+          class="add-user__input"
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          readonly
+          onfocus="this.removeAttribute('readonly')"
+        />
+        <div
+          class="message message_error"
+          *ngIf="submitted && password?.errors?.['required']"
+        >
+          Field "Password" is required.
+        </div>
+        <div *ngIf="submitted && userError" class="message message_error">
+          {{ userError }}
+        </div>
+      </div>
+      <div class="add-user__item add-user__item_medium">
+        <input
+          class="add-user__input"
+          type="text"
+          id="fio"
+          name="fio"
+          placeholder="Full name"
+          formControlName="fio"
+        />
+        <div
+          class="message message_error"
+          *ngIf="submitted && password?.errors?.['required']"
+        >
+          Field "Full name" is required.
+        </div>
+        <div *ngIf="submitted && userError" class="message message_error">
+          {{ userError }}
+        </div>
+      </div>
+      <div class="add-user__item add-user__item_small add-user__panel">
+        <button
+          type="submit"
+          class="add-user__btn button_iconed"
+          (click)="submitApplication()"
+        >
+          <div class="add-user__btn_add"></div>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
