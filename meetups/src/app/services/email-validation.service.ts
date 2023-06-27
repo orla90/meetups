@@ -5,7 +5,24 @@ import {
   AsyncValidatorFn,
   ValidationErrors,
 } from '@angular/forms';
-import { Observable, catchError, debounceTime, distinctUntilChanged, map } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  empty,
+  filter,
+  interval,
+  map,
+  of,
+  range,
+  shareReplay,
+  skip,
+  startWith,
+  switchMap,
+  take,
+  withLatestFrom,
+} from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { User } from '../classes/user';
 
@@ -13,7 +30,6 @@ import { User } from '../classes/user';
   providedIn: 'root',
 })
 export class EmailValidationService {
-  private exists: boolean = false;
   baseUrl: string = `${environment.baseUrl}/user`;
 
   constructor(private http: HttpClient) {}
@@ -40,5 +56,42 @@ export class EmailValidationService {
         catchError(async (err) => null)
       );
     };
+  }
+
+  getRandomNumbers() {
+    interval(1000)
+      .pipe(
+        startWith(-1),
+        map(() => Math.random()),
+        shareReplay({ refCount: true, bufferSize: 1 })
+      )
+      .subscribe(console.log);
+  }
+
+  getNumbers() {
+    const source = range(1, 90);
+    const secondSource = of(8, 1, 9, 22);
+
+    source
+      .pipe(
+        take(50),
+        filter((num) => num < 40 && num > 30),
+        skip(3),
+        withLatestFrom(secondSource)
+      )
+      .subscribe(console.log);
+  }
+  
+  getSum(arr: Array<number>) {
+    const sum = arr.reduce((sum, num) => sum + num, 0);
+    return sum;
+  }
+  
+  getDelayedSum(arr: Array<number>) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.getSum(arr));
+      }, 2000);
+    }).then((res) => console.log(res));
   }
 }

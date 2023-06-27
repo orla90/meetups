@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { UserInfoComponent } from './user-info.component';
 import { RouterModule } from '@angular/router';
 
@@ -14,7 +15,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [
-    UserInfoModule
+    UserInfoComponent
   ]
 })
 export class UserInfoModule { }

@@ -3,7 +3,6 @@
     <form
       class="user-form"
       [formGroup]="userForm"
-      (submit)="submitApplication()"
     >
       <div class="user-form__item user-form__item_large">
         <input
@@ -60,7 +59,8 @@
         ></button>
         <button
           type="button"
-          class="user-form__btn button_iconed user-form__btn_edit"
+          class="user-form__btn button_iconed user-form__btn_update"
+          (click)="updateUser()"
         >
           <div class="user-form__btn_add"></div>
         </button>

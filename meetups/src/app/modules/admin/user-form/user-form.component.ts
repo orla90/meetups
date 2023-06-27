@@ -5,7 +5,7 @@ import {
   Input,
   Output,
   OnInit,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -13,8 +13,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Role } from 'src/app/classes/role';
+import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -70,21 +69,33 @@ export class UserFormComponent implements OnInit {
 
   deleteUser() {
     this.usersService.deleteUser(this.user!.id).subscribe({
-        next: () => {
-        console.log("user is deleted");
+      next: () => {
         this.deleteUserEvent.emit();
-        },
-        error: error => {
-          console.log("user is not deleted")
-        }
-      });
+      },
+    });
   }
 
-  submitApplication() {
-    this.submitted = true;
-
+  updateUser() {
     if (this.userForm.invalid) return;
-
-    this.loading = true;
+    if (
+      this.email?.value !== this.user?.email ||
+      this.password?.value !== this.user?.password
+    ) {
+      this.usersService
+        .updateUser(
+          this.user!.id,
+          this.email!.value!,
+          this.password!.value!,
+          this.user!.fio
+        )
+        .subscribe({});
+    }
+    if (
+      this.user?.roles[0].name.toUpperCase() !== this.role?.value?.toUpperCase()
+    ) {
+      this.usersService
+        .setRoles([this.role!.value!.toUpperCase()], this.user!.id)
+        .subscribe();
+    }
   }
 }

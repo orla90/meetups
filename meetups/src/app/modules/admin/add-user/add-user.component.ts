@@ -46,7 +46,11 @@ export class AddUserComponent {
     private registrationService: RegistrationService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.emailValidationService.getRandomNumbers()
+    // this.emailValidationService.getNumbers()
+    // this.emailValidationService.getDelayedSum([1, 2, 3, 4])
+  }
 
   get email() {
     return this.addUserForm.get('email');
@@ -77,7 +81,6 @@ export class AddUserComponent {
         },
         error: (error: { error: string[] }) => {
           this.registrationError = error.error[0];
-          console.log(this.registrationError);
           this.loading = false;
           this.cdr.detectChanges();
         },

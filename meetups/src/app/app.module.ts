@@ -15,6 +15,7 @@ import { PaginationModule } from './modules/meetups/pagination/pagination.module
 import { UsersListModule } from './modules/admin/users-list/users-list.module';
 import { UserFormModule } from './modules/admin/user-form/user-form.module';
 import { AddUserModule } from './modules/admin/add-user/add-user.module';
+import { UserInfoModule } from './modules/user-info/user-info.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -35,7 +36,8 @@ import { AddUserModule } from './modules/admin/add-user/add-user.module';
     PaginationModule,
     UserFormModule,
     UsersListModule,
-    AddUserModule
+    AddUserModule,
+    UserInfoModule,
   ],
 })
 export class AppModule {}

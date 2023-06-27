@@ -18,7 +18,11 @@ export class UsersService {
     return this.http.put(`${this.baseUrl}/role`, { name, userId });
   }
   
-  editUser(id: number, email: string, password: string, fio: string) {
+  setRoles(names: Array<string>, userId: number) {
+    return this.http.post(`${this.baseUrl}/role`, { names, userId });
+  }
+  
+  updateUser(id: number, email: string, password: string, fio: string) {
     return this.http.put(`${this.baseUrl}/${id}`, { email, password, fio });
   }
   
