@@ -11,14 +11,50 @@ import { UserInfoComponent } from './modules/user-info/user-info.component';
 import { MyMeetupsComponent } from './modules/meetups/my-meetups/my-meetups.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
-  { path: '', component: MeetupListComponent, canActivate: [authGuard] },
-  { path: 'my-meetups', component: MyMeetupsComponent, canActivate: [authGuard] },
-  { path: 'user-info', component: UserInfoComponent, canActivate: [authGuard] },
-  { path: 'create', component: MeetupFormComponent },
+  {
+    path: 'home',
+    component: MeetupListComponent,
+    canActivate: [authGuard],
+    data: {
+      breadcrumb: 'All Meetups',
+    },
+  },
+  {
+    path: 'my-meetups',
+    component: MyMeetupsComponent,
+    canActivate: [authGuard],
+    data: {
+      breadcrumb: 'My Meetups',
+    },
+  },
+  {
+    path: 'my-meetups',
+    data: {
+      breadcrumb: 'My Meetups',
+    },
+    children: [
+      {
+        path: 'create',
+        component: MeetupFormComponent,
+        data: {
+          breadcrumb: 'Create Meetup',
+        },
+      },
+    ],
+  },
+  {
+    path: 'user-info',
+    component: UserInfoComponent,
+    canActivate: [authGuard],
+    data: {
+      breadcrumb: 'My Data',
+    },
+  },
   { path: 'admin', component: UsersListComponent, canActivate: [adminGuard] },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({

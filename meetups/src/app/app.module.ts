@@ -18,6 +18,7 @@ import { AddUserModule } from './modules/admin/add-user/add-user.module';
 import { UserInfoModule } from './modules/user-info/user-info.module';
 import { DialogWindowModule } from './modules/dialog-window/dialog-window.module';
 import { MyMeetupsModule } from './modules/meetups/my-meetups/my-meetups.module';
+import { BreadcrumbsModule } from './modules/breadcrumbs/breadcrumbs.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -42,6 +43,7 @@ import { MyMeetupsModule } from './modules/meetups/my-meetups/my-meetups.module'
     UserInfoModule,
     DialogWindowModule,
     MyMeetupsModule,
+    BreadcrumbsModule,
   ],
 })
 export class AppModule {}
