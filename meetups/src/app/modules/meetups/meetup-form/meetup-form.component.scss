@@ -4,6 +4,7 @@
   box-sizing: border-box;
   background: $mine-shaft;
   border: rem(0.3px) solid $french-gray;
+  margin-top: $height-header-desktop;
 
   &__container {
     width: 100%;
@@ -65,6 +66,7 @@
     @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
     position: absolute;
     bottom: rem(-20px);
+    left: rem(170px);
     color: $tuscany;
   }
 
@@ -93,6 +95,11 @@
       color: $french-gray;
       opacity: 0.4;
     }
+  }
+  
+  &__input.ng-invalid.ng-touched,
+  &__textarea.ng-invalid.ng-touched {
+    border: rem(3px) solid $tuscany !important;
   }
 
   &__input {

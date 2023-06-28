@@ -1,10 +1,11 @@
 @import "../../../../assets/styles/global.scss";
 
 .my-meetups {
-  margin-top: rem($height-header-desktop);
+  margin-top: rem($height-header-desktop + 40
+  );
 
   &__search-bar {
-    padding-top: rem(98px);
+    padding-top: rem(36px);
     margin-bottom: rem(72px);
   }
 
@@ -21,5 +22,22 @@
 
   &__item {
     list-style: none;
+  }
+  
+  &__create {
+    margin-top: rem(36px);
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  &__btn_add {
+    background-image: url("../../../../assets/images/icons/close.svg");
+    transform: rotate(45deg);
+    width: rem(35px);
+    height: rem(35px);
+    background-color: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: center;
   }
 }

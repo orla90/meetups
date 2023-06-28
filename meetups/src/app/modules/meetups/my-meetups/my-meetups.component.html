@@ -1,5 +1,13 @@
 <section class="my-meetups">
   <div class="my-meetups__container container">
+    <div class="my-meetups__create">
+        <a
+          routerLink="/my-meetups/create"
+          class="my-meetups__btn button_iconed"
+        >
+          <div class="my-meetups__btn_add"></div>
+        </a>
+    </div>
     <div class="my-meetups__search-bar">
       <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
     </div>
@@ -11,5 +19,5 @@
   <div class="my-meetups__pagination">
     <app-pagination [pagination]="pagination" (onPaginationChange)='onPaginationChange($event)'></app-pagination>
   </div>
-</div>
+  </div>
 </section>
