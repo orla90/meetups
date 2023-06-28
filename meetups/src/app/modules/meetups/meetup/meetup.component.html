@@ -52,7 +52,7 @@
     </section>
     <footer class="meetup__footer">
       <div class="meetup__footer-container">
-        <span class="meetup__author">Александр Козаченко</span>
+        <span class="meetup__author">{{ meetup.owner.fio }}</span>
         <div class="meetup__btns">
           <button
             *ngIf="canComeBtnVisible"

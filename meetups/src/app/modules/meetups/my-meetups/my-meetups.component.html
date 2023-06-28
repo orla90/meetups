@@ -1,0 +1,15 @@
+<section class="my-meetups">
+  <div class="my-meetups__container container">
+    <div class="my-meetups__search-bar">
+      <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
+    </div>
+  <ul class="my-meetups__list" *ngIf="currentPageMeetups">
+    <li class="my-meetups__item" *ngFor="let meetup of currentPageMeetups">
+      <app-meetup [meetup]="meetup" (signMeetupEvent)='signMeetupEvent($event)' (signOverMeetupEvent)='signOverMeetup($event)' [userId]="userId"/>
+    </li>
+  </ul>
+  <div class="my-meetups__pagination">
+    <app-pagination [pagination]="pagination" (onPaginationChange)='onPaginationChange($event)'></app-pagination>
+  </div>
+</div>
+</section>

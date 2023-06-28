@@ -1,0 +1,25 @@
+@import "../../../../assets/styles/global.scss";
+
+.my-meetups {
+  margin-top: rem($height-header-desktop);
+
+  &__search-bar {
+    padding-top: rem(98px);
+    margin-bottom: rem(72px);
+  }
+
+  &__pagination {
+    margin-bottom: rem(72px);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(40px);
+    margin-bottom: rem(72px);
+  }
+
+  &__item {
+    list-style: none;
+  }
+}

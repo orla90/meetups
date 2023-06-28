@@ -17,6 +17,7 @@ import { UserFormModule } from './modules/admin/user-form/user-form.module';
 import { AddUserModule } from './modules/admin/add-user/add-user.module';
 import { UserInfoModule } from './modules/user-info/user-info.module';
 import { DialogWindowModule } from './modules/dialog-window/dialog-window.module';
+import { MyMeetupsModule } from './modules/meetups/my-meetups/my-meetups.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -40,6 +41,7 @@ import { DialogWindowModule } from './modules/dialog-window/dialog-window.module
     AddUserModule,
     UserInfoModule,
     DialogWindowModule,
+    MyMeetupsModule,
   ],
 })
 export class AppModule {}
