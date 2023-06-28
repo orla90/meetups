@@ -5,19 +5,9 @@ import { UserFormModule } from '../user-form/user-form.module';
 import { RouterModule } from '@angular/router';
 import { AddUserModule } from '../add-user/add-user.module';
 
-
 @NgModule({
-  declarations: [
-    UsersListComponent
-  ],
-  imports: [
-    CommonModule,
-    UserFormModule,
-    AddUserModule,
-    RouterModule,
-  ],
-  exports: [
-    UsersListComponent
-  ]
+  declarations: [UsersListComponent],
+  imports: [CommonModule, UserFormModule, AddUserModule, RouterModule],
+  exports: [UsersListComponent],
 })
-export class UsersListModule { }
+export class UsersListModule {}

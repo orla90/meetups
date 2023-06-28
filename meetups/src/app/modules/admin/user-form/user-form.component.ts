@@ -13,10 +13,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+// import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
-import { RegistrationService } from 'src/app/services/registration.service';
+// import { RegistrationService } from 'src/app/services/registration.service';
 import { UsersService } from 'src/app/services/users.service';
+import { DialogWindowComponent } from '../../dialog-window/dialog-window.component';
 
 @Component({
   selector: 'app-user-form',
@@ -33,6 +35,7 @@ export class UserFormComponent implements OnInit {
   loading = false;
   userError?: string;
   selectedRole: string = '';
+
   userForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -40,10 +43,11 @@ export class UserFormComponent implements OnInit {
   });
 
   constructor(
-    private router: Router,
-    private cdr: ChangeDetectorRef,
-    private registrationService: RegistrationService,
-    private usersService: UsersService
+    // private router: Router,
+    // private cdr: ChangeDetectorRef,
+    // private registrationService: RegistrationService,
+    private usersService: UsersService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -67,15 +71,41 @@ export class UserFormComponent implements OnInit {
     return this.userForm.get('role');
   }
 
-  deleteUser() {
-    this.usersService.deleteUser(this.user!.id).subscribe({
-      next: () => {
-        this.deleteUserEvent.emit();
+  openDialog(type: string, title: string, body: string) {
+    const _dialog = this.dialog.open(DialogWindowComponent, {
+      width: '60%',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: {
+        title: title,
+        body: body,
       },
+    });
+    _dialog.afterClosed().subscribe((item) => {
+      if (item === 'ok' && type === 'update') {
+        console.log(item, 'update');
+        this.updateApiUser();
+      } else if (item === 'ok' && type === 'delete') {
+        console.log(item, 'delete');
+        this.deleteApiUser();
+      }
     });
   }
 
+  deleteUser() {
+    const title = 'Удалить пользователя';
+    const body = 'Вы уверены, что хотите удалить пользователя?';
+    this.openDialog('delete', title, body);
+  }
+
   updateUser() {
+    if (this.userForm.invalid) return;
+    const title = 'Обновить пользователя';
+    const body = 'Вы уверены, что хотите обновить пользователя?';
+    this.openDialog('update', title, body);
+  }
+
+  updateApiUser() {
     if (this.userForm.invalid) return;
     if (
       this.email?.value !== this.user?.email ||
@@ -97,5 +127,13 @@ export class UserFormComponent implements OnInit {
         .setRoles([this.role!.value!.toUpperCase()], this.user!.id)
         .subscribe();
     }
+  }
+
+  deleteApiUser() {
+    this.usersService.deleteUser(this.user!.id).subscribe({
+      next: () => {
+        this.deleteUserEvent.emit();
+      },
+    });
   }
 }

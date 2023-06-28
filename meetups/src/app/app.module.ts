@@ -16,6 +16,7 @@ import { UsersListModule } from './modules/admin/users-list/users-list.module';
 import { UserFormModule } from './modules/admin/user-form/user-form.module';
 import { AddUserModule } from './modules/admin/add-user/add-user.module';
 import { UserInfoModule } from './modules/user-info/user-info.module';
+import { DialogWindowModule } from './modules/dialog-window/dialog-window.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -38,6 +39,7 @@ import { UserInfoModule } from './modules/user-info/user-info.module';
     UsersListModule,
     AddUserModule,
     UserInfoModule,
+    DialogWindowModule,
   ],
 })
 export class AppModule {}

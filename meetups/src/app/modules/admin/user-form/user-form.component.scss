@@ -80,6 +80,11 @@
     }
   }
 
+  &__input.ng-invalid.ng-touched,
+  &__select.ng-invalid.ng-touched {
+    border: rem(3px) solid $tuscany !important;
+  }
+
   &__select {
     -moz-appearance: none;
     -webkit-appearance: none;

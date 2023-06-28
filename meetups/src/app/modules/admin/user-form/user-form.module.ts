@@ -3,10 +3,20 @@ import { CommonModule } from '@angular/common';
 import { UserFormComponent } from './user-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogWindowModule } from '../../dialog-window/dialog-window.module';
 
 @NgModule({
   declarations: [UserFormComponent],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
   exports: [UserFormComponent],
 })
 export class UserFormModule {}

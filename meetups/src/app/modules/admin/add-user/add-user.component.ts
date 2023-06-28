@@ -11,9 +11,11 @@ import {
   Validators,
   ValidationErrors,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/classes/user';
 import { EmailValidationService } from 'src/app/services/email-validation.service';
 import { RegistrationService } from 'src/app/services/registration.service';
+import { DialogWindowComponent } from '../../dialog-window/dialog-window.component';
 
 @Component({
   selector: 'app-add-user',
@@ -27,7 +29,6 @@ export class AddUserComponent {
   submitted = false;
   loading = false;
   userError?: string;
-  registrationSuccess?: string = '';
   registrationError?: string = '';
 
   addUserForm = new FormGroup({
@@ -43,7 +44,8 @@ export class AddUserComponent {
   constructor(
     private cdr: ChangeDetectorRef,
     private emailValidationService: EmailValidationService,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -62,6 +64,19 @@ export class AddUserComponent {
     return this.addUserForm.get('fio');
   }
 
+  openDialog(type: string, title: string, body: string) {
+    const _dialog = this.dialog.open(DialogWindowComponent, {
+      width: '60%',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: {
+        type: type,
+        title: title,
+        body: body,
+      },
+    });
+  }
+
   submitApplication() {
     this.submitted = true;
 
@@ -74,10 +89,13 @@ export class AddUserComponent {
         next: () => {
           this.registrationService.userAdded!.next(true);
           this.addUserEvent.emit();
-          this.registrationSuccess = 'Success registration';
-          setTimeout(() => (this.registrationSuccess = ''), 2000);
           this.submitted = false;
           this.addUserForm.reset();
+
+          const type = 'add';
+          const title = 'Поздравляем!';
+          const body = 'Вы успешно создали нового пользователя';
+          this.openDialog(type, title, body);
         },
         error: (error: { error: string[] }) => {
           this.registrationError = error.error[0];
