@@ -4,10 +4,10 @@
       <div class="meetup__header-container">
         <div class="meetup__header-info">
           <span class="meetup__title title">{{ meetup.name }}</span>
-          <span class="meetup__subscribers">{{ meetup.users }} подписчик</span>
+          <span class="meetup__subscribers">{{ meetup.users.length }} {{checkDeclension(meetup.users.length, ['подписчик', 'подписчика', 'подписчиков'])}}</span>
         </div>
         <div class="meetup__header-metadata">
-          <span class="meetup__date title">{{ meetup.time }}</span>
+          <span class="meetup__date title">{{ parseTime(meetup.time) }}</span>
           <span class="meetup__vanue">{{ meetup.location }}</span>
         </div>
       </div>
