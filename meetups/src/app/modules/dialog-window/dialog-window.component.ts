@@ -10,17 +10,22 @@ import {
   templateUrl: './dialog-window.component.html',
   styleUrls: ['./dialog-window.component.scss'],
 })
-export class DialogWindowComponent implements OnInit {
-  inputdata!: { type?: string; title: string; body: string };
+export class DialogWindowComponent {
+  inputdata!: { type: string; title: string; body: string };
+  
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { type: string; title: string; body: string },
     private ref: MatDialogRef<DialogWindowComponent>
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.inputdata = this.data;
   }
+
+  // ngOnInit(): void {
+  //   // console.log('this.data', this.data)
+  //   this.inputdata.type = this.data.type ? this.data.type : "add";
+  //   console.log('this.inputdata', this.inputdata)
+  // }
 
   closeDialogWindow() {
     this.ref.close('no');

@@ -43,6 +43,13 @@ const routes: Routes = [
           breadcrumb: 'Create Meetup',
         },
       },
+      {
+        path: 'edit/:id',
+        component: MeetupFormComponent,
+        data: {
+          breadcrumb: 'Edit Meetup',
+        },
+      },
     ],
   },
   {

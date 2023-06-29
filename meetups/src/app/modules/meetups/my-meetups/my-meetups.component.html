@@ -13,10 +13,9 @@
     </div>
   <ul class="my-meetups__list" *ngIf="currentPageMeetups">
     <li class="my-meetups__item" *ngFor="let meetup of currentPageMeetups">
-      <app-meetup [meetup]="meetup" (signMeetupEvent)='signMeetupEvent($event)' (signOverMeetupEvent)='signOverMeetup($event)' [userId]="userId"/>
+      <app-meetup [meetup]="meetup" [userId]="userId"/>
     </li>
   </ul>
-  <h2 *ngIf="!currentPageMeetups.length" class="my-meetups__title title">У вас пока нет митапов.</h2>
   <div class="my-meetups__pagination">
     <app-pagination [pagination]="pagination" (onPaginationChange)='onPaginationChange($event)'></app-pagination>
   </div>

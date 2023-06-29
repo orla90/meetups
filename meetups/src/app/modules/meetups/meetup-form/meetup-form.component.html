@@ -221,19 +221,21 @@
         <button
           type="button"
           class="meetup-form__btn button button_big button_orange"
+          (click)="delete()"
         >
           Удалить
         </button>
         <button
           type="button"
           class="meetup-form__btn button button_big button_light"
+          (click)="cancel()"
         >
           Отмена
         </button>
         <button
           type="submit"
           class="meetup-form__btn button button_big button_purple"
-          (click)="saveMeetup()"
+          (click)="submit()"
         >
           Сохранить
         </button>

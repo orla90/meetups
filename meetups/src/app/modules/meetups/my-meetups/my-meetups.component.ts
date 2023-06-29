@@ -18,7 +18,6 @@ import { MeetupService } from 'src/app/services/meetup.service';
 })
 export class MyMeetupsComponent {
   searchInput: string = '';
-  // createdNewUser: boolean = false;
   meetups: Meetup[] = [];
   filteredMeetups: Meetup[] = [];
   currentPageMeetups: Meetup[] = [];
@@ -35,59 +34,14 @@ export class MyMeetupsComponent {
   }
 
   ngOnInit() {
-    // if (this.router.url === '/')
-    // console.log('this.router.url', this.router.url)
-    // console.log('user', this.authService.user)
-    
     this.authService.user &&
       this.meetupService.getMeetups().subscribe((data) => {
-        console.log('data', data);
-        console.log('userId', this.userId);
-        // console.log(this.authService.user);
         this.meetups = data.filter(meetup => meetup.createdBy === this.userId);
         this.filteredMeetups = data.filter(meetup => meetup.createdBy === this.userId);
         this.setPaginationTotalCount();
         this.getCurrentPageMeetups();
         this.cdr.detectChanges();
       });
-  }
-  
-  signMeetupEvent(idMeetup: number) {
-    this.meetupService.signToMeetup(idMeetup, this.authService.user!.id).subscribe({
-        next: () => {
-          // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todos';
-          // this.router.navigateByUrl(returnUrl);
-        // this.createdNewUser = true;
-        // console.log('success')
-        },
-      error: error => {
-        // console.log('fail')
-
-          // this.meetupError = error.error[0] || 'Incorrect username/password';
-          // this.loading = false;
-          // this.cdr.detectChanges();
-        }
-      })
-  }
-  
-  signOverMeetup(idMeetup: number) {
-    // console.log('idMeetup', idMeetup)
-    // console.log('this.authService.user!.id', this.authService.user!.id)
-    this.meetupService.signOverMeetup(idMeetup, this.authService.user!.id).subscribe({
-        next: () => {
-          // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todos';
-          // this.router.navigateByUrl(returnUrl);
-        // this.signedToMeetup = true;
-        // console.log('success over')
-        },
-      error: error => {
-        // console.log('fail')
-
-          // this.meetupError = error.error[0] || 'Incorrect username/password';
-          // this.loading = false;
-          // this.cdr.detectChanges();
-        }
-      })
   }
 
   setPaginationTotalCount() {

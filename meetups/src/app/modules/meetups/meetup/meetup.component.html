@@ -2,8 +2,8 @@
   class="meetup"
   *ngIf="meetup"
   [ngClass]="{
-  'meetup_completed': completed,
-  'meetup_incompleted': !completed,
+  'meetup_completed': isCompleted,
+  'meetup_incompleted': !isCompleted,
 }"
 >
   <div class="meetup__container">
@@ -24,10 +24,10 @@
         </div>
         <div class="meetup__header-metadata">
           <span class="meetup__date title">{{ parseTime(meetup.time) }}</span>
-          <span class="meetup__vanue" *ngIf="!completed">{{
+          <span class="meetup__vanue" *ngIf="!isCompleted">{{
             meetup.location
           }}</span>
-          <span class="meetup__completed" *ngIf="completed">Проведено</span>
+          <span class="meetup__completed" *ngIf="isCompleted">Проведено</span>
         </div>
       </div>
     </header>
@@ -74,20 +74,26 @@
         <span class="meetup__author">{{ meetup.owner!.fio }}</span>
         <div class="meetup__btns">
           <button
-            *ngIf="canComeBtnVisible && !completed"
+            *ngIf="canComeBtnVisible && !isCompleted && !isCurUserMeetup"
             class="button button_big button_purple"
             (click)="signMeetup()"
           >
             Я пойду!
           </button>
           <button
-            *ngIf="!canComeBtnVisible && !completed"
+            *ngIf="!canComeBtnVisible && !isCompleted && !isCurUserMeetup"
             class="button button_big button_light"
             (click)="signOverMeetup()"
           >
             Не смогу пойти
           </button>
-
+          <a
+            [routerLink]="['edit', meetup.id]"
+            *ngIf="!isCompleted && isCurUserMeetup"
+            class="button button_big button_purple"
+          >
+            Редактировать
+          </a>
           <button
             class="button button_small button_orange"
             (click)="changeDescription()"

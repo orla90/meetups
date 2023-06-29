@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -7,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { Meetup } from 'src/app/classes/meetup';
-import { checkWordDeclension } from 'src/app/helpers/utils';
+import { checkWordDeclension, parseLongDescription, parseShortDescription, parseTime } from 'src/app/helpers/utils';
 
 @Component({
   selector: 'app-meetup',
@@ -23,55 +24,42 @@ export class MeetupComponent implements OnInit {
 
   public longDescription: boolean = false;
   public canComeBtnVisible!: boolean;
-  public completed: boolean = false;
-
+  public isCompleted: boolean = false;
+  public isCurUserMeetup: boolean = false;
+  
   ngOnInit() {
     this.checkUserSign();
-    this.isMeetupCompleted();
+    this.isMeetupisCompleted();
+    this.checkOwner();
   }
 
-  isMeetupCompleted() {
+  checkOwner() {
+    if (this.userId === this.meetup.owner?.id) {
+      this.isCurUserMeetup = true;
+    } else {
+      this.isCurUserMeetup = false;
+    }
+  }
+  
+  isMeetupisCompleted() {
     const now = new Date();
     if (now > new Date(this.meetup.time)) {
-      this.completed = true;
+      this.isCompleted = true;
     } else {
-      this.completed = false;
-      console.log('now', now);
-      console.log('m date', new Date(this.meetup.time));
+      this.isCompleted = false;
     }
   }
 
   changeDescription() {
     this.longDescription = !this.longDescription;
-    console.log(this.meetup);
-    this.parseTime(this.meetup.time);
   }
 
   parseLongDescription() {
-    if (
-      this.meetup.description !== null &&
-      this.meetup.description.includes('long')
-    ) {
-      return JSON.stringify(JSON.parse(this.meetup.description).long).slice(
-        1,
-        -1
-      );
-    }
-
-    return this.meetup.description;
+    return parseLongDescription(this.meetup.description);
   }
 
   parseShortDescription() {
-    if (
-      this.meetup.description !== null &&
-      this.meetup.description.includes('short')
-    ) {
-      return JSON.stringify(JSON.parse(this.meetup.description).short).slice(
-        1,
-        -1
-      );
-    }
-    return this.meetup.description;
+    return parseShortDescription(this.meetup.description);
   }
 
   signMeetup() {
@@ -101,31 +89,6 @@ export class MeetupComponent implements OnInit {
   }
 
   parseTime(time: string | Date) {
-    const date = new Date(time);
-    const day =
-      date.getDate().toString().length < 2
-        ? '0' + date.getDate()
-        : date.getDate();
-    const month =
-      (date.getMonth() + 1).toString().length < 2
-        ? '0' + (date.getMonth() + 1)
-        : date.getMonth() + 1;
-    const year = date.getFullYear().toString().slice(-2);
-
-    const hours =
-      date.getHours().toString().length < 2
-        ? '0' + date.getHours()
-        : date.getHours();
-    const minutes =
-      date.getMinutes().toString().length < 2
-        ? '0' + date.getMinutes()
-        : date.getMinutes();
-    const seconds =
-      date.getSeconds().toString().length < 2
-        ? '0' + date.getSeconds()
-        : date.getSeconds();
-
-    const meetupDate = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
-    return meetupDate;
+    return parseTime(time);
   }
 }

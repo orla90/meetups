@@ -10,6 +10,7 @@
   transition: all $transition-duration-hover $transition-function-hover;
   border-radius: $small-radius;
   height: 50px;
+  text-decoration: none;
 
   &__icon {
     width: rem(29px);

@@ -89,7 +89,7 @@ export class AddUserComponent {
           this.submitted = false;
           this.addUserForm.reset();
 
-          const type = 'add';
+          const type = 'congratulations';
           const title = 'Поздравляем!';
           const body = 'Вы успешно создали нового пользователя';
           this.openDialog(type, title, body);

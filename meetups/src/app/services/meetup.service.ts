@@ -12,16 +12,6 @@ export class MeetupService {
   getMeetups() {
     return this.http.get<Meetup[]>(`${environment.baseUrl}/meetup`);
   }
-  
-  // name: string | null= '';
-  // description: string = '';
-  // time: string | Date= '';
-  // duration?: number;
-  // location: string | null = '';
-  // target_audience: string | null = '';
-  // need_to_know: string | null = '';
-  // will_happen: string | null = '';
-  // reason_to_come: string | null = '';
 
   createMeetup(
     name: string | null,
@@ -34,7 +24,6 @@ export class MeetupService {
     will_happen: string | null,
     reason_to_come: string | null
   ) {
-    // console.log('createMeetup meetup', meetup)
     return this.http.post<{ meetup: Meetup }>(`${environment.baseUrl}/meetup`, {
       name,
       description,
@@ -58,8 +47,29 @@ export class MeetupService {
     });
   }
 
-  editMeetup(meetup: Meetup, id: number) {
-    return this.http.put(`${environment.baseUrl}/meetup/${id}`, { meetup });
+  updateMeetup(
+    name: string | null,
+    description: string,
+    time: string | Date,
+    duration: number,
+    location: string | null,
+    target_audience: string | null,
+    need_to_know: string | null,
+    will_happen: string | null,
+    reason_to_come: string | null,
+    id: number
+  ) {
+    return this.http.put(`${environment.baseUrl}/meetup/${id}`, {
+      name,
+      description,
+      time,
+      duration,
+      location,
+      target_audience,
+      need_to_know,
+      will_happen,
+      reason_to_come,
+    });
   }
 
   deleteMeetup(id: number) {

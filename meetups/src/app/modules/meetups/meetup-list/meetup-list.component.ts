@@ -18,7 +18,6 @@ import { MeetupService } from 'src/app/services/meetup.service';
 })
 export class MeetupListComponent implements OnInit {
   searchInput: string = '';
-  // createdNewUser: boolean = false;
   meetups: Meetup[] = [];
   filteredMeetups: Meetup[] = [];
   currentPageMeetups: Meetup[] = [];
@@ -34,15 +33,9 @@ export class MeetupListComponent implements OnInit {
     this.userId = this.authService.user!.id;
   }
 
-  ngOnInit() {
-    // if (this.router.url === '/')
-    // console.log('this.router.url', this.router.url)
-    // console.log('user', this.authService.user)
-    
+  ngOnInit() {    
     this.authService.user &&
       this.meetupService.getMeetups().subscribe((data) => {
-        // console.log(data);
-        // console.log(this.authService.user);
         this.meetups = data;
         this.filteredMeetups = data;
         this.setPaginationTotalCount();
