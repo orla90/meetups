@@ -48,8 +48,7 @@ export class AddUserComponent {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   get email() {
     return this.addUserForm.get('email');

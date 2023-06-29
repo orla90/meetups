@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   Input,
   Output,
@@ -14,9 +13,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-// import { Router } from '@angular/router';
 import { User } from 'src/app/classes/user';
-// import { RegistrationService } from 'src/app/services/registration.service';
 import { UsersService } from 'src/app/services/users.service';
 import { DialogWindowComponent } from '../../dialog-window/dialog-window.component';
 
@@ -42,13 +39,7 @@ export class UserFormComponent implements OnInit {
     role: new FormControl('', [Validators.required]),
   });
 
-  constructor(
-    // private router: Router,
-    // private cdr: ChangeDetectorRef,
-    // private registrationService: RegistrationService,
-    private usersService: UsersService,
-    public dialog: MatDialog
-  ) {}
+  constructor(private usersService: UsersService, public dialog: MatDialog) {}
 
   ngOnInit() {
     if (this.user) {
@@ -77,16 +68,15 @@ export class UserFormComponent implements OnInit {
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
       data: {
+        type: type,
         title: title,
         body: body,
       },
     });
     _dialog.afterClosed().subscribe((item) => {
       if (item === 'ok' && type === 'update') {
-        console.log(item, 'update');
         this.updateApiUser();
       } else if (item === 'ok' && type === 'delete') {
-        console.log(item, 'delete');
         this.deleteApiUser();
       }
     });
@@ -118,7 +108,7 @@ export class UserFormComponent implements OnInit {
           this.password!.value!,
           this.user!.fio
         )
-        .subscribe({});
+        .subscribe();
     }
     if (
       this.user?.roles[0].name.toUpperCase() !== this.role?.value?.toUpperCase()
@@ -130,10 +120,6 @@ export class UserFormComponent implements OnInit {
   }
 
   deleteApiUser() {
-    this.usersService.deleteUser(this.user!.id).subscribe({
-      next: () => {
-        this.deleteUserEvent.emit();
-      },
-    });
+    this.usersService.deleteUser(this.user!.id).subscribe();
   }
 }

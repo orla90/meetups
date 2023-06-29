@@ -5,7 +5,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogWindowModule } from '../../dialog-window/dialog-window.module';
 
 @NgModule({
   declarations: [UserFormComponent],
