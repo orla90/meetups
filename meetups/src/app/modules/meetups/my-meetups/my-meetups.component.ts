@@ -96,7 +96,7 @@ export class MyMeetupsComponent {
 
   searchMeetups(searchInput: string) {
     this.filteredMeetups = this.meetups.filter((meetup) =>
-      meetup.name.toLocaleLowerCase().includes(searchInput.toLowerCase())
+      meetup.name!.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
     this.setPaginationTotalCount();
     this.pagination.currentPage =

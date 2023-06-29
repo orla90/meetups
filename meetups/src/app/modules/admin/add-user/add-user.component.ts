@@ -49,9 +49,6 @@ export class AddUserComponent {
   ) {}
 
   ngOnInit() {
-    // this.emailValidationService.getRandomNumbers()
-    // this.emailValidationService.getNumbers()
-    // this.emailValidationService.getDelayedSum([1, 2, 3, 4])
   }
 
   get email() {

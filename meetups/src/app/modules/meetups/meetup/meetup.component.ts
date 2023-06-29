@@ -26,6 +26,7 @@ export class MeetupComponent implements OnInit {
 
   ngOnInit() {
     this.checkUserSign();
+    this.parseLongDescription();
     // console.log('new date', new Date())
   }
 
@@ -33,6 +34,27 @@ export class MeetupComponent implements OnInit {
     this.longDescription = !this.longDescription;
     console.log(this.meetup);
     this.parseTime(this.meetup.time);
+  }
+
+  parseLongDescription() {
+    if (this.meetup.description !== null && (this.meetup.description.includes('long'))) {
+      return JSON.stringify(JSON.parse(this.meetup.description).long).slice(
+        1,
+        -1
+      );
+    }
+
+    return this.meetup.description;
+  }
+
+  parseShortDescription() {
+    if (this.meetup.description !== null && (this.meetup.description.includes('short'))) {
+      return JSON.stringify(JSON.parse(this.meetup.description).short).slice(
+        1,
+        -1
+      );
+    }
+    return this.meetup.description;
   }
 
   signMeetup() {
@@ -52,7 +74,7 @@ export class MeetupComponent implements OnInit {
   }
 
   checkUserSign() {
-    this.canComeBtnVisible = !!!this.meetup.users.find(
+    this.canComeBtnVisible = !!!this.meetup.users!.find(
       (user) => user.id === this.userId
     );
   }
@@ -61,7 +83,7 @@ export class MeetupComponent implements OnInit {
     return checkWordDeclension(number, words);
   }
 
-  parseTime(time: string) {
+  parseTime(time: string | Date) {
     const date = new Date(time);
     const day =
       date.getDate().toString().length < 2

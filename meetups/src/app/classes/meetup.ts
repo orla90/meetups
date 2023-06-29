@@ -2,18 +2,18 @@ import { User } from "./user";
 
 export class Meetup {
   id?: number;
-  name: string = '';
+  name: string | null= '';
   description: string = '';
-  location: string = '';
-  target_audience: string = '';
-  need_to_know: string = '';
-  will_happen: string = '';
-  reason_to_come: string = ''
-  time: string = '';
-  duration!: number;
-  createdBy!: number;
-  owner!: User;
-  users: User[] = [];
+  time: string | Date= '';
+  duration?: number;
+  location: string | null = '';
+  target_audience: string | null = '';
+  need_to_know: string | null = '';
+  will_happen: string | null = '';
+  reason_to_come: string | null = '';
+  createdBy?: number;
+  owner?: User;
+  users?: User[] = [];
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

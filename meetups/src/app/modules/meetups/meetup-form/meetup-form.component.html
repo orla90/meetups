@@ -1,12 +1,8 @@
 <section class="meetup-form-section">
   <div class="meetup-form-section__container">
-    <form
-      class="meetup-form"
-      [formGroup]="meetupForm"
-      (submit)="submitApplication()"
-    >
+    <form class="meetup-form" [formGroup]="meetupForm">
       <div class="meetup-form__container">
-        <h2 class="meetup-form__title title">Создание митапа</h2>
+        <h2 class="meetup-form__title title">{{ title }}</h2>
         <div class="meetup-form__row">
           <div class="meetup-form__column meetup-form__column_center">
             <label for="name" class="meetup-form__label">Название:</label>
@@ -237,6 +233,7 @@
         <button
           type="submit"
           class="meetup-form__btn button button_big button_purple"
+          (click)="saveMeetup()"
         >
           Сохранить
         </button>
