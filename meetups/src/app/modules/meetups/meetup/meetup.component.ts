@@ -21,13 +21,24 @@ export class MeetupComponent implements OnInit {
   @Output() public signMeetupEvent = new EventEmitter();
   @Output() public signOverMeetupEvent = new EventEmitter();
 
-  longDescription: boolean = false;
+  public longDescription: boolean = false;
   public canComeBtnVisible!: boolean;
+  public completed: boolean = false;
 
   ngOnInit() {
     this.checkUserSign();
-    this.parseLongDescription();
-    // console.log('new date', new Date())
+    this.isMeetupCompleted();
+  }
+
+  isMeetupCompleted() {
+    const now = new Date();
+    if (now > new Date(this.meetup.time)) {
+      this.completed = true;
+    } else {
+      this.completed = false;
+      console.log('now', now);
+      console.log('m date', new Date(this.meetup.time));
+    }
   }
 
   changeDescription() {
@@ -37,7 +48,10 @@ export class MeetupComponent implements OnInit {
   }
 
   parseLongDescription() {
-    if (this.meetup.description !== null && (this.meetup.description.includes('long'))) {
+    if (
+      this.meetup.description !== null &&
+      this.meetup.description.includes('long')
+    ) {
       return JSON.stringify(JSON.parse(this.meetup.description).long).slice(
         1,
         -1
@@ -48,7 +62,10 @@ export class MeetupComponent implements OnInit {
   }
 
   parseShortDescription() {
-    if (this.meetup.description !== null && (this.meetup.description.includes('short'))) {
+    if (
+      this.meetup.description !== null &&
+      this.meetup.description.includes('short')
+    ) {
       return JSON.stringify(JSON.parse(this.meetup.description).short).slice(
         1,
         -1
@@ -90,7 +107,7 @@ export class MeetupComponent implements OnInit {
         ? '0' + date.getDate()
         : date.getDate();
     const month =
-      date.getMonth().toString().length < 2
+      (date.getMonth() + 1).toString().length < 2
         ? '0' + (date.getMonth() + 1)
         : date.getMonth() + 1;
     const year = date.getFullYear().toString().slice(-2);

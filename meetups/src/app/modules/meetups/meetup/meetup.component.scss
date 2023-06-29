@@ -1,8 +1,17 @@
 @import "../../../../assets/styles/global.scss";
 
 .meetup {
-  background-color: $mine-shaft;
+  @include font($size: rem($font-size-base), $height: rem($line-height-base));
   border: rem(0.3px) solid $french-gray;
+
+  &_incompleted {
+    background-color: $mine-shaft;
+  }
+
+  &_completed {
+    opacity: 0.7;
+    background: $mine-shaft;
+  }
 
   &__container {
     width: 100%;
@@ -11,31 +20,42 @@
     margin-left: auto;
     padding-left: rem($gap-container-small);
   }
+  
+  &__title {
+    align-items: flex-start;
+  }
 
   &__header {
     padding-top: rem(14px);
     padding-bottom: rem(15px);
+    align-items: center;
 
     &-container {
       display: flex;
-      align-items: center;
       justify-content: space-between;
     }
 
     &-info {
       display: flex;
-      align-items: center;
+      align-items: top;
       gap: rem(10px);
     }
 
     &-metadata {
       display: flex;
       flex-direction: column;
+      gap: rem(6px);
     }
   }
 
-  &__subscribers {
+  &__subscribers,
+  &__completed {
     color: $tuscany;
+    display: flex;
+  }
+  
+  &__subscribers {
+    padding-top: rem(10px);
   }
 
   &__vanue {

@@ -1,14 +1,33 @@
-<article class="meetup" *ngIf="meetup">
+<article
+  class="meetup"
+  *ngIf="meetup"
+  [ngClass]="{
+  'meetup_completed': completed,
+  'meetup_incompleted': !completed,
+}"
+>
   <div class="meetup__container">
     <header class="meetup__header">
       <div class="meetup__header-container">
         <div class="meetup__header-info">
           <span class="meetup__title title">{{ meetup.name }}</span>
-          <span class="meetup__subscribers">{{ meetup.users!.length }} {{checkDeclension(meetup.users!.length, ['подписчик', 'подписчика', 'подписчиков'])}}</span>
+          <span class="meetup__subscribers"
+            >{{ meetup.users!.length }}
+            {{
+              checkDeclension(meetup.users!.length, [
+                "подписчик",
+                "подписчика",
+                "подписчиков"
+              ])
+            }}</span
+          >
         </div>
         <div class="meetup__header-metadata">
           <span class="meetup__date title">{{ parseTime(meetup.time) }}</span>
-          <span class="meetup__vanue">{{ meetup.location }}</span>
+          <span class="meetup__vanue" *ngIf="!completed">{{
+            meetup.location
+          }}</span>
+          <span class="meetup__completed" *ngIf="completed">Проведено</span>
         </div>
       </div>
     </header>
@@ -55,14 +74,14 @@
         <span class="meetup__author">{{ meetup.owner!.fio }}</span>
         <div class="meetup__btns">
           <button
-            *ngIf="canComeBtnVisible"
+            *ngIf="canComeBtnVisible && !completed"
             class="button button_big button_purple"
             (click)="signMeetup()"
           >
             Я пойду!
           </button>
           <button
-            *ngIf="!canComeBtnVisible"
+            *ngIf="!canComeBtnVisible && !completed"
             class="button button_big button_light"
             (click)="signOverMeetup()"
           >
