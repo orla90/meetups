@@ -1,10 +1,10 @@
 @import "../../../../assets/styles/global.scss";
 
 .meetups {
-  margin-top: rem($height-header-desktop);
+  margin-top: rem($height-header-desktop + 40);
 
   &__search-bar {
-    padding-top: rem(98px);
+    margin-top: rem(36px);
     margin-bottom: rem(72px);
   }
 
@@ -21,5 +21,13 @@
 
   &__item {
     list-style: none;
+  }
+
+  &__filters {
+    display: flex;
+    width: 100%;
+    max-width: 200px;
+    margin-top: rem(36px);
+    justify-content: flex-start;
   }
 }

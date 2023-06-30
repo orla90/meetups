@@ -22,7 +22,8 @@ body {
   @include font($size: rem($font-size-base), $height: rem($line-height-base));
 }
 
-input {
+input,
+select {
   @include font($size: rem($font-size-base), $height: rem($line-height-base));
   color: $french-gray;
 }

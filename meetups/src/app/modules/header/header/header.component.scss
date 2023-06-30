@@ -14,9 +14,13 @@
   &__container {
     display: flex;
     align-items: center;
-    gap: rem(81px);
+    gap: rem(10px);
     padding-top: rem(22px);
     padding-bottom: rem(22px);
+    
+    @media #{$screen-big} {
+      gap: rem(81px);
+    }
   }
 
   &__navbar {

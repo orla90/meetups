@@ -19,6 +19,7 @@ import { UserInfoModule } from './modules/user-info/user-info.module';
 import { DialogWindowModule } from './modules/dialog-window/dialog-window.module';
 import { MyMeetupsModule } from './modules/meetups/my-meetups/my-meetups.module';
 import { BreadcrumbsModule } from './modules/breadcrumbs/breadcrumbs.module';
+import { FiltersModule } from './modules/meetups/filters/filters.module';
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -44,6 +45,7 @@ import { BreadcrumbsModule } from './modules/breadcrumbs/breadcrumbs.module';
     DialogWindowModule,
     MyMeetupsModule,
     BreadcrumbsModule,
+    FiltersModule,
   ],
 })
 export class AppModule {}

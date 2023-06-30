@@ -6,6 +6,8 @@ import { SearchBarModule } from '../search-bar/search-bar.module';
 import { PaginationModule } from '../pagination/pagination.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FiltersModule } from '../filters/filters.module';
+
 @NgModule({
   declarations: [MyMeetupsComponent],
   imports: [
@@ -15,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     PaginationModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
+    FiltersModule
   ],
   exports: [MyMeetupsComponent],
 })

@@ -5,6 +5,7 @@ import { MeetupModule } from '../meetup/meetup.module';
 import { SearchBarModule } from '../search-bar/search-bar.module';
 import { PaginationModule } from '../pagination/pagination.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FiltersModule } from '../filters/filters.module';
 
 @NgModule({
   declarations: [MeetupListComponent],
@@ -15,6 +16,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     SearchBarModule,
     PaginationModule,
     MatProgressSpinnerModule,
+    FiltersModule
   ],
 })
 export class MeetupListModule {}

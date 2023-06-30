@@ -48,7 +48,6 @@ export class MyMeetupsComponent implements OnInit {
         this.loading = false;
         this.cdr.detectChanges();
       });
-
   }
 
   setPaginationTotalCount() {
@@ -60,12 +59,7 @@ export class MyMeetupsComponent implements OnInit {
       meetup.name!.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
     this.setPaginationTotalCount();
-    this.pagination.currentPage =
-      this.pagination.currentPage > this.pagination.lastPage
-        ? this.pagination.lastPage
-        : this.pagination.currentPage === 0
-        ? 1
-        : this.pagination.currentPage;
+    this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();
     this.cdr.detectChanges();
   }
@@ -82,5 +76,37 @@ export class MyMeetupsComponent implements OnInit {
       (currentPage - 1) * pageSize,
       (currentPage - 1) * pageSize + pageSize
     );
+  }
+
+  setPaginationCurrentPage() {
+    this.pagination.currentPage =
+      this.pagination.currentPage > this.pagination.lastPage
+        ? this.pagination.lastPage
+        : this.pagination.currentPage === 0
+        ? 1
+        : this.pagination.currentPage;
+  }
+
+  filter(filter: string) {
+    console.log(filter);
+    const now = new Date();
+
+    if (filter === 'future') {
+      this.filteredMeetups = this.meetups.filter((meetup) => {
+        return new Date(meetup.time) >= now;
+      });
+    } else if (filter === 'completed') {
+      this.filteredMeetups = this.meetups.filter((meetup) => {
+        return new Date(meetup.time) < now;
+      });
+    } else {
+      this.filteredMeetups = this.meetups;
+    }
+
+    this.setPaginationTotalCount();
+    this.setPaginationCurrentPage();
+    this.getCurrentPageMeetups();
+    this.cdr.detectChanges();
+    console.log(this.filteredMeetups);
   }
 }

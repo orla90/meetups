@@ -1,8 +1,19 @@
 @import "../../../../assets/styles/global.scss";
 
 .my-meetups {
-  margin-top: rem($height-header-desktop + 40
-  );
+  margin-top: rem($height-header-desktop + 40);
+  
+  &__panel {
+    display: flex;
+    margin-top: rem(36px);
+    justify-content: space-between;
+  }
+  
+  &__filters {
+    display: flex;
+    width: 100%;
+    max-width: 200px;
+  }
 
   &__search-bar {
     padding-top: rem(36px);
@@ -25,9 +36,7 @@
   }
   
   &__create {
-    margin-top: rem(36px);
     display: flex;
-    justify-content: flex-end;
   }
   
   &__title {
