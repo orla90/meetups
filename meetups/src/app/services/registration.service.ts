@@ -15,7 +15,6 @@ export class RegistrationService {
   }
   
   register(email: string | null, password: string | null, fio: string | null) {
-    console.log(email, password, fio)
     return this.http
     .post(`${this.baseUrl}/registration`, { email, password, fio })
   }

@@ -25,9 +25,7 @@
 
   &__filters {
     display: flex;
-    width: 100%;
-    max-width: 200px;
     margin-top: rem(36px);
-    justify-content: flex-start;
+    justify-content: flex-end;
   }
 }

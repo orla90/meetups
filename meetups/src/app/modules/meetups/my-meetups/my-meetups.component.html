@@ -1,9 +1,6 @@
 <section class="my-meetups">
   <div class="my-meetups__container container">
     <div class="my-meetups__panel">
-      <div class="my-meetups__filters">
-        <app-filters (filterEvent)="filter($event)"></app-filters>
-      </div>
       <div class="my-meetups__create">
         <a
           routerLink="/my-meetups/create"
@@ -11,6 +8,9 @@
         >
           <div class="my-meetups__btn_add"></div>
         </a>
+    </div>
+    <div class="my-meetups__filters">
+      <app-filters (filterEvent)="filter($event)"></app-filters>
     </div>
     </div>
     <div class="my-meetups__search-bar">

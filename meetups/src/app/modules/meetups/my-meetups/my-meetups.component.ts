@@ -88,7 +88,6 @@ export class MyMeetupsComponent implements OnInit {
   }
 
   filter(filter: string) {
-    console.log(filter);
     const now = new Date();
 
     if (filter === 'future') {
@@ -107,6 +106,5 @@ export class MyMeetupsComponent implements OnInit {
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();
     this.cdr.detectChanges();
-    console.log(this.filteredMeetups);
   }
 }
