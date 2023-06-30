@@ -4,7 +4,6 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Meetup } from 'src/app/classes/meetup';
 import { Pagination } from 'src/app/classes/pagination';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,69 +16,49 @@ import { MeetupService } from 'src/app/services/meetup.service';
   styleUrls: ['./meetup-list.component.scss'],
 })
 export class MeetupListComponent implements OnInit {
-  searchInput: string = '';
-  meetups: Meetup[] = [];
-  filteredMeetups: Meetup[] = [];
-  currentPageMeetups: Meetup[] = [];
-  pagination = new Pagination();
-  userId!: number;
+  public searchInput: string = '';
+  public meetups: Meetup[] = [];
+  public filteredMeetups: Meetup[] = [];
+  public currentPageMeetups: Meetup[] = [];
+  public pagination = new Pagination();
+  public userId!: number;
+  public loading: boolean = false;
 
   constructor(
     public meetupService: MeetupService,
     public authService: AuthService,
-    private router: Router,
     private cdr: ChangeDetectorRef
   ) {
     this.userId = this.authService.user!.id;
   }
 
-  ngOnInit() {    
+  ngOnInit() {
+    this.loading = true;
     this.authService.user &&
       this.meetupService.getMeetups().subscribe((data) => {
         this.meetups = data;
         this.filteredMeetups = data;
         this.setPaginationTotalCount();
         this.getCurrentPageMeetups();
+        this.loading = false;
         this.cdr.detectChanges();
       });
   }
-  
+
   signMeetupEvent(idMeetup: number) {
-    this.meetupService.signToMeetup(idMeetup, this.authService.user!.id).subscribe({
-        next: () => {
-          // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todos';
-          // this.router.navigateByUrl(returnUrl);
-        // this.createdNewUser = true;
-        // console.log('success')
-        },
-      error: error => {
-        // console.log('fail')
-
-          // this.meetupError = error.error[0] || 'Incorrect username/password';
-          // this.loading = false;
-          // this.cdr.detectChanges();
-        }
-      })
+    this.meetupService
+      .signToMeetup(idMeetup, this.authService.user!.id)
+      .subscribe(() => {
+        this.cdr.detectChanges();
+      });
   }
-  
-  signOverMeetup(idMeetup: number) {
-    // console.log('idMeetup', idMeetup)
-    // console.log('this.authService.user!.id', this.authService.user!.id)
-    this.meetupService.signOverMeetup(idMeetup, this.authService.user!.id).subscribe({
-        next: () => {
-          // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todos';
-          // this.router.navigateByUrl(returnUrl);
-        // this.signedToMeetup = true;
-        // console.log('success over')
-        },
-      error: error => {
-        // console.log('fail')
 
-          // this.meetupError = error.error[0] || 'Incorrect username/password';
-          // this.loading = false;
-          // this.cdr.detectChanges();
-        }
-      })
+  signOverMeetup(idMeetup: number) {
+    this.meetupService
+      .signOverMeetup(idMeetup, this.authService.user!.id)
+      .subscribe(() => {
+        this.cdr.detectChanges();
+      });
   }
 
   setPaginationTotalCount() {

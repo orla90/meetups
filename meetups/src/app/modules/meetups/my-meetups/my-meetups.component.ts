@@ -14,34 +14,41 @@ import { MeetupService } from 'src/app/services/meetup.service';
   selector: 'app-my-meetups',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './my-meetups.component.html',
-  styleUrls: ['./my-meetups.component.scss']
+  styleUrls: ['./my-meetups.component.scss'],
 })
-export class MyMeetupsComponent {
-  searchInput: string = '';
-  meetups: Meetup[] = [];
-  filteredMeetups: Meetup[] = [];
-  currentPageMeetups: Meetup[] = [];
-  pagination = new Pagination();
-  userId!: number;
+export class MyMeetupsComponent implements OnInit {
+  public searchInput: string = '';
+  public meetups: Meetup[] = [];
+  public filteredMeetups: Meetup[] = [];
+  public currentPageMeetups: Meetup[] = [];
+  public pagination = new Pagination();
+  public userId!: number;
+  public loading: boolean = false;
 
   constructor(
     public meetupService: MeetupService,
     public authService: AuthService,
-    private router: Router,
     private cdr: ChangeDetectorRef
   ) {
     this.userId = this.authService.user!.id;
   }
 
   ngOnInit() {
+    this.loading = true;
     this.authService.user &&
       this.meetupService.getMeetups().subscribe((data) => {
-        this.meetups = data.filter(meetup => meetup.createdBy === this.userId);
-        this.filteredMeetups = data.filter(meetup => meetup.createdBy === this.userId);
+        this.meetups = data.filter(
+          (meetup) => meetup.createdBy === this.userId
+        );
+        this.filteredMeetups = data.filter(
+          (meetup) => meetup.createdBy === this.userId
+        );
         this.setPaginationTotalCount();
         this.getCurrentPageMeetups();
+        this.loading = false;
         this.cdr.detectChanges();
       });
+
   }
 
   setPaginationTotalCount() {

@@ -15,13 +15,13 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  users: User[] = [];
-  usersEmailArray: Array<string> = [];
+  public users: User[] = [];
+  public usersEmailArray: Array<string> = [];
+  public loading: boolean = false;
 
   constructor(
     public usersService: UsersService,
     private cdr: ChangeDetectorRef,
-    private registrationService: RegistrationService
   ) {}
 
   ngOnInit() {
@@ -29,10 +29,12 @@ export class UsersListComponent implements OnInit {
   }
 
   getAllUsers() {
+    this.loading = true;
     this.usersService.getAllUsers().subscribe((data) => {
       this.users = data;
-      this.cdr.detectChanges();
+      this.loading = false;
       this.usersEmailArray = this.users.map((user) => user.email);
+      this.cdr.detectChanges();
     });
   }
 
