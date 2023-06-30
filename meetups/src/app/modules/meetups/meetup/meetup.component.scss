@@ -23,6 +23,7 @@
 
   &__title {
     align-items: flex-start;
+    margin-right: rem(10px);
   }
 
   &__header {
@@ -37,8 +38,12 @@
 
     &-info {
       display: flex;
+      flex-wrap: wrap;
       align-items: top;
-      gap: rem(10px);
+      
+      @media #{$screen-medium} {
+        flex-wrap: nowrap;
+      }
     }
 
     &-metadata {

@@ -5,6 +5,21 @@
     list-style: none;
     display: flex;
     gap: rem(34px);
+    text-align: center;
+  }
+
+  &_desktop {
+    display: none;
+    @media #{$screen-big} {
+      display: flex;
+    }
+  }
+
+  &_mobile {
+    display: flex;
+    @media #{$screen-big} {
+      display: none;
+    }
   }
 
   &__link {
@@ -22,6 +37,14 @@
         border-bottom: rem(10px) solid $tuscany;
         border-radius: rem(5px);
       }
+    }
+  }
+
+  &__icon {
+    color: $tuscany;
+
+    &_big {
+      transform: scale(2.5);
     }
   }
 }

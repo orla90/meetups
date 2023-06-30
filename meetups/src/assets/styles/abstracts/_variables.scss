@@ -43,6 +43,13 @@ $font-family-additional: "Cherry Bomb One";
 $font-family: $font-family-custom, $font-family-default;
 
 /**
+* Breakpoints
+*/
+$screen-medium: '(min-width: 768px)';
+$screen-big: '(min-width: 1024px)';
+$screen-large: '(min-width: 1440px)';
+
+/**
 * Layout
 */
 $width-container: 1362px;
