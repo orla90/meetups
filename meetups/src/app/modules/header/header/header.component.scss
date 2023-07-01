@@ -14,7 +14,6 @@
   &__container {
     display: flex;
     align-items: center;
-    gap: rem(10px);
     padding-top: rem(22px);
     padding-bottom: rem(22px);
     
@@ -25,13 +24,18 @@
 
   &__navbar {
     flex: 1;
+    margin-left: rem(10px);
   }
 
   &__icon {
     color: $tuscany;
 
     &_big {
-      transform: scale(2);
+      transform: scale(1.2);
+      
+      @media #{$screen-medium} {
+        transform: scale(2);
+      }
     }
   }
 
@@ -84,7 +88,7 @@
 
       &__title {
         @include font(
-          $size: rem(46px),
+          $size: rem(36px),
           $height: $line-height-giant,
           $weight: $font-weight-bold
         );

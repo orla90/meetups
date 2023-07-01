@@ -1,6 +1,6 @@
 <nav class="navbar navbar_desktop">
   <ul class="navbar__list">
-    <li><a class="navbar__link title" routerLink="/home" [routerLinkActive]="'navbar__link_active'" [routerLinkActiveOptions]="{ exact: true }">Все митапы</a></li>
+    <li><a class="navbar__link title" routerLink="/meetups" [routerLinkActive]="'navbar__link_active'" [routerLinkActiveOptions]="{ exact: true }">Все митапы</a></li>
     <li><a class="navbar__link title" routerLink="/my-meetups" [routerLinkActive]="'navbar__link_active'">Мои митапы</a></li>
     <li *ngIf="isAdmin"><a class="navbar__link title" routerLink="/admin" [routerLinkActive]="'navbar__link_active'">Пользователи</a></li>
   </ul>
@@ -11,12 +11,12 @@
     <mat-icon class="navbar__icon navbar__icon_big">apps</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/home">
-      <mat-icon fontIcon="home" class="navbar__icon"></mat-icon>
+    <button mat-menu-item routerLink="/meetups">
+      <mat-icon fontIcon="group" class="navbar__icon"></mat-icon>
       <span>Все митапы</span>
     </button>
     <button mat-menu-item>
-      <mat-icon class="navbar__icon">group</mat-icon>
+      <mat-icon class="navbar__icon">group_add</mat-icon>
       <span routerLink="/my-meetups">Мои митапы</span>
     </button>
     <button mat-menu-item *ngIf="isAdmin">

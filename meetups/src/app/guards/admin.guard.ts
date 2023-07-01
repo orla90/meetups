@@ -11,8 +11,14 @@ export const adminGuard: CanActivateFn = (route, state): any => {
     authService.user.roles[0].name.toLowerCase() === 'admin'
   ) {
     return true;
-  } else {
+  } else if(
+    authService.user &&
+    authService.user.roles[0].name.toLowerCase() !== 'admin'
+  ) { 
     router.navigate(['/']);
+    return false;
+  } else {
+    router.navigate(['/login']);
     return false;
   }
 };

@@ -9,9 +9,20 @@ import { authGuard } from './guards/auth.guard';
 import { adminGuard } from './guards/admin.guard';
 import { UserInfoComponent } from './modules/user-info/user-info.component';
 import { MyMeetupsComponent } from './modules/meetups/my-meetups/my-meetups.component';
+import { HomeComponent } from './modules/home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: {
+      breadcrumb: {
+        label: 'Home',
+        info: 'home',
+      },
+    },
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -22,15 +33,20 @@ const routes: Routes = [
       },
     },
   },
-  { path: 'register', component: RegistrationComponent },
+  { path: 'register', component: RegistrationComponent, data: {
+    breadcrumb: {
+      label: 'Register',
+      info: 'account_circle',
+    },
+  }, },
   {
-    path: 'home',
+    path: 'meetups',
     component: MeetupListComponent,
     canActivate: [authGuard],
     data: {
       breadcrumb: {
         label: 'All Meetups',
-        info: 'home',
+        info: 'group',
       },
     },
   },
@@ -41,7 +57,7 @@ const routes: Routes = [
     data: {
       breadcrumb: {
         label: 'My Meetups',
-        info: 'home',
+        info: 'group',
       },
     },
   },
@@ -90,11 +106,11 @@ const routes: Routes = [
   {
     path: 'admin',
     component: UsersListComponent,
-    canActivate: [adminGuard],
+    canActivate: [adminGuard, authGuard],
     data: {
       breadcrumb: {
         label: 'Admin',
-        info: 'supervisor_account',
+        info: 'person_add',
       },
     },
   },
