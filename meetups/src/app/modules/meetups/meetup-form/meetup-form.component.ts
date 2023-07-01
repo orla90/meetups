@@ -37,15 +37,15 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
     reason_to_come: new FormControl('', [Validators.required]),
   });
 
-  submitted = false;
-  loading = false;
-  meetupError?: string;
-  dataListener!: Subscription;
-  routeListener!: Subscription;
-  formType?: string;
-  title?: string;
-  id!: number;
-  currentMeetup?: Meetup;
+  public submitted = false;
+  public loading = false;
+  public meetupError?: string;
+  public dataListener!: Subscription;
+  public routeListener!: Subscription;
+  public formType?: string;
+  public title?: string;
+  public id!: number;
+  public currentMeetup?: Meetup;
 
   constructor(
     private meetupService: MeetupService,
@@ -63,7 +63,7 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
 
   setFormType() {
     this.dataListener = this.route.data.subscribe((data) => {
-      this.formType = data['breadcrumb'];
+      this.formType = data['breadcrumb'].label;
       if (this.formType == 'Create Meetup') {
         this.title = 'Создание митапа';
       } else {
@@ -162,9 +162,9 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
 
   saveMeetup() {
     this.submitted = true;
-
+    
     if (this.meetupForm.invalid) return;
-
+    
     const name = this.name!.value;
     const description = JSON.stringify({
       long: this.long_description?.value,

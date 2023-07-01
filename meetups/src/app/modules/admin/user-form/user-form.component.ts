@@ -5,6 +5,7 @@ import {
   Output,
   OnInit,
   EventEmitter,
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -39,7 +40,11 @@ export class UserFormComponent implements OnInit {
     role: new FormControl('', [Validators.required]),
   });
 
-  constructor(private usersService: UsersService, public dialog: MatDialog) {}
+  constructor(
+    private usersService: UsersService,
+    public dialog: MatDialog,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     if (this.user) {
@@ -97,6 +102,7 @@ export class UserFormComponent implements OnInit {
 
   updateApiUser() {
     if (this.userForm.invalid) return;
+    this.loading = true;
     if (
       this.email?.value !== this.user?.email ||
       this.password?.value !== this.user?.password
@@ -117,9 +123,11 @@ export class UserFormComponent implements OnInit {
         .setRoles([this.role!.value!.toUpperCase()], this.user!.id)
         .subscribe();
     }
+    this.loading = false;
   }
 
   deleteApiUser() {
+    this.loading = true;
     this.usersService.deleteUser(this.user!.id).subscribe();
   }
 }

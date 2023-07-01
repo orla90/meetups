@@ -16,7 +16,7 @@
     </div>
     
     <section class="header-controls header-controls_mobile">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="header__settings">
         <mat-icon class="header__icon header__icon_big">perm_data_setting</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
@@ -28,9 +28,9 @@
           <mat-icon class="header__icon">exit_to_app</mat-icon>
           <span>Выход</span>
         </button>
-        <button mat-menu-item *ngIf="!isAuth">
+        <button mat-menu-item *ngIf="!isAuth" routerLink="/login">
           <mat-icon class="header__icon">exit_to_app</mat-icon>
-          <span routerLink="/login">Авторизация</span>
+          <span>Авторизация</span>
         </button>
       </mat-menu>
     </section>

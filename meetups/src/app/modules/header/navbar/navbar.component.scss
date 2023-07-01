@@ -29,6 +29,11 @@
     text-decoration: none;
     line-height: normal;
 
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+
     &_active {
       &::after {
         content: "";
@@ -40,16 +45,23 @@
     }
   }
 
+  &__panel {
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+  }
+
   &__icon {
     color: $tuscany;
 
     &_big {
-      
-      transform: scale(1.5);
-      
-      @media #{$screen-medium} {
-        transform: scale(2.5);
-      }
+      transform: scale(2.5);
     }
+  }
+  
+  &__btn {
+    padding-left: rem(16px);
+    padding-right: rem(16px);
   }
 }

@@ -26,10 +26,20 @@
     &_page {
       background-color: $east-bay;
     }
+    
+    &_range {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   
   &__select {
     margin-left: rem(20px);
-    max-width: rem(100px);
+    max-width: rem(150px);
+  }
+  
+  &__menu {
+    max-width: rem(50px);
   }
 }

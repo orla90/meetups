@@ -7,8 +7,15 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Meetup } from 'src/app/classes/meetup';
-import { checkWordDeclension, parseLongDescription, parseShortDescription, parseTime } from 'src/app/helpers/utils';
+import {
+  checkWordDeclension,
+  parseLongDescription,
+  parseShortDescription,
+  parseTime,
+} from 'src/app/helpers/utils';
 
 @Component({
   selector: 'app-meetup',
@@ -26,11 +33,16 @@ export class MeetupComponent implements OnInit {
   public canComeBtnVisible!: boolean;
   public isCompleted: boolean = false;
   public isCurUserMeetup: boolean = false;
-  
+  public dataListener!: Subscription;
+  public isUpdatingPossible!: boolean;
+
+  constructor(private route: ActivatedRoute) {}
+
   ngOnInit() {
     this.checkUserSign();
     this.isMeetupisCompleted();
     this.checkOwner();
+    this.checkRoute();
   }
 
   checkOwner() {
@@ -40,7 +52,17 @@ export class MeetupComponent implements OnInit {
       this.isCurUserMeetup = false;
     }
   }
-  
+
+  checkRoute() {
+    this.dataListener = this.route.data.subscribe((data) => {
+      if (data['breadcrumb'].label === 'My Meetups') {
+        this.isUpdatingPossible = true;
+      } else if (data['breadcrumb'].label === 'All Meetups') {
+        this.isUpdatingPossible = false;
+      }
+    });
+  }
+
   isMeetupisCompleted() {
     const now = new Date();
     if (now > new Date(this.meetup.time)) {

@@ -11,6 +11,10 @@
   border-radius: $small-radius;
   height: 50px;
   text-decoration: none;
+  
+  &:hover {
+    opacity: $transition-opacity;
+  }
 
   &__icon {
     width: rem(29px);

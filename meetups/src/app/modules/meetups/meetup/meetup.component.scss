@@ -24,6 +24,7 @@
   &__title {
     align-items: flex-start;
     margin-right: rem(10px);
+    overflow: auto;
   }
 
   &__header {
@@ -40,10 +41,6 @@
       display: flex;
       flex-wrap: wrap;
       align-items: top;
-      
-      @media #{$screen-medium} {
-        flex-wrap: nowrap;
-      }
     }
 
     &-metadata {
@@ -60,7 +57,7 @@
   }
 
   &__subscribers {
-    padding-top: rem(10px);
+    line-height: 2.4;
   }
 
   &__vanue {
@@ -79,6 +76,8 @@
 
   &__description {
     max-width: rem(1062px);
+    padding-right: rem(18px);
+    overflow: auto;
   }
 
   &__heading {
@@ -96,6 +95,7 @@
     align-items: center;
     justify-content: space-between;
     gap: rem(10px);
+    flex-wrap: wrap;
   }
 
   &__button {
@@ -118,6 +118,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      
+      @media #{$screen-medium} {
+        flex-wrap: nowrap;
+      }
     }
   }
 
@@ -127,6 +132,7 @@
     display: flex;
     align-items: center;
     gap: rem(10px);
+    margin-right: rem(10px);
 
     &::before {
       content: url("../../../../assets/images/icons/avatar.svg");

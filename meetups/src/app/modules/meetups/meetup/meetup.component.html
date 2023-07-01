@@ -89,7 +89,7 @@
           </button>
           <a
             [routerLink]="['edit', meetup.id]"
-            *ngIf="!isCompleted && isCurUserMeetup"
+            *ngIf="!isCompleted && isCurUserMeetup && isUpdatingPossible"
             class="button button_big button_purple"
           >
             Редактировать

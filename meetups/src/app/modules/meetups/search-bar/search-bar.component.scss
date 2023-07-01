@@ -4,6 +4,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  border: rem(3px) solid transparent;
+  border-radius: $small-radius;
+  
+  &:hover {
+    transition: $transition-duration-hover $transition-function-hover;
+    border-color: $east-bay;
+  }
+  
+  &:hover &__btn {
+    background-image: url("../../../../assets/images/icons/searching-purple.svg");
+    transition: $transition-duration-hover $transition-function-hover;
+  }
+  
+  &:hover &__input::placeholder {
+    transition: $transition-duration-hover $transition-function-hover;
+    color: $east-bay;
+  }
 
   &__input-iconed {
     position: relative;
@@ -20,6 +38,7 @@
     background: $french-gray;
     border-radius: $small-radius;
     color: $mine-shaft;
+    outline: none;
 
     &::placeholder {
       color: $tuscany;

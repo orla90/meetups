@@ -52,16 +52,26 @@
   }
 
   &__btn {
-    width: rem(50px);
-    height: rem(50px);
+    width: rem(48px);
+    height: rem(48px);
+    border: rem(3px) solid $tuscany;
+    transition: $transition-duration-hover $transition-function-hover;
+
+    &:hover {
+      border-color: $east-bay;
+    }
+    
+    &:hover &_add {
+      background-image: url("../../../../assets/images/icons/close-purple.svg");
+    }
 
     &_add {
       background-image: url("../../../../assets/images/icons/close.svg");
       transform: rotate(45deg);
-      width: rem(45px);
-      height: rem(45px);
+      width: rem(35px);
+      height: rem(35px);
       background-color: inherit;
-      background-size: cover;
+      background-size: contain;
       background-repeat: no-repeat;
       align-self: center;
     }

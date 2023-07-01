@@ -16,7 +16,7 @@
     align-items: center;
     padding-top: rem(22px);
     padding-bottom: rem(22px);
-    
+
     @media #{$screen-big} {
       gap: rem(81px);
     }
@@ -27,15 +27,19 @@
     margin-left: rem(10px);
   }
 
+  &__settings  {
+    margin-left: rem(5px);
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+  }
+
   &__icon {
     color: $tuscany;
 
     &_big {
-      transform: scale(1.2);
-      
-      @media #{$screen-medium} {
-        transform: scale(2);
-      }
+      transform: scale(2);
     }
   }
 
@@ -43,7 +47,7 @@
     align-items: center;
     gap: rem(22px);
     margin-left: auto;
-    
+
     &_desktop {
       display: none;
       @media #{$screen-big} {
@@ -65,6 +69,11 @@
       background-size: cover;
       background-color: inherit;
       cursor: pointer;
+
+      &:hover {
+        transition: $transition-duration-hover $transition-function-hover;
+        opacity: $transition-opacity;
+      }
 
       &_settings {
         background-image: url(../../../../assets/images/icons/settings.svg);
@@ -96,6 +105,11 @@
         font-style: normal;
         text-decoration: none;
         color: $mercury;
+
+        &:hover {
+          transition: $transition-duration-hover $transition-function-hover;
+          opacity: $transition-opacity;
+        }
 
         @media #{$screen-medium} {
           @include font(

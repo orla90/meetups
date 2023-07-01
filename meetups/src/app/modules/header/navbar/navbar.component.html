@@ -7,21 +7,21 @@
 </nav>
 
 <section class="navbar navbar_mobile">
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu" class="navbar__panel">
     <mat-icon class="navbar__icon navbar__icon_big">apps</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/meetups">
+    <button mat-menu-item routerLink="/meetups" class="navbar__btn">
       <mat-icon fontIcon="group" class="navbar__icon"></mat-icon>
       <span>Все митапы</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item routerLink="/my-meetups" class="navbar__btn">
       <mat-icon class="navbar__icon">group_add</mat-icon>
-      <span routerLink="/my-meetups">Мои митапы</span>
+      <span>Мои митапы</span>
     </button>
-    <button mat-menu-item *ngIf="isAdmin">
+    <button mat-menu-item *ngIf="isAdmin" routerLink="/admin" class="navbar__btn">
       <mat-icon class="navbar__icon">person_add</mat-icon>
-      <span routerLink="/admin">Пользователи</span>
+      <span>Пользователи</span>
     </button>
   </mat-menu>
 </section>

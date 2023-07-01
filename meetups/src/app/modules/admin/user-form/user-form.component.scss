@@ -99,11 +99,18 @@
     padding: rem(10px) rem(20px);
   }
 
-  &__btn_delete {
-    background-image: url("../../../../assets/images/icons/close.svg");
-  }
-
-  &__btn_update {
-    background-image: url("../../../../assets/images/icons/edit.svg");
+  &__btn {
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+    
+    &_delete {
+      background-image: url("../../../../assets/images/icons/close.svg");
+    }
+  
+    &_update {
+      background-image: url("../../../../assets/images/icons/edit.svg");
+    }
   }
 }
