@@ -1,22 +1,24 @@
 @import "../../../../assets/styles/global.scss";
 
 .meetups {
-  margin-top: rem($height-header-desktop + 40);
+  margin-top: rem(
+    $height-header-desktop + $height-breadcrumbs + $height-big-padding
+  );
 
   &__search-bar {
     margin-top: rem(36px);
-    margin-bottom: rem(72px);
+    margin-bottom: rem($height-big-padding);
   }
 
   &__pagination {
-    margin-bottom: rem(72px);
+    margin-bottom: rem($height-big-padding);
   }
 
   &__list {
     display: flex;
     flex-direction: column;
     gap: rem(40px);
-    margin-bottom: rem(72px);
+    margin-bottom: rem($height-big-padding);
   }
 
   &__item {
@@ -26,6 +28,10 @@
   &__filters {
     display: flex;
     margin-top: rem(36px);
-    justify-content: flex-end;
+    width: rem(250px);
+    
+    &-item {
+      width: 100%;
+    }
   }
 }

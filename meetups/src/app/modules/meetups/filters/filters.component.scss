@@ -1,6 +1,7 @@
 @import "../../../../assets/styles/global.scss";
 
 .filters {
+  
   &:hover &__select,
   &:hover &__input {
     border-radius: rem(3px);
@@ -23,7 +24,7 @@
     font-size: rem(18px);
     width: 100%;
     background-color: $mine-shaft;
-    height: rem(40px);
+    height: rem(50px);
     color: $french-gray;
     padding: rem(5px);
     border-radius: rem(3px);

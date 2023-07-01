@@ -11,15 +11,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { RegistrationModule } from './modules/registration-and-login/registration/registration.module';
 import { MeetupFormModule } from './modules/meetups/meetup-form/meetup-form.module';
-import { PaginationModule } from './modules/meetups/pagination/pagination.module';
 import { UsersListModule } from './modules/admin/users-list/users-list.module';
-import { UserFormModule } from './modules/admin/user-form/user-form.module';
 import { AddUserModule } from './modules/admin/add-user/add-user.module';
 import { UserInfoModule } from './modules/user-info/user-info.module';
 import { DialogWindowModule } from './modules/dialog-window/dialog-window.module';
 import { MyMeetupsModule } from './modules/meetups/my-meetups/my-meetups.module';
 import { BreadcrumbsModule } from './modules/breadcrumbs/breadcrumbs.module';
-import { FiltersModule } from './modules/meetups/filters/filters.module';
+
 @NgModule({
   declarations: [AppComponent],
   providers: [
@@ -37,15 +35,13 @@ import { FiltersModule } from './modules/meetups/filters/filters.module';
     LoginModule,
     RegistrationModule,
     MeetupFormModule,
-    PaginationModule,
-    UserFormModule,
+    MeetupListModule,
     UsersListModule,
     AddUserModule,
     UserInfoModule,
     DialogWindowModule,
     MyMeetupsModule,
     BreadcrumbsModule,
-    FiltersModule,
   ],
 })
 export class AppModule {}

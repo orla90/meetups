@@ -1,1 +1,16 @@
-<p>breadcrumbs works!</p>
+<section class="breadcrumbs">
+  <div class="container">
+    <xng-breadcrumb [separator]="iconTemplate">
+      <ng-container *xngBreadcrumbItem="let breadcrumb; let info = info">
+        <mat-icon *ngIf="info">{{ info }}</mat-icon>
+        <ng-container class="breadcrumbs__content">{{
+          breadcrumb
+        }}</ng-container>
+      </ng-container>
+    </xng-breadcrumb>
+  </div>
+</section>
+
+<ng-template #iconTemplate>
+  <mat-icon>arrow_right</mat-icon>
+</ng-template>

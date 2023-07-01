@@ -12,14 +12,26 @@ import { MyMeetupsComponent } from './modules/meetups/my-meetups/my-meetups.comp
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      breadcrumb: {
+        label: 'Login',
+        info: 'exit_to_app',
+      },
+    },
+  },
   { path: 'register', component: RegistrationComponent },
   {
     path: 'home',
     component: MeetupListComponent,
     canActivate: [authGuard],
     data: {
-      breadcrumb: 'All Meetups',
+      breadcrumb: {
+        label: 'All Meetups',
+        info: 'home',
+      },
     },
   },
   {
@@ -27,27 +39,39 @@ const routes: Routes = [
     component: MyMeetupsComponent,
     canActivate: [authGuard],
     data: {
-      breadcrumb: 'My Meetups',
+      breadcrumb: {
+        label: 'My Meetups',
+        info: 'home',
+      },
     },
   },
   {
     path: 'my-meetups',
     data: {
-      breadcrumb: 'My Meetups',
+      breadcrumb: {
+        label: 'My Meetups',
+        info: 'group',
+      },
     },
     children: [
       {
         path: 'create',
         component: MeetupFormComponent,
         data: {
-          breadcrumb: 'Create Meetup',
+          breadcrumb: {
+            label: 'Create Meetup',
+            info: 'group_add',
+          },
         },
       },
       {
         path: 'edit/:id',
         component: MeetupFormComponent,
         data: {
-          breadcrumb: 'Edit Meetup',
+          breadcrumb: {
+            label: 'Edit Meetup',
+            info: 'edit',
+          },
         },
       },
     ],
@@ -57,10 +81,23 @@ const routes: Routes = [
     component: UserInfoComponent,
     canActivate: [authGuard],
     data: {
-      breadcrumb: 'My Data',
+      breadcrumb: {
+        label: 'My Data',
+        info: 'settings',
+      },
     },
   },
-  { path: 'admin', component: UsersListComponent, canActivate: [adminGuard] },
+  {
+    path: 'admin',
+    component: UsersListComponent,
+    canActivate: [adminGuard],
+    data: {
+      breadcrumb: {
+        label: 'Admin',
+        info: 'supervisor_account',
+      },
+    },
+  },
   { path: '**', redirectTo: '/home' },
 ];
 

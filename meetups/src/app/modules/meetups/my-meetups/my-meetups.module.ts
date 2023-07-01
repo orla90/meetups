@@ -7,7 +7,7 @@ import { PaginationModule } from '../pagination/pagination.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FiltersModule } from '../filters/filters.module';
-
+import {BreadcrumbModule} from 'xng-breadcrumb';
 @NgModule({
   declarations: [MyMeetupsComponent],
   imports: [
@@ -17,7 +17,8 @@ import { FiltersModule } from '../filters/filters.module';
     PaginationModule,
     AppRoutingModule,
     MatProgressSpinnerModule,
-    FiltersModule
+    FiltersModule,
+    BreadcrumbModule
   ],
   exports: [MyMeetupsComponent],
 })

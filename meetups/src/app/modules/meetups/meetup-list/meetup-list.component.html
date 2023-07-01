@@ -1,11 +1,11 @@
 <section class="meetups">
   <div class="meetups__container container">
-    <div class="meetups__filters">
-      <app-filters (filterEvent)="filter($event)"></app-filters>
-    </div>
-    <div class="meetups__search-bar">
-      <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
-    </div>
+      <div class="meetups__filters">
+        <app-filters (filterEvent)="filter($event)" class="meetups__filters-item"></app-filters>
+      </div>
+      <div class="meetups__search-bar">
+        <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
+      </div>
   <ul class="meetups__list" *ngIf="currentPageMeetups">
     <li class="meetups__item" *ngFor="let meetup of currentPageMeetups">
       <app-meetup [meetup]="meetup" (signMeetupEvent)='signMeetupEvent($event)' (signOverMeetupEvent)='signOverMeetup($event)' [userId]="userId"/>
