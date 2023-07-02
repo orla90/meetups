@@ -1,5 +1,7 @@
 @import "../../../../assets/styles/global.scss";
 
+
+
 .meetup-form-section {
   box-sizing: border-box;
   background: $mine-shaft;
@@ -53,13 +55,20 @@
   }
 
   &__2-columns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    
+    @media #{$screen-big} {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 
   &__2-columns &__input {
-    width: rem(262px);
+    width: 100%;
+    
+    @media #{$screen-big} {
+      width: rem(262px);
+    }
   }
 
   &__error {
@@ -74,7 +83,9 @@
     width: rem(124px);
 
     &_small {
-      width: rem(77px);
+      @media #{$screen-big} {
+        width: rem(77px);
+      }
     }
   }
 
@@ -104,8 +115,11 @@
   }
 
   &__input {
-    max-width: rem(521px);
     height: rem(50px);
+    
+    @media #{$screen-big} {
+      max-width: rem(521px);
+    }
   }
 
   &__panel {

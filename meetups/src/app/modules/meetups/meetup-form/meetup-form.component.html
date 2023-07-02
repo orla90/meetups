@@ -22,9 +22,54 @@
             </div>
           </div>
         </div>
-        <div class="meetup-form__row">
+        <div class="meetup-form__2-rows">
           <div class="meetup-form__2-columns">
-            <div class="meetup-form__column meetup-form__column_center">
+            <div class="meetup-form__row">
+              <div class="meetup-form__column meetup-form__column_center">
+                <label for="date" class="meetup-form__label">Дата:</label>
+                <input
+                  class="meetup-form__input"
+                  type="date"
+                  id="date"
+                  name="date"
+                  placeholder="19.05.2000"
+                  formControlName="date"
+                />
+                <div
+                  class="meetup-form__error"
+                  *ngIf="submitted && date?.errors?.['required']"
+                >
+                  Field is required.
+                </div>
+              </div>
+  
+            </div>
+            
+            <div class="meetup-form__row">
+  
+              <div class="meetup-form__column meetup-form__column_center">
+                <label
+                  for="time"
+                  class="meetup-form__label meetup-form__label_small"
+                  >Время:</label
+                >
+                <input
+                  class="meetup-form__input"
+                  type="time"
+                  id="time"
+                  name="time"
+                  placeholder="11:00"
+                  formControlName="time"
+                />
+                <div
+                  class="meetup-form__error"
+                  *ngIf="submitted && time?.errors?.['required']"
+                >
+                  Field "Time" is required.
+                </div>
+              </div>
+            </div>
+            <!-- <div class="meetup-form__column meetup-form__column_center">
               <label for="date" class="meetup-form__label">Дата:</label>
               <input
                 class="meetup-form__input"
@@ -62,7 +107,7 @@
               >
                 Field "Time" is required.
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="meetup-form__row">

@@ -16,6 +16,7 @@ import {
   parseShortDescription,
   parseTime,
 } from 'src/app/helpers/utils';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-meetup-form',
@@ -51,7 +52,7 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
     private meetupService: MeetupService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
     this.meetupError = '';
   }

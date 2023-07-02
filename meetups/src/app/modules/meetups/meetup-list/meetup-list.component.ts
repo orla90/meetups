@@ -8,6 +8,8 @@ import { Meetup } from 'src/app/classes/meetup';
 import { Pagination } from 'src/app/classes/pagination';
 import { AuthService } from 'src/app/services/auth.service';
 import { MeetupService } from 'src/app/services/meetup.service';
+import { Router } from '@angular/router';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-meetup-list',
@@ -27,12 +29,25 @@ export class MeetupListComponent implements OnInit {
   constructor(
     public meetupService: MeetupService,
     public authService: AuthService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private bnIdle: BnNgIdleService,
+    private router: Router
   ) {
     this.userId = this.authService.user!.id;
   }
 
   ngOnInit() {
+    this.getMeetups();
+    this.bnIdle.startWatching(300).subscribe((isTimedOut: boolean) => {
+      if (isTimedOut) {
+        localStorage.removeItem('meetups_auth_token');
+        this.router.navigate(['/login']);
+        this.bnIdle.stopTimer();
+      }
+    });
+  }
+
+  getMeetups() {
     this.loading = true;
     this.authService.user &&
       this.meetupService.getMeetups().subscribe((data) => {

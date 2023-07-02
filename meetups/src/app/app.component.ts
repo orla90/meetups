@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { BnNgIdleService } from 'bn-ng-idle'; 
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'meetups';
+  title: string = 'meetups';
+  
+  constructor(private bnIdle: BnNgIdleService, private router: Router) { }
+  
+  ngOnInit(): void {
+    this.bnIdle.startWatching(300).subscribe((isTimedOut: boolean) => {
+      if (isTimedOut) {
+        localStorage.removeItem('meetups_auth_token');
+        this.router.navigate(['/login']);
+        this.bnIdle.stopTimer();
+      }
+    });
+  }
 }

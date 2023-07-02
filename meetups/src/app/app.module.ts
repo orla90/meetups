@@ -18,10 +18,12 @@ import { DialogWindowModule } from './modules/dialog-window/dialog-window.module
 import { MyMeetupsModule } from './modules/meetups/my-meetups/my-meetups.module';
 import { BreadcrumbsModule } from './modules/breadcrumbs/breadcrumbs.module';
 import { HomeModule } from './modules/home/home.module';
+import { BnNgIdleService } from 'bn-ng-idle';
 @NgModule({
   declarations: [AppComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    BnNgIdleService,
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -42,7 +44,7 @@ import { HomeModule } from './modules/home/home.module';
     DialogWindowModule,
     MyMeetupsModule,
     BreadcrumbsModule,
-    HomeModule
+    HomeModule,
   ],
 })
 export class AppModule {}

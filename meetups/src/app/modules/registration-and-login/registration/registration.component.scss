@@ -5,7 +5,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: rem(342px);
+  max-width: rem(342px + $medium-padding-size * 2);
+  width: 100%;
+  padding-left: $medium-padding-size;
+  padding-right: $medium-padding-size;
 
   &-form {
     display: flex;
