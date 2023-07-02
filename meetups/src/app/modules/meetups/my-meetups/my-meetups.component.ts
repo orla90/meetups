@@ -79,12 +79,7 @@ export class MyMeetupsComponent implements OnInit {
   }
 
   setPaginationCurrentPage() {
-    this.pagination.currentPage =
-      this.pagination.currentPage > this.pagination.lastPage
-        ? this.pagination.lastPage
-        : this.pagination.currentPage === 0
-        ? 1
-        : this.pagination.currentPage;
+    this.pagination.currentPage = 1;
   }
 
   filter(filter: string) {

@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { tap, BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { AuthorizedUser } from '../models/authorizedUser';
-import { User } from '../classes/user';
 
 @Injectable({
   providedIn: 'root',

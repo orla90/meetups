@@ -96,15 +96,15 @@
       transition: $transition-duration-hover $transition-function-hover;
       opacity: $transition-opacity;
     }
-    
+
     &_close {
       background-image: url("../../../../assets/images/icons/close.svg");
     }
-  
+
     &_edit {
       background-image: url("../../../../assets/images/icons/edit.svg");
     }
-  
+
     &_add {
       background-image: url("../../../../assets/images/icons/close.svg");
       transform: rotate(45deg);

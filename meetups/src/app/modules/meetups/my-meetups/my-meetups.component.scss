@@ -15,7 +15,7 @@
   &__filters {
     display: flex;
     width: rem(250px);
-    
+
     &-item {
       width: 100%;
     }
@@ -60,7 +60,7 @@
     &:hover {
       border-color: $east-bay;
     }
-    
+
     &:hover &_add {
       background-image: url("../../../../assets/images/icons/close-purple.svg");
     }

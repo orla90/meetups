@@ -18,7 +18,12 @@
       class="list-inline-item pagination__item"
       *ngIf="pagination.lastPage !== 1"
     >
-      <mat-menu #appMenu="matMenu" yPosition="above" id="pagination-menu" class="pagination__menu">
+      <mat-menu
+        #appMenu="matMenu"
+        yPosition="above"
+        id="pagination-menu"
+        class="pagination__menu"
+      >
         <button
           mat-menu-item
           class="pagination__btn_range"

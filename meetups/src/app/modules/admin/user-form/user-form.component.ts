@@ -7,12 +7,7 @@ import {
   EventEmitter,
   ChangeDetectorRef,
 } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/classes/user';
 import { UsersService } from 'src/app/services/users.service';
@@ -129,5 +124,6 @@ export class UserFormComponent implements OnInit {
   deleteApiUser() {
     this.loading = true;
     this.usersService.deleteUser(this.user!.id).subscribe();
+    this.deleteUserEvent.emit();
   }
 }

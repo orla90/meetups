@@ -6,7 +6,7 @@
   background-repeat: no-repeat;
   min-height: 100vh;
   background-position: 50% 50%;
-  
+
   &__container {
     position: absolute;
     top: 50%;
@@ -24,34 +24,32 @@
     border: rem(0.3px) solid $french-gray;
     border-radius: rem(5px);
     box-shadow: rem(0px) rem(4px) rem(4px) rgba(62, 5, 4, 0.25);
-    
+
     @media #{$screen-medium} {
       width: 50%;
       gap: rem(30px);
     }
-    
+
     @media #{$screen-big} {
       top: 50%;
       padding: rem(40px);
     }
   }
-  
+
   &__title {
     text-transform: uppercase;
     font-family: $font-family-additional;
-    
+
     @media #{$screen-medium} {
-      
     }
   }
-  
+
   &__description {
     @include font($size: rem($font-size-base), $height: rem($line-height-base));
     margin-bottom: rem(16px);
   }
-  
+
   &__btn {
-    
     &:hover {
       transform: scale(1.03);
     }

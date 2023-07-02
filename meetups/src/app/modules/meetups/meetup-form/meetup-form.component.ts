@@ -162,9 +162,9 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
 
   saveMeetup() {
     this.submitted = true;
-    
+
     if (this.meetupForm.invalid) return;
-    
+
     const name = this.name!.value;
     const description = JSON.stringify({
       long: this.long_description?.value,

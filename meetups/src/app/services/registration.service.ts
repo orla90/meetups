@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegistrationService {
   baseUrl: string = `${environment.baseUrl}/auth`;
@@ -13,9 +13,12 @@ export class RegistrationService {
   constructor(private http: HttpClient) {
     this.userAdded = new Subject<boolean>();
   }
-  
+
   register(email: string | null, password: string | null, fio: string | null) {
-    return this.http
-    .post(`${this.baseUrl}/registration`, { email, password, fio })
+    return this.http.post(`${this.baseUrl}/registration`, {
+      email,
+      password,
+      fio,
+    });
   }
 }

@@ -4,8 +4,8 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/classes/user';
-import { RegistrationService } from 'src/app/services/registration.service';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -15,30 +15,36 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  public users: User[] = [];
+  public users?: Observable<User[]>;
   public usersEmailArray: Array<string> = [];
   public loading: boolean = false;
 
   constructor(
     public usersService: UsersService,
-    private cdr: ChangeDetectorRef,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     this.getAllUsers();
   }
 
-  getAllUsers() {
-    this.loading = true;
-    this.usersService.getAllUsers().subscribe((data) => {
-      this.users = data;
-      this.loading = false;
-      this.usersEmailArray = this.users.map((user) => user.email);
-      this.cdr.detectChanges();
-    });
+  renewlist() {
+    this.getAllUsers();
   }
 
-  renewlist() {
+  getAllUsers() {
+    this.loading = true;
+    this.users = this.usersService.items;
+    this.usersService.items!.subscribe((users) => {
+      this.usersEmailArray = users!.map((user) => user.email);
+    });
+    this.usersService.loadUsers();
+    this.loading = false;
+    this.cdr.detectChanges();
+  }
+
+  deleteUser() {
+    this.renewlist();
     this.getAllUsers();
   }
 }

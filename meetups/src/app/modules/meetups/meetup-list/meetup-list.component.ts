@@ -74,14 +74,9 @@ export class MeetupListComponent implements OnInit {
     this.getCurrentPageMeetups();
     this.cdr.detectChanges();
   }
-  
+
   setPaginationCurrentPage() {
-    this.pagination.currentPage =
-      this.pagination.currentPage > this.pagination.lastPage
-        ? this.pagination.lastPage
-        : this.pagination.currentPage === 0
-        ? 1
-        : this.pagination.currentPage;
+    this.pagination.currentPage = 1;
   }
 
   onPaginationChange(pagination: Pagination): void {
@@ -97,22 +92,22 @@ export class MeetupListComponent implements OnInit {
       (currentPage - 1) * pageSize + pageSize
     );
   }
-  
+
   filter(filter: string) {
     const now = new Date();
-    
-    if (filter === "future") {
-      this.filteredMeetups = this.meetups.filter(meetup => {
+
+    if (filter === 'future') {
+      this.filteredMeetups = this.meetups.filter((meetup) => {
         return new Date(meetup.time) >= now;
-      })
-    } else if (filter === "completed") {
-      this.filteredMeetups = this.meetups.filter(meetup => {
+      });
+    } else if (filter === 'completed') {
+      this.filteredMeetups = this.meetups.filter((meetup) => {
         return new Date(meetup.time) < now;
-      })
+      });
     } else {
       this.filteredMeetups = this.meetups;
     }
-    
+
     this.setPaginationTotalCount();
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();

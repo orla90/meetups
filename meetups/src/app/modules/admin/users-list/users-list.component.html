@@ -4,10 +4,10 @@
       <app-add-user (addUserEvent)="renewlist()"></app-add-user>
     </div>
     <ul class="users-list__list">
-      <li class="users-list__item" *ngFor="let user of users">
+      <li class="users-list__item" *ngFor="let user of users | async">
         <app-user-form
           [user]="user"
-          (deleteUserEvent)="renewlist()"
+          (deleteUserEvent)="deleteUser()"
         ></app-user-form>
       </li>
     </ul>
