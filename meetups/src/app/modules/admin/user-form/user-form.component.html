@@ -12,7 +12,7 @@
           class="user-form__error"
           *ngIf="submitted && email?.errors?.['required']"
         >
-          Field "Email" is required.
+        Поле "Email" является обязательным.
         </div>
       </div>
       <div class="user-form__item user-form__item_big">
@@ -26,7 +26,7 @@
           class="user-form__error"
           *ngIf="submitted && password?.errors?.['required']"
         >
-          Field "Password" is required.
+        Поле "Пароль" является обязательным.
         </div>
         <div *ngIf="submitted && userError" class="user-form__error">
           {{ userError }}
@@ -42,7 +42,7 @@
           class="user-form__error"
           *ngIf="submitted && password?.errors?.['required']"
         >
-          Field "Password" is required.
+        Поле "Пароль" является обязательным.
         </div>
         <div *ngIf="submitted && userError" class="user-form__error">
           {{ userError }}

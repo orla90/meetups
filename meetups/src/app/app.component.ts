@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private bnIdle: BnNgIdleService, private router: Router) { }
   
   ngOnInit(): void {
-    this.bnIdle.startWatching(300).subscribe((isTimedOut: boolean) => {
+    this.bnIdle.startWatching(600).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
         localStorage.removeItem('meetups_auth_token');
         this.router.navigate(['/login']);

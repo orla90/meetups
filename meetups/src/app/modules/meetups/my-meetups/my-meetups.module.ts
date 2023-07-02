@@ -8,11 +8,9 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FiltersModule } from '../filters/filters.module';
 import { BreadcrumbModule } from 'xng-breadcrumb';
-import { BnNgIdleService } from 'bn-ng-idle';
 
 @NgModule({
   declarations: [MyMeetupsComponent],
-  providers: [BnNgIdleService],
   imports: [
     CommonModule,
     MeetupModule,

@@ -18,7 +18,7 @@
               class="meetup-form__error"
               *ngIf="submitted && name?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
                   class="meetup-form__error"
                   *ngIf="submitted && date?.errors?.['required']"
                 >
-                  Field is required.
+                Поле является обязательным.
                 </div>
               </div>
   
@@ -65,49 +65,10 @@
                   class="meetup-form__error"
                   *ngIf="submitted && time?.errors?.['required']"
                 >
-                  Field "Time" is required.
+                  Поле является обязательным.
                 </div>
               </div>
             </div>
-            <!-- <div class="meetup-form__column meetup-form__column_center">
-              <label for="date" class="meetup-form__label">Дата:</label>
-              <input
-                class="meetup-form__input"
-                type="date"
-                id="date"
-                name="date"
-                placeholder="19.05.2000"
-                formControlName="date"
-              />
-              <div
-                class="meetup-form__error"
-                *ngIf="submitted && date?.errors?.['required']"
-              >
-                Field is required.
-              </div>
-            </div>
-
-            <div class="meetup-form__column meetup-form__column_center">
-              <label
-                for="time"
-                class="meetup-form__label meetup-form__label_small"
-                >Время:</label
-              >
-              <input
-                class="meetup-form__input"
-                type="time"
-                id="time"
-                name="time"
-                placeholder="11:00"
-                formControlName="time"
-              />
-              <div
-                class="meetup-form__error"
-                *ngIf="submitted && time?.errors?.['required']"
-              >
-                Field "Time" is required.
-              </div>
-            </div> -->
           </div>
         </div>
         <div class="meetup-form__row">
@@ -125,7 +86,7 @@
               class="meetup-form__error"
               *ngIf="submitted && location?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -146,7 +107,7 @@
               class="meetup-form__error"
               *ngIf="submitted && short_description?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -167,7 +128,7 @@
               class="meetup-form__error"
               *ngIf="submitted && long_description?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -188,7 +149,7 @@
               class="meetup-form__error"
               *ngIf="submitted && target_audience?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -211,7 +172,7 @@
               class="meetup-form__error"
               *ngIf="submitted && need_to_know?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -233,7 +194,7 @@
               class="meetup-form__error"
               *ngIf="submitted && will_happen?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
           </div>
         </div>
@@ -254,7 +215,7 @@
               class="meetup-form__error"
               *ngIf="submitted && reason_to_come?.errors?.['required']"
             >
-              Field is required.
+              Поле является обязательным.
             </div>
             <div *ngIf="submitted && meetupError" class="meetup-form__error">
               {{ meetupError }}

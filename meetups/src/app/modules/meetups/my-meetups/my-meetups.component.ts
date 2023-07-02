@@ -4,12 +4,10 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Meetup } from 'src/app/classes/meetup';
 import { Pagination } from 'src/app/classes/pagination';
 import { AuthService } from 'src/app/services/auth.service';
 import { MeetupService } from 'src/app/services/meetup.service';
-import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-my-meetups',
@@ -25,13 +23,12 @@ export class MyMeetupsComponent implements OnInit {
   public pagination = new Pagination();
   public userId!: number;
   public loading: boolean = false;
+  public filters: string = 'all';
 
   constructor(
     public meetupService: MeetupService,
     public authService: AuthService,
-    private cdr: ChangeDetectorRef,
-    private bnIdle: BnNgIdleService,
-    private router: Router
+    private cdr: ChangeDetectorRef
   ) {
     this.userId = this.authService.user!.id;
   }
@@ -51,14 +48,6 @@ export class MyMeetupsComponent implements OnInit {
         this.loading = false;
         this.cdr.detectChanges();
       });
-    
-      this.bnIdle.startWatching(300).subscribe((isTimedOut: boolean) => {
-        if (isTimedOut) {
-          localStorage.removeItem('meetups_auth_token');
-          this.router.navigate(['/login']);
-          this.bnIdle.stopTimer();
-        }
-      });
   }
 
   setPaginationTotalCount() {
@@ -66,13 +55,25 @@ export class MyMeetupsComponent implements OnInit {
   }
 
   searchMeetups(searchInput: string) {
+    this.searchInput = searchInput;
     this.filteredMeetups = this.meetups.filter((meetup) =>
       meetup.name!.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
-    this.setPaginationTotalCount();
-    this.setPaginationCurrentPage();
-    this.getCurrentPageMeetups();
-    this.cdr.detectChanges();
+
+    const now = new Date();
+    if (this.filters === 'future') {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) => {
+        return new Date(meetup.time) >= now;
+      });
+    } else if (this.filters === 'completed') {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) => {
+        return new Date(meetup.time) < now;
+      });
+    } else {
+      this.filteredMeetups = this.filteredMeetups;
+    }
+
+    this.setPaginationSettings();
   }
 
   onPaginationChange(pagination: Pagination): void {
@@ -95,6 +96,7 @@ export class MyMeetupsComponent implements OnInit {
 
   filter(filter: string) {
     const now = new Date();
+    this.filters = filter;
 
     if (filter === 'future') {
       this.filteredMeetups = this.meetups.filter((meetup) => {
@@ -108,6 +110,25 @@ export class MyMeetupsComponent implements OnInit {
       this.filteredMeetups = this.meetups;
     }
 
+    if (this.searchInput) {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) =>
+        meetup
+          .name!.toLocaleLowerCase()
+          .includes(this.searchInput.toLowerCase())
+      );
+    }
+
+    this.setPaginationSettings();
+  }
+
+  resetFilters() {
+    this.filters = 'all';
+    this.searchInput = '';
+    this.filteredMeetups = this.meetups;
+    this.setPaginationSettings();
+  }
+
+  setPaginationSettings() {
     this.setPaginationTotalCount();
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();

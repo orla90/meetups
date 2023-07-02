@@ -55,7 +55,7 @@
   }
 
   &__2-columns {
-    
+
     @media #{$screen-big} {
       display: flex;
       flex-wrap: wrap;
@@ -65,7 +65,7 @@
 
   &__2-columns &__input {
     width: 100%;
-    
+
     @media #{$screen-big} {
       width: rem(262px);
     }
@@ -74,9 +74,14 @@
   &__error {
     @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
     position: absolute;
-    bottom: rem(-20px);
-    left: rem(170px);
+    bottom: rem(-30px);
+    left: rem(140px);
     color: $tuscany;
+
+    @media #{$screen-big} {
+      bottom: rem(-20px);
+      left: rem(170px);
+    }
   }
 
   &__label {
@@ -100,7 +105,7 @@
     border: rem(3px) solid $east-bay;
     border-radius: rem(3px);
     color: $mercury;
-
+    outline: none;
     margin-left: (rem(40px));
 
     &::placeholder {
@@ -116,7 +121,7 @@
 
   &__input {
     height: rem(50px);
-    
+
     @media #{$screen-big} {
       max-width: rem(521px);
     }

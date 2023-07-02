@@ -16,7 +16,6 @@ import {
   parseShortDescription,
   parseTime,
 } from 'src/app/helpers/utils';
-import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-meetup-form',
@@ -47,6 +46,7 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
   public title?: string;
   public id!: number;
   public currentMeetup?: Meetup;
+
 
   constructor(
     private meetupService: MeetupService,
