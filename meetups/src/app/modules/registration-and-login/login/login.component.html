@@ -18,7 +18,7 @@
           class="login-form__error"
           *ngIf="submitted && email?.errors?.['required']"
         >
-        Поле "Email" является обязательным.
+          Field "Email" is required
         </div>
       </div>
       <div class="login-form__item">
@@ -34,7 +34,7 @@
           class="login-form__error"
           *ngIf="submitted && password?.errors?.['required']"
         >
-        Поле "Пароль" является обязательным.
+          Field "Password" is required
         </div>
         <div *ngIf="submitted && loginError" class="login-form__error">
           {{ loginError }}

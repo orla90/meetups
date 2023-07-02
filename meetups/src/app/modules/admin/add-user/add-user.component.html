@@ -18,7 +18,7 @@
           class="message message_error"
           *ngIf="submitted && email?.errors?.['required']"
         >
-          Поле "Email" является обязательным.
+          Field is required.
         </div>
         <div
           *ngIf="submitted && registrationError"
@@ -30,7 +30,7 @@
           class="message message_error"
           *ngIf="submitted && email?.errors?.['email']"
         >
-          Email is incorrect.
+          Еmail is incorrect.
         </div>
         <div
           *ngIf="email?.errors?.['emailExists']"
@@ -52,7 +52,7 @@
           class="message message_error"
           *ngIf="submitted && password?.errors?.['required']"
         >
-          Поле "Пароль" является обязательным.
+          Field is required.
         </div>
         <div *ngIf="submitted && userError" class="message message_error">
           {{ userError }}
@@ -71,7 +71,7 @@
           class="message message_error"
           *ngIf="submitted && password?.errors?.['required']"
         >
-          Поле "ФИО" является обязательным.
+          Field is required.
         </div>
         <div *ngIf="submitted && userError" class="message message_error">
           {{ userError }}

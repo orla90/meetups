@@ -18,7 +18,7 @@
           class="registration-form__message registration-form__message_error"
           *ngIf="submitted && fio?.errors?.['required']"
         >
-          Поле "ФИО" является обязательным.
+          Field "Name" is required
         </div>
       </div>
       <div class="registration-form__item">
@@ -34,7 +34,7 @@
           class="registration-form__message registration-form__message_error"
           *ngIf="submitted && email?.errors?.['required']"
         >
-          Поле "Email" является обязательным.
+          Field "Email" is required
         </div>
       </div>
       <div class="registration-form__item">
@@ -50,7 +50,7 @@
           class="registration-form__message registration-form__message_error"
           *ngIf="submitted && password?.errors?.['required']"
         >
-          Поле "Пароль" является обязательным.
+          Field "Password" is required
         </div>
         <div
           *ngIf="submitted && registrationError"
