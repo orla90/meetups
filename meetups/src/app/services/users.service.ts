@@ -10,14 +10,14 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class UsersService {
   baseUrl: string = `${environment.baseUrl}/user`;
   items: Observable<User[]>;
-  private _users: Subject<User[]>;
+  private _users: BehaviorSubject<User[]>;
   private usersStore: {
     data: User[];
   };
 
   constructor(private http: HttpClient) {
     this.usersStore = { data: [] };
-    this._users = new Subject<User[]>();
+    this._users = new BehaviorSubject<User[]>([]);
     this.items = this._users.asObservable();
   }
 
@@ -34,6 +34,7 @@ export class UsersService {
       (error) => console.log(error)
     );
   }
+  
 
   addRole(name: string, userId: number) {
     return this.http.put(`${this.baseUrl}/role`, { name, userId });

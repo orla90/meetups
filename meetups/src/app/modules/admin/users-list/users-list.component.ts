@@ -28,11 +28,8 @@ export class UsersListComponent implements OnInit {
     this.getAllUsers();
   }
 
-  renewlist() {
-    this.getAllUsers();
-  }
-
   getAllUsers() {
+    this.usersService.loadUsers();
     this.loading = true;
     this.users = this.usersService.items;
     this.usersService.items!.subscribe((users) => {
@@ -41,10 +38,5 @@ export class UsersListComponent implements OnInit {
     this.usersService.loadUsers();
     this.loading = false;
     this.cdr.detectChanges();
-  }
-
-  deleteUser() {
-    this.renewlist();
-    this.getAllUsers();
   }
 }
