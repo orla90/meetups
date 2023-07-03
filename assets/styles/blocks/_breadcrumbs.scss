@@ -1,0 +1,15 @@
+.xng-breadcrumb-root {
+  padding: 8px 16px;
+  display: inline-block;
+  border-radius: 4px;
+  color: white;
+  transition: $transition-duration-hover $transition-function-hover;
+  cursor: pointer;
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.xng-breadcrumb-separator {
+  padding: 0 15px;
+}
