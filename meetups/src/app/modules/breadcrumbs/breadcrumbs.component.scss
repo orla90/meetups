@@ -1,0 +1,12 @@
+@import "../../../assets/styles/global.scss";
+
+.breadcrumbs {
+  position: fixed;
+  top: $height-header-desktop;
+  left: 0;
+  width: 100%;
+  z-index: $z-index-header;
+  background-color: $tundora;
+  border: rem(0.3px) solid $french-gray;
+  box-shadow: rem(0px) rem(4px) rem(4px) rgba(62, 5, 4, 0.25);
+}

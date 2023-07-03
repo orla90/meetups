@@ -1,0 +1,66 @@
+.button {
+  font-family: $font-family;
+  font-style: normal;
+  @include font($size: rem($font-size-base), $height: $line-height-base);
+  color: $mercury;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all $transition-duration-hover $transition-function-hover;
+  border-radius: $small-radius;
+  height: 50px;
+  text-decoration: none;
+  
+  &:hover {
+    opacity: $transition-opacity;
+  }
+
+  &__icon {
+    width: rem(29px);
+    height: rem(23px);
+  }
+  
+  &_iconed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(40px);
+    height: rem(40px);
+    border: rem(1px) solid $tuscany;
+    border-radius: rem(5px);
+    background-color: inherit;
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-self: center;
+  }
+
+  &_big {
+    width: rem(160px);
+  }
+
+  &_medium {
+    width: rem(125px);
+  }
+
+  &_small {
+    width: rem(70px);
+  }
+
+  &_orange {
+    background-color: $tuscany;
+  }
+
+  &_purple {
+    background-color: $east-bay;
+  }
+
+  &_light {
+    color: $east-bay;
+    background-color: $french-gray;
+  }
+  
+  &_hidden {
+    display: none;
+  }
+}

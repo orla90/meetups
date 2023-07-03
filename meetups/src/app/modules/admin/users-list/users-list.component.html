@@ -1,0 +1,18 @@
+<section class="users-list-section">
+  <div class="users-list-section__container container">
+    <div class="users-list__add-item">
+      <app-add-user (addUserEvent)="renewlist()"></app-add-user>
+    </div>
+    <ul class="users-list__list">
+      <li class="users-list__item" *ngFor="let user of users | async">
+        <app-user-form
+          [user]="user"
+          (deleteUserEvent)="deleteUser()"
+        ></app-user-form>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="spinner" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</section>

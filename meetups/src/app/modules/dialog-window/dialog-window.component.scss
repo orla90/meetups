@@ -1,0 +1,21 @@
+@import "../../../assets/styles/global.scss";
+
+.dialog-window {
+  @include font($size: rem($font-size-medium), $height: $line-height-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $mercury;
+
+  &__title {
+    color: $tuscany;
+  }
+
+  &__btn {
+    &_focused {
+      background-color: $tuscany;
+      color: $mercury !important;
+    }
+  }
+}

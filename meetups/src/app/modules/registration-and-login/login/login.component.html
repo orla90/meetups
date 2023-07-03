@@ -1,0 +1,56 @@
+<section class="login">
+  <div class="login__container">
+    <form
+      class="login-form"
+      [formGroup]="loginForm"
+      (submit)="submitApplication()"
+    >
+      <div class="login-form__item">
+        <input
+          class="login-form__input"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <div
+          class="login-form__error"
+          *ngIf="submitted && email?.errors?.['required']"
+        >
+          Field "Email" is required.
+        </div>
+      </div>
+      <div class="login-form__item">
+        <input
+          class="login-form__input"
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <div
+          class="login-form__error"
+          *ngIf="submitted && password?.errors?.['required']"
+        >
+          Field "Password" is required.
+        </div>
+        <div *ngIf="submitted && loginError" class="login-form__error">
+          {{ loginError }}
+        </div>
+      </div>
+      <div class="login-form__panel">
+        <a routerLink="/register" class="login-form__link"
+          >How to create account?</a
+        >
+        <button
+          type="submit"
+          class="login-form__btn button button_medium button_purple"
+        >
+          Log In
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+.message {
+  @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
+  position: absolute;
+  bottom: rem(-20px);
+
+  &_error {
+    color: $tuscany;
+  }
+
+  &_success {
+    color: $husk;
+  }
+}

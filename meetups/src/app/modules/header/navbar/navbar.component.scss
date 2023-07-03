@@ -1,0 +1,67 @@
+@import "../../../../assets/styles/global.scss";
+
+.navbar {
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: rem(34px);
+    text-align: center;
+  }
+
+  &_desktop {
+    display: none;
+    @media #{$screen-big} {
+      display: flex;
+    }
+  }
+
+  &_mobile {
+    display: flex;
+    @media #{$screen-big} {
+      display: none;
+    }
+  }
+
+  &__link {
+    padding-top: rem(1px);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: normal;
+
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+
+    &_active {
+      &::after {
+        content: "";
+        width: 100%;
+        margin-top: rem(1px);
+        border-bottom: rem(10px) solid $tuscany;
+        border-radius: rem(5px);
+      }
+    }
+  }
+
+  &__panel {
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+  }
+
+  &__icon {
+    color: $tuscany;
+
+    &_big {
+      transform: scale(2.5);
+    }
+  }
+
+  &__btn {
+    padding-left: rem(16px);
+    padding-right: rem(16px);
+  }
+}

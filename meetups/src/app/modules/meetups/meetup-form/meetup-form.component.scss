@@ -1,0 +1,124 @@
+@import "../../../../assets/styles/global.scss";
+
+.meetup-form-section {
+  box-sizing: border-box;
+  background: $mine-shaft;
+  border: rem(0.3px) solid $french-gray;
+  margin-top: $height-header-desktop + 90;
+
+  &__container {
+    width: 100%;
+    max-width: rem($width-container + 2 * $gap-container-small);
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: rem($gap-container-small);
+    padding-left: rem($gap-container-small);
+  }
+}
+
+.meetup-form {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(rem(1007px) + 2 * $gap-container-small);
+    padding-left: $gap-container-small;
+    padding-right: $gap-container-small;
+    margin: 0 auto;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem($gap-container-small);
+    margin-bottom: rem(27px);
+  }
+
+  &__row {
+    margin-bottom: rem(43px);
+  }
+
+  &__column {
+    position: relative;
+    display: flex;
+
+    &_center {
+      align-items: center;
+    }
+
+    &_top {
+      align-items: flex-start;
+    }
+  }
+
+  &__2-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__2-columns &__input {
+    width: rem(262px);
+  }
+
+  &__error {
+    @include font($size: rem($font-size-tiny), $height: $line-height-tiny);
+    position: absolute;
+    bottom: rem(-20px);
+    left: rem(170px);
+    color: $tuscany;
+  }
+
+  &__label {
+    width: rem(124px);
+
+    &_small {
+      width: rem(77px);
+    }
+  }
+
+  &__input,
+  &__textarea {
+    font-family: $font-family;
+    @include font($size: rem($font-size-base), $height: rem($line-height-base));
+    width: 100%;
+    max-width: rem(841px);
+    background-color: $mine-shaft;
+    padding: rem(12px) rem(20px);
+    border: rem(3px) solid $east-bay;
+    border-radius: rem(3px);
+    color: $mercury;
+
+    margin-left: (rem(40px));
+
+    &::placeholder {
+      color: $french-gray;
+      opacity: 0.4;
+    }
+  }
+
+  &__input.ng-invalid.ng-touched,
+  &__textarea.ng-invalid.ng-touched {
+    border: rem(3px) solid $tuscany !important;
+  }
+
+  &__input {
+    max-width: rem(521px);
+    height: rem(50px);
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: rem(13px);
+    padding: rem(10px) 0 rem(20px);
+  }
+
+  &__link {
+    max-width: rem(120px);
+    color: $blue-lagoon;
+  }
+}

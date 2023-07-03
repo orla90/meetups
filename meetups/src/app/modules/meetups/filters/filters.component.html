@@ -1,0 +1,13 @@
+<form class="filters">
+  <select
+    formControlName="timeliness"
+    class="filters__select"
+    id="filters-timeliness"
+    name="filters-timeliness"
+    (change)="onChange($event)"
+  >
+    <option value="all">Все</option>
+    <option value="future">Незавершенные</option>
+    <option value="completed">Завершенные</option>
+  </select>
+</form>

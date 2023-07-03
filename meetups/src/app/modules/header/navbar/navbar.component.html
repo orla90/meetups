@@ -1,0 +1,59 @@
+<nav class="navbar navbar_desktop">
+  <ul class="navbar__list">
+    <li>
+      <a
+        class="navbar__link title"
+        routerLink="/meetups"
+        [routerLinkActive]="'navbar__link_active'"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Все митапы</a
+      >
+    </li>
+    <li>
+      <a
+        class="navbar__link title"
+        routerLink="/my-meetups"
+        [routerLinkActive]="'navbar__link_active'"
+        >Мои митапы</a
+      >
+    </li>
+    <li *ngIf="isAdmin">
+      <a
+        class="navbar__link title"
+        routerLink="/admin"
+        [routerLinkActive]="'navbar__link_active'"
+        >Пользователи</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<section class="navbar navbar_mobile">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Menu"
+    class="navbar__panel"
+  >
+    <mat-icon class="navbar__icon navbar__icon_big">apps</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/meetups" class="navbar__btn">
+      <mat-icon fontIcon="group" class="navbar__icon"></mat-icon>
+      <span>Все митапы</span>
+    </button>
+    <button mat-menu-item routerLink="/my-meetups" class="navbar__btn">
+      <mat-icon class="navbar__icon">group_add</mat-icon>
+      <span>Мои митапы</span>
+    </button>
+    <button
+      mat-menu-item
+      *ngIf="isAdmin"
+      routerLink="/admin"
+      class="navbar__btn"
+    >
+      <mat-icon class="navbar__icon">person_add</mat-icon>
+      <span>Пользователи</span>
+    </button>
+  </mat-menu>
+</section>

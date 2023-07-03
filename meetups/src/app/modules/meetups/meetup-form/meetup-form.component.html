@@ -1,0 +1,245 @@
+<section class="meetup-form-section">
+  <div class="meetup-form-section__container">
+    <form class="meetup-form" [formGroup]="meetupForm">
+      <div class="meetup-form__container">
+        <h2 class="meetup-form__title title">{{ title }}</h2>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_center">
+            <label for="name" class="meetup-form__label">Название:</label>
+            <input
+              class="meetup-form__input"
+              type="text"
+              id="name"
+              name="name"
+              placeholder="React vs Angular"
+              formControlName="name"
+            />
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && name?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__2-columns">
+            <div class="meetup-form__column meetup-form__column_center">
+              <label for="date" class="meetup-form__label">Дата:</label>
+              <input
+                class="meetup-form__input"
+                type="date"
+                id="date"
+                name="date"
+                placeholder="19.05.2000"
+                formControlName="date"
+              />
+              <div
+                class="meetup-form__error"
+                *ngIf="submitted && date?.errors?.['required']"
+              >
+                Field is required.
+              </div>
+            </div>
+
+            <div class="meetup-form__column meetup-form__column_center">
+              <label
+                for="time"
+                class="meetup-form__label meetup-form__label_small"
+                >Время:</label
+              >
+              <input
+                class="meetup-form__input"
+                type="time"
+                id="time"
+                name="time"
+                placeholder="11:00"
+                formControlName="time"
+              />
+              <div
+                class="meetup-form__error"
+                *ngIf="submitted && time?.errors?.['required']"
+              >
+                Field "Time" is required.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_center">
+            <label for="location" class="meetup-form__label">Место:</label>
+            <input
+              class="meetup-form__input"
+              type="text"
+              id="location"
+              name="location"
+              placeholder="Переговорная №1"
+              formControlName="location"
+            />
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && location?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_top">
+            <label for="short_description" class="meetup-form__label"
+              >Короткое описание:</label
+            >
+            <textarea
+              rows="4"
+              class="meetup-form__textarea"
+              id="short_description"
+              name="short_description"
+              placeholder=""
+              formControlName="short_description"
+            ></textarea>
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && short_description?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_top">
+            <label for="long_description" class="meetup-form__label"
+              >Подробное описание:</label
+            >
+            <textarea
+              rows="10"
+              class="meetup-form__textarea"
+              id="long_description"
+              name="long_description"
+              placeholder=""
+              formControlName="long_description"
+            ></textarea>
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && long_description?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_top">
+            <label for="target_audience" class="meetup-form__label"
+              >Целевая аудитория:</label
+            >
+            <textarea
+              rows="4"
+              class="meetup-form__textarea"
+              id="target_audience"
+              name="target_audience"
+              placeholder="Аналитики, тестировщики, зумеры..."
+              formControlName="target_audience"
+            ></textarea>
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && target_audience?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_top">
+            <label for="need_to_know" class="meetup-form__label"
+              >Что надо знать?</label
+            >
+            <textarea
+              rows="10"
+              class="meetup-form__textarea"
+              id="need_to_know"
+              name="need_to_know"
+              placeholder="1. любой функциональный язык программирования
+2. принципы строгой типизации
+3. третий закон Ньютона"
+              formControlName="need_to_know"
+            ></textarea>
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && need_to_know?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_top">
+            <label for="will_happen" class="meetup-form__label"
+              >Что будет?</label
+            >
+            <textarea
+              rows="8"
+              class="meetup-form__textarea"
+              id="will_happen"
+              name="will_happen"
+              placeholder="1. научу готовить пиццу
+2. расскажу про колбасу"
+              formControlName="will_happen"
+            ></textarea>
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && will_happen?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+          </div>
+        </div>
+        <div class="meetup-form__row">
+          <div class="meetup-form__column meetup-form__column_top">
+            <label for="reason_to_come" class="meetup-form__label"
+              >Почему надо обязательно прийти?</label
+            >
+            <textarea
+              rows="4"
+              class="meetup-form__textarea"
+              id="reason_to_come"
+              name="reason_to_come"
+              placeholder="Потому что гладиолус"
+              formControlName="reason_to_come"
+            ></textarea>
+            <div
+              class="meetup-form__error"
+              *ngIf="submitted && reason_to_come?.errors?.['required']"
+            >
+              Field is required.
+            </div>
+            <div *ngIf="submitted && meetupError" class="meetup-form__error">
+              {{ meetupError }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="meetup-form__panel">
+        <button
+          type="button"
+          class="meetup-form__btn button button_big button_orange"
+          (click)="delete()"
+        >
+          Удалить
+        </button>
+        <button
+          type="button"
+          class="meetup-form__btn button button_big button_light"
+          (click)="cancel()"
+        >
+          Отмена
+        </button>
+        <button
+          type="submit"
+          class="meetup-form__btn button button_big button_purple"
+          (click)="submit()"
+        >
+          Сохранить
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

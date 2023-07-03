@@ -1,0 +1,31 @@
+<section class="my-meetups">
+  <div class="my-meetups__container container">
+    <div class="my-meetups__panel">
+    <div class="my-meetups__filters">
+      <app-filters (filterEvent)="filter($event)" class="my-meetups__filters-item"></app-filters>
+    </div>
+    <div class="my-meetups__create">
+      <a
+        routerLink="/my-meetups/create"
+        class="my-meetups__btn button_iconed"
+      >
+        <div class="my-meetups__btn_add"></div>
+      </a>
+  </div>
+    </div>
+    <div class="my-meetups__search-bar">
+      <app-search-bar [searchInput]="searchInput" (searchEvent)="searchMeetups($event)"></app-search-bar>
+    </div>
+  <ul class="my-meetups__list" *ngIf="currentPageMeetups">
+    <li class="my-meetups__item" *ngFor="let meetup of currentPageMeetups">
+      <app-meetup [meetup]="meetup" [userId]="userId"/>
+    </li>
+  </ul>
+  <div class="my-meetups__pagination">
+    <app-pagination [pagination]="pagination" (onPaginationChange)='onPaginationChange($event)'></app-pagination>
+  </div>
+  </div>
+</section>
+<section class="spinner" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</section>

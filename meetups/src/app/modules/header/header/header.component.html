@@ -1,0 +1,38 @@
+<header class="header">
+  <div class="header__container container">
+    <div class="header__logo-group logo-group">
+      <a class="logo-group__title" routerLink="/home">MeetUps</a>
+      <div class="logo-group__icons">
+        <span class="logo-group__philosophy"></span>
+        <span class="logo-group__league"></span>
+      </div>
+    </div>
+    <app-navbar *ngIf="isAuth" [isAdmin]="isAdmin" class="header__navbar" />
+    
+    <div class="header-controls header-controls_desktop">
+      <a *ngIf="isAuth" class="header-controls__item header-controls__item_settings" routerLink="/user-info"></a>
+      <button *ngIf="isAuth" (click)="logout()" class="header-controls__item header-controls__item_logout"></button>
+      <a *ngIf="!isAuth" class="header-controls__item header-controls__item_login" routerLink="/login"></a>
+    </div>
+    
+    <section class="header-controls header-controls_mobile">
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="header__settings">
+        <mat-icon class="header__icon header__icon_big">perm_data_setting</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/user-info" *ngIf="isAuth">
+          <mat-icon class="header__icon">settings</mat-icon>
+          <span>Мои настройки</span>
+        </button>
+        <button mat-menu-item *ngIf="isAuth" (click)="logout()">
+          <mat-icon class="header__icon">exit_to_app</mat-icon>
+          <span>Выход</span>
+        </button>
+        <button mat-menu-item *ngIf="!isAuth" routerLink="/login">
+          <mat-icon class="header__icon">exit_to_app</mat-icon>
+          <span>Авторизация</span>
+        </button>
+      </mat-menu>
+    </section>
+  </div>
+</header>

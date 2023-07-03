@@ -1,0 +1,119 @@
+@import "../../../../assets/styles/global.scss";
+
+.add-user {
+  width: 100%;
+  max-width: rem(851px);
+  height: rem(60px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $mine-shaft;
+
+  &:hover &__select,
+  &:hover &__input {
+    border-radius: rem(3px);
+    border: rem(3px) solid $east-bay;
+  }
+
+  &:hover &__select {
+    background-image: url("../../../../assets/images/icons/down-one.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+  }
+
+  &__item {
+    position: relative;
+    border: rem(0.3px) solid $french-gray;
+    padding: rem(10px) rem(20px);
+
+    &_large {
+      width: rem(270px);
+    }
+
+    &_big {
+      width: rem(251px);
+    }
+
+    &_medium {
+      width: rem(192px);
+    }
+
+    &_small {
+      width: rem(138px);
+    }
+  }
+
+  &__input,
+  &__select {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    font-family: $font-family;
+    font-size: rem(18px);
+    width: 100%;
+    background-color: $mine-shaft;
+    height: rem(40px);
+    color: $french-gray;
+    padding: rem(5px);
+
+    &::placeholder {
+      color: $french-gray;
+      opacity: 0.4;
+    }
+
+    &:focus {
+      outline-style: none;
+      box-shadow: none;
+      border-color: transparent;
+      border-radius: rem(3px);
+      border: rem(3px) solid $east-bay;
+    }
+  }
+
+  &__input.ng-invalid.ng-touched {
+    border: rem(3px) solid $tuscany !important;
+  }
+
+  &__select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  &__panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(5px);
+    padding: rem(10px) rem(20px);
+  }
+
+  &__btn {
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+
+    &_close {
+      background-image: url("../../../../assets/images/icons/close.svg");
+    }
+
+    &_edit {
+      background-image: url("../../../../assets/images/icons/edit.svg");
+    }
+
+    &_add {
+      background-image: url("../../../../assets/images/icons/close.svg");
+      transform: rotate(45deg);
+      width: rem(35px);
+      height: rem(35px);
+      background-color: inherit;
+      background-size: cover;
+      background-repeat: no-repeat;
+      align-self: center;
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@import "../../../../assets/styles/global.scss";
+
+.meetup {
+  @include font($size: rem($font-size-base), $height: rem($line-height-base));
+  border: rem(0.3px) solid $french-gray;
+
+  &_incompleted {
+    background-color: $mine-shaft;
+  }
+
+  &_completed {
+    opacity: 0.7;
+    background: $mine-shaft;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: rem($width-container + 2 * $gap-container-small);
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: rem($gap-container-small);
+  }
+
+  &__title {
+    align-items: flex-start;
+    margin-right: rem(10px);
+    overflow: auto;
+  }
+
+  &__header {
+    padding-top: rem(14px);
+    padding-bottom: rem(15px);
+    align-items: center;
+
+    &-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: top;
+    }
+
+    &-metadata {
+      display: flex;
+      flex-direction: column;
+      gap: rem(6px);
+    }
+  }
+
+  &__subscribers,
+  &__completed {
+    color: $tuscany;
+    display: flex;
+  }
+
+  &__subscribers {
+    line-height: 2.4;
+  }
+
+  &__vanue {
+    @include font($size: rem($font-size-small), $height: $line-height-small);
+    color: $mercury;
+  }
+
+  &__content {
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: rem(19px);
+      margin-bottom: rem(5px);
+    }
+  }
+
+  &__description {
+    max-width: rem(1062px);
+    padding-right: rem(18px);
+    overflow: auto;
+  }
+
+  &__heading {
+    @include font($size: rem($font-size-medium), $height: $line-height-medium);
+    color: $mercury;
+  }
+
+  &__entry {
+    margin-left: rem(11px);
+    max-width: rem(1062px);
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(10px);
+    flex-wrap: wrap;
+  }
+
+  &__button {
+    &-icon {
+      transition: $transition-duration-hover $transition-function-hover;
+
+      &_up {
+        background: url("../../../../assets/images/icons/arrow-down.svg");
+        transform: rotate(180deg);
+      }
+
+      &_down {
+        background: url("../../../../assets/images/icons/arrow-down.svg");
+      }
+    }
+  }
+
+  &__footer {
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      
+      @media #{$screen-medium} {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  &__author {
+    padding: rem(13px) 0 rem(13px);
+    color: $mercury;
+    display: flex;
+    align-items: center;
+    gap: rem(10px);
+    margin-right: rem(10px);
+
+    &::before {
+      content: url("../../../../assets/images/icons/avatar.svg");
+      width: rem(25px);
+      height: rem(25px);
+    }
+  }
+}

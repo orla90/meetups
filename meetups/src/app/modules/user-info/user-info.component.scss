@@ -1,0 +1,21 @@
+@import "../../../assets/styles/global.scss";
+
+.user-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: rem(342px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &__content {
+    @include font($size: rem($font-size-medium), $height: $line-height-medium);
+    color: $mercury;
+  }
+  
+  &__data {
+    color: $tuscany;
+  }
+}

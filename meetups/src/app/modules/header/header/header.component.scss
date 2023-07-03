@@ -1,0 +1,148 @@
+@import "../../../../assets/styles/global.scss";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $z-index-header;
+  width: 100%;
+  height: $height-header-desktop;
+  background-color: $mine-shaft;
+  border: rem(0.3px) solid $french-gray;
+  box-shadow: rem(0px) rem(4px) rem(4px) rgba(62, 5, 4, 0.25);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    padding-top: rem(22px);
+    padding-bottom: rem(22px);
+
+    @media #{$screen-big} {
+      gap: rem(81px);
+    }
+  }
+
+  &__navbar {
+    flex: 1;
+    margin-left: rem(10px);
+  }
+
+  &__settings {
+    margin-left: rem(5px);
+    &:hover {
+      transition: $transition-duration-hover $transition-function-hover;
+      opacity: $transition-opacity;
+    }
+  }
+
+  &__icon {
+    color: $tuscany;
+
+    &_big {
+      transform: scale(2);
+    }
+  }
+
+  &-controls {
+    align-items: center;
+    gap: rem(22px);
+    margin-left: auto;
+
+    &_desktop {
+      display: none;
+      @media #{$screen-big} {
+        display: flex;
+      }
+    }
+
+    &_mobile {
+      display: flex;
+      @media #{$screen-big} {
+        display: none;
+      }
+    }
+
+    &__item {
+      width: rem(48px);
+      height: rem(48px);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: inherit;
+      cursor: pointer;
+
+      &:hover {
+        transition: $transition-duration-hover $transition-function-hover;
+        opacity: $transition-opacity;
+      }
+
+      &_settings {
+        background-image: url(../../../../assets/images/icons/settings.svg);
+      }
+
+      &_login {
+        background-image: url(../../../../assets/images/icons/avatar.svg);
+      }
+
+      &_logout {
+        background-image: url(../../../../assets/images/icons/logout.svg);
+      }
+    }
+  }
+
+  .logo {
+    &-group {
+      display: flex;
+      align-items: center;
+      gap: rem(31px);
+
+      &__title {
+        @include font(
+          $size: rem(36px),
+          $height: $line-height-giant,
+          $weight: $font-weight-bold
+        );
+        font-family: "Open Sans Hebrew Condensed";
+        font-style: normal;
+        text-decoration: none;
+        color: $mercury;
+
+        &:hover {
+          transition: $transition-duration-hover $transition-function-hover;
+          opacity: $transition-opacity;
+        }
+
+        @media #{$screen-medium} {
+          @include font(
+            $size: rem($font-size-giant),
+            $height: $line-height-giant,
+            $weight: $font-weight-bold
+          );
+        }
+      }
+
+      &__icons {
+        display: none;
+
+        @media #{$screen-large} {
+          display: flex;
+          flex-direction: column;
+          gap: rem(9px);
+        }
+      }
+
+      &__philosophy {
+        background: url(../../../../assets/images/icons/philosophy.svg)
+          no-repeat;
+        width: rem(192px);
+        height: rem(30px);
+      }
+
+      &__league {
+        background: url(../../../../assets/images/icons/league-logo.svg)
+          no-repeat;
+        width: rem(95.6px);
+        height: rem(30px);
+      }
+    }
+  }
+}

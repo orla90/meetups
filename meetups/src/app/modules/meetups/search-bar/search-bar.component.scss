@@ -1,0 +1,60 @@
+@import "../../../../assets/styles/global.scss";
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  &:hover &__input-iconed {
+    transition: $transition-duration-hover $transition-function-hover;
+    border-color: $east-bay;
+  }
+
+  &:hover &__btn {
+    background-image: url("../../../../assets/images/icons/searching-purple.svg");
+    transition: $transition-duration-hover $transition-function-hover;
+  }
+
+  &:hover &__input::placeholder {
+    transition: $transition-duration-hover $transition-function-hover;
+    color: $east-bay;
+  }
+
+  &__input-iconed {
+    position: relative;
+    width: 100%;
+    max-width: rem(1278px);
+    height: rem(73px);
+    border: rem(3px) solid transparent;
+    border-radius: $small-radius;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    padding-left: rem(13px);
+    padding-right: rem(74px);
+    background: $french-gray;
+    border-radius: $small-radius;
+    color: $mine-shaft;
+    outline: none;
+
+    &::placeholder {
+      color: $tuscany;
+      opacity: 0.4;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    right: 0;
+    top: rem(12px);
+    right: rem(12px);
+    background-image: url("../../../../assets/images/icons/searching.svg");
+    background-color: inherit;
+    background-size: contain;
+    width: rem(50px);
+    height: rem(50px);
+  }
+}

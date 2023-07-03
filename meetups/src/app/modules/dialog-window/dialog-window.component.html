@@ -1,0 +1,19 @@
+<section class="dialog-window">
+  <h1 class="dialog-window__title" mat-dialog-title>{{ inputdata.title }}</h1>
+  <div mat-dialog-content>{{ inputdata.body }}</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="closeDialogWindow()">
+      Закрыть
+    </button>
+    <button
+      *ngIf="inputdata.type !== 'congratulations' && inputdata.type !== 'error'"
+      class="dialog-window__btn_focused"
+      mat-button
+      mat-dialog-close
+      cdkFocusInitial
+      (click)="doActions()"
+    >
+      Да
+    </button>
+  </div>
+</section>

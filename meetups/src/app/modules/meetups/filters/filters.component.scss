@@ -1,0 +1,49 @@
+@import "../../../../assets/styles/global.scss";
+
+.filters {
+  &:hover &__select {
+    transition: $transition-duration-hover $transition-function-hover;
+
+    border-radius: rem(3px);
+    border: rem(3px) solid $east-bay;
+    background-image: url("../../../../assets/images/icons/down-one.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+  }
+
+  &__select {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    font-family: $font-family;
+    font-size: rem(18px);
+    width: 100%;
+    background-color: $mine-shaft;
+    height: rem(48px);
+    color: $french-gray;
+    padding: rem(5px);
+    border-radius: rem(3px);
+    border: rem(3px) solid $tuscany;
+    background-image: url("../../../../assets/images/icons/down-one-orange.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+
+    &::placeholder {
+      color: $french-gray;
+      opacity: 0.4;
+    }
+
+    &:focus {
+      outline-style: none;
+    }
+  }
+
+  &__select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}

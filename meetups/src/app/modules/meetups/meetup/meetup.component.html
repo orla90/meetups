@@ -1,0 +1,114 @@
+<article
+  class="meetup"
+  *ngIf="meetup"
+  [ngClass]="{
+  'meetup_completed': isCompleted,
+  'meetup_incompleted': !isCompleted,
+}"
+>
+  <div class="meetup__container">
+    <header class="meetup__header">
+      <div class="meetup__header-container">
+        <div class="meetup__header-info">
+          <span class="meetup__title title">{{ meetup.name }}</span>
+          <span class="meetup__subscribers"
+            >{{ meetup.users!.length }}
+            {{
+              checkDeclension(meetup.users!.length, [
+                "подписчик",
+                "подписчика",
+                "подписчиков"
+              ])
+            }}</span
+          >
+        </div>
+        <div class="meetup__header-metadata">
+          <span class="meetup__date title">{{ parseTime(meetup.time) }}</span>
+          <span class="meetup__vanue" *ngIf="!isCompleted">{{
+            meetup.location
+          }}</span>
+          <span class="meetup__completed" *ngIf="isCompleted">Проведено</span>
+        </div>
+      </div>
+    </header>
+    <section
+      class="meetup__content meetup__content_short"
+      *ngIf="!longDescription"
+    >
+      <div class="meetup__content-container">
+        <p class="meetup__description">
+          {{ parseShortDescription() }}
+        </p>
+      </div>
+    </section>
+    <section
+      class="meetup__content meetup__content_long"
+      *ngIf="longDescription"
+    >
+      <div class="container meetup__content-container">
+        <p class="meetup__description">
+          {{ parseLongDescription() }}
+        </p>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Целевая аудитория</h3>
+          <p class="meetup__entry">{{ meetup.target_audience }}</p>
+        </div>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Что надо знать?</h3>
+          <p class="meetup__entry">{{ meetup.need_to_know }}</p>
+        </div>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Что будет?</h3>
+          <p class="meetup__entry">
+            {{ meetup.will_happen }}
+          </p>
+        </div>
+        <div class="meetup__item">
+          <h3 class="meetup__heading">Почему надо обязательно прийти?</h3>
+          <p class="meetup__entry">{{ meetup.reason_to_come }}</p>
+        </div>
+      </div>
+    </section>
+    <footer class="meetup__footer">
+      <div class="meetup__footer-container">
+        <span class="meetup__author">{{ meetup.owner!.fio }}</span>
+        <div class="meetup__btns">
+          <button
+            *ngIf="canComeBtnVisible && !isCompleted && !isCurUserMeetup"
+            class="button button_big button_purple"
+            (click)="signMeetup()"
+          >
+            Я пойду!
+          </button>
+          <button
+            *ngIf="!canComeBtnVisible && !isCompleted && !isCurUserMeetup"
+            class="button button_big button_light"
+            (click)="signOverMeetup()"
+          >
+            Не смогу пойти
+          </button>
+          <a
+            [routerLink]="['edit', meetup.id]"
+            *ngIf="!isCompleted && isCurUserMeetup && isUpdatingPossible"
+            class="button button_big button_purple"
+          >
+            Редактировать
+          </a>
+          <button
+            class="button button_small button_orange"
+            (click)="changeDescription()"
+          >
+            <span
+              class="button__icon meetup__button-icon"
+              [ngClass]="{
+                'button__icon meetup__button-icon': true,
+                'meetup__button-icon_up': longDescription,
+                'meetup__button-icon_down': !longDescription,
+              }"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </footer>
+  </div>
+</article>

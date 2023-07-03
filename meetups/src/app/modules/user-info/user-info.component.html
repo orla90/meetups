@@ -1,0 +1,8 @@
+<section class="user-info">
+  <div class="user-info__container">
+    <div *ngIf="user" class="user-info__content">
+      <div class="user-info__item">My email: <strong class="user-info__data">{{user.email}}</strong></div>
+      <div class="user-info__item">My role: <strong class="user-info__data">{{user.roles[0].name}}</strong></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+@import "../../../../assets/styles/global.scss";
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+  &__list {
+    display: flex;
+  }
+  
+  &__item {
+    list-style: none;
+  }
+  
+  &__btn {    
+    &_arrow {
+      color: $tuscany;
+      
+      &:disabled {
+        color: $tuscany;
+        opacity: .5;
+      }
+    }
+    
+    &_page {
+      background-color: $east-bay;
+    }
+    
+    &_range {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  &__select {
+    margin-left: rem(20px);
+    max-width: rem(150px);
+  }
+  
+  &__menu {
+    max-width: rem(50px);
+  }
+}
