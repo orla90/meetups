@@ -2,8 +2,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
+import { Subscription, timer, map } from 'rxjs';
 import { Meetup } from 'src/app/classes/meetup';
 import { Pagination } from 'src/app/classes/pagination';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +17,7 @@ import { MeetupService } from 'src/app/services/meetup.service';
   templateUrl: './meetup-list.component.html',
   styleUrls: ['./meetup-list.component.scss'],
 })
-export class MeetupListComponent implements OnInit {
+export class MeetupListComponent implements OnInit, OnDestroy {
   public searchInput: string = '';
   public meetups: Meetup[] = [];
   public filteredMeetups: Meetup[] = [];
@@ -24,6 +26,7 @@ export class MeetupListComponent implements OnInit {
   public userId!: number;
   public loading: boolean = false;
   public filters: string = 'all';
+  private timerSubscription?: Subscription;
 
   constructor(
     public meetupService: MeetupService,
@@ -38,16 +41,24 @@ export class MeetupListComponent implements OnInit {
   }
 
   getMeetups() {
-    this.loading = true;
-    this.authService.user &&
-      this.meetupService.getMeetups().subscribe((data) => {
-        this.meetups = data;
-        this.filteredMeetups = data;
-        this.setPaginationTotalCount();
-        this.getCurrentPageMeetups();
-        this.loading = false;
-        this.cdr.detectChanges();
-      });
+    if (this.authService.user) {
+      this.timerSubscription = timer(0, 10000)
+        .pipe(
+          map(() => {
+            this.meetupService.getMeetups().subscribe((data) => {
+              if (JSON.stringify(data) !== JSON.stringify(this.meetups)) {
+                this.meetups = data;
+                this.filteredMeetups = data;
+                this.setPaginationTotalCount();
+                this.getCurrentPageMeetups();
+                this.loading = false;
+                this.cdr.detectChanges();
+              }
+            });
+          })
+        )
+        .subscribe();
+    }
   }
 
   signMeetupEvent(idMeetup: number) {
@@ -142,7 +153,7 @@ export class MeetupListComponent implements OnInit {
     this.getCurrentPageMeetups();
     this.cdr.detectChanges();
   }
-  
+
   resetFilters() {
     this.filters = 'all';
     this.searchInput = '';
@@ -155,5 +166,9 @@ export class MeetupListComponent implements OnInit {
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();
     this.cdr.detectChanges();
+  }
+  
+  ngOnDestroy() {
+    this.timerSubscription?.unsubscribe();
   }
 }
