@@ -8,13 +8,26 @@
   &__panel {
     display: flex;
     margin-top: rem(36px);
-    justify-content: space-between;
+    justify-content: center;
     gap: rem(10px);
+    flex-wrap: wrap;
+    
+    @media #{$screen-big} {
+      justify-content: space-between;
+    }
   }
 
   &__filters {
     display: flex;
     width: rem(250px);
+    
+    &-panel {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: rem(10px);
+    }
 
     &-item {
       width: 100%;
@@ -52,8 +65,8 @@
   }
 
   &__btn {
-    width: rem(48px);
-    height: rem(48px);
+    width: rem(50px);
+    height: rem(50px);
     border: rem(3px) solid $tuscany;
     transition: $transition-duration-hover $transition-function-hover;
 

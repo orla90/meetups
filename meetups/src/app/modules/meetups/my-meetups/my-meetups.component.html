@@ -1,9 +1,12 @@
 <section class="my-meetups">
   <div class="my-meetups__container container">
     <div class="my-meetups__panel">
-    <div class="my-meetups__filters">
-      <app-filters (filterEvent)="filter($event)" class="my-meetups__filters-item"></app-filters>
-    </div>
+      <div class="my-meetups__filters-panel">
+        <div class="my-meetups__filters">
+          <app-filters (filterEvent)="filter($event)" class="my-meetups__filters-item"></app-filters>
+        </div>
+        <button class="my-meetups__filters-btn button button_big button_orange" (click)="resetFilters()">Сбросить</button>
+      </div>
     <div class="my-meetups__create">
       <a
         routerLink="/my-meetups/create"

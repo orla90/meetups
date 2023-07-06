@@ -2,8 +2,10 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
+import { Subscription, timer, map } from 'rxjs';
 import { Meetup } from 'src/app/classes/meetup';
 import { Pagination } from 'src/app/classes/pagination';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +17,7 @@ import { MeetupService } from 'src/app/services/meetup.service';
   templateUrl: './meetup-list.component.html',
   styleUrls: ['./meetup-list.component.scss'],
 })
-export class MeetupListComponent implements OnInit {
+export class MeetupListComponent implements OnInit, OnDestroy {
   public searchInput: string = '';
   public meetups: Meetup[] = [];
   public filteredMeetups: Meetup[] = [];
@@ -23,6 +25,8 @@ export class MeetupListComponent implements OnInit {
   public pagination = new Pagination();
   public userId!: number;
   public loading: boolean = false;
+  public filters: string = 'all';
+  private timerSubscription?: Subscription;
 
   constructor(
     public meetupService: MeetupService,
@@ -33,16 +37,28 @@ export class MeetupListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.authService.user &&
-      this.meetupService.getMeetups().subscribe((data) => {
-        this.meetups = data;
-        this.filteredMeetups = data;
-        this.setPaginationTotalCount();
-        this.getCurrentPageMeetups();
-        this.loading = false;
-        this.cdr.detectChanges();
-      });
+    this.getMeetups();
+  }
+
+  getMeetups() {
+    if (this.authService.user) {
+      this.timerSubscription = timer(0, 10000)
+        .pipe(
+          map(() => {
+            this.meetupService.getMeetups().subscribe((data) => {
+              if (JSON.stringify(data) !== JSON.stringify(this.meetups)) {
+                this.meetups = data;
+                this.filteredMeetups = data;
+                this.setPaginationTotalCount();
+                this.getCurrentPageMeetups();
+                this.loading = false;
+                this.cdr.detectChanges();
+              }
+            });
+          })
+        )
+        .subscribe();
+    }
   }
 
   signMeetupEvent(idMeetup: number) {
@@ -66,9 +82,24 @@ export class MeetupListComponent implements OnInit {
   }
 
   searchMeetups(searchInput: string) {
+    this.searchInput = searchInput;
     this.filteredMeetups = this.meetups.filter((meetup) =>
       meetup.name!.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
+
+    const now = new Date();
+    if (this.filters === 'future') {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) => {
+        return new Date(meetup.time) >= now;
+      });
+    } else if (this.filters === 'completed') {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) => {
+        return new Date(meetup.time) < now;
+      });
+    } else {
+      this.filteredMeetups = this.filteredMeetups;
+    }
+
     this.setPaginationTotalCount();
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();
@@ -95,6 +126,7 @@ export class MeetupListComponent implements OnInit {
 
   filter(filter: string) {
     const now = new Date();
+    this.filters = filter;
 
     if (filter === 'future') {
       this.filteredMeetups = this.meetups.filter((meetup) => {
@@ -108,9 +140,35 @@ export class MeetupListComponent implements OnInit {
       this.filteredMeetups = this.meetups;
     }
 
+    if (this.searchInput) {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) =>
+        meetup
+          .name!.toLocaleLowerCase()
+          .includes(this.searchInput.toLowerCase())
+      );
+    }
+
     this.setPaginationTotalCount();
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();
     this.cdr.detectChanges();
+  }
+
+  resetFilters() {
+    this.filters = 'all';
+    this.searchInput = '';
+    this.filteredMeetups = this.meetups;
+    this.setPaginationSettings();
+  }
+
+  setPaginationSettings() {
+    this.setPaginationTotalCount();
+    this.setPaginationCurrentPage();
+    this.getCurrentPageMeetups();
+    this.cdr.detectChanges();
+  }
+  
+  ngOnDestroy() {
+    this.timerSubscription?.unsubscribe();
   }
 }

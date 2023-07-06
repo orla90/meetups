@@ -4,7 +4,6 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { Meetup } from 'src/app/classes/meetup';
 import { Pagination } from 'src/app/classes/pagination';
 import { AuthService } from 'src/app/services/auth.service';
@@ -24,6 +23,7 @@ export class MyMeetupsComponent implements OnInit {
   public pagination = new Pagination();
   public userId!: number;
   public loading: boolean = false;
+  public filters: string = 'all';
 
   constructor(
     public meetupService: MeetupService,
@@ -55,13 +55,25 @@ export class MyMeetupsComponent implements OnInit {
   }
 
   searchMeetups(searchInput: string) {
+    this.searchInput = searchInput;
     this.filteredMeetups = this.meetups.filter((meetup) =>
       meetup.name!.toLocaleLowerCase().includes(searchInput.toLowerCase())
     );
-    this.setPaginationTotalCount();
-    this.setPaginationCurrentPage();
-    this.getCurrentPageMeetups();
-    this.cdr.detectChanges();
+
+    const now = new Date();
+    if (this.filters === 'future') {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) => {
+        return new Date(meetup.time) >= now;
+      });
+    } else if (this.filters === 'completed') {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) => {
+        return new Date(meetup.time) < now;
+      });
+    } else {
+      this.filteredMeetups = this.filteredMeetups;
+    }
+
+    this.setPaginationSettings();
   }
 
   onPaginationChange(pagination: Pagination): void {
@@ -84,6 +96,7 @@ export class MyMeetupsComponent implements OnInit {
 
   filter(filter: string) {
     const now = new Date();
+    this.filters = filter;
 
     if (filter === 'future') {
       this.filteredMeetups = this.meetups.filter((meetup) => {
@@ -97,6 +110,25 @@ export class MyMeetupsComponent implements OnInit {
       this.filteredMeetups = this.meetups;
     }
 
+    if (this.searchInput) {
+      this.filteredMeetups = this.filteredMeetups.filter((meetup) =>
+        meetup
+          .name!.toLocaleLowerCase()
+          .includes(this.searchInput.toLowerCase())
+      );
+    }
+
+    this.setPaginationSettings();
+  }
+
+  resetFilters() {
+    this.filters = 'all';
+    this.searchInput = '';
+    this.filteredMeetups = this.meetups;
+    this.setPaginationSettings();
+  }
+
+  setPaginationSettings() {
     this.setPaginationTotalCount();
     this.setPaginationCurrentPage();
     this.getCurrentPageMeetups();

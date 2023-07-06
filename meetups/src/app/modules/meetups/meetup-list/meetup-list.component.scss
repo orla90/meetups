@@ -27,8 +27,14 @@
 
   &__filters {
     display: flex;
-    margin-top: rem(36px);
     width: rem(250px);
+    
+    &-panel {
+      margin-top: rem(36px);
+      display: flex;
+      gap: rem(10px);
+      flex-wrap: wrap;
+    }
 
     &-item {
       width: 100%;

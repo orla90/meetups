@@ -47,11 +47,12 @@ export class MeetupFormComponent implements OnInit, OnDestroy {
   public id!: number;
   public currentMeetup?: Meetup;
 
+
   constructor(
     private meetupService: MeetupService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) {
     this.meetupError = '';
   }
